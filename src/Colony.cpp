@@ -66,3 +66,9 @@ void Colony::setWep(int weapons){
 void Colony::setUnc(int uncooked){
 	this->uncooked=uncooked;
 }
+void Colony::setBar(int b){
+	barricade=b;
+}
+int Colony::getBar(){
+	return barricade;
+}
