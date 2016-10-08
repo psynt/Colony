@@ -5,6 +5,8 @@
  *      Author: nichita
  */
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 #include "Day.h"
 #include "People.h"
 
@@ -19,6 +21,24 @@ void Day::printStatus(){
 	cout << sick << " members are sick. \n";
 	cout << "You have " << medicine << " medicine. \n";
 	cout << "You have " << barricades << " barricades. \n";
+}
+
+void Day::DeathRoll(){
+	int dead = 0;
+	int healed = 0;
+	for(int i = 0; i < Colony.getSick(); i++){
+		srand(time(NULL));
+		int roll = rand() % 7 + 1;
+		if (roll == 0){
+			dead++;
+		}else if (roll == 0){
+			healed++;
+		}
+	}
+	cout << dead << " sick colony members have died. \n";
+	cout << healed << " sick members have recovered. \n";
+	Colony.setPeople(Colony.getPeople()-dead);
+	Colony.setSick(Colony.getSick()-healed);
 }
 
 
