@@ -11,7 +11,6 @@
 
 using namespace std;
 
-<<<<<<< HEAD
 void Day::printStatus_init(){
 	int dayNum = Colony.getDay();
 	
