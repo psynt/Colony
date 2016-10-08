@@ -14,6 +14,7 @@
 class People {
 //	Skillset s;
 	int people;
+	int sick;
 public:
 	People();
 	~People();
