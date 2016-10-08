@@ -41,18 +41,18 @@ void Day::EndDay(){
 	int ration=c->getRat();
 	int healthy=member-sick;
 	int sickcount=0;
-	
+
 	c->setRat(ration-member); //reduce ration count
-	
-	//loop to make healthy people sick, with increasing 
-	for( i = 0; i < healthy; i++){
+
+	//loop to make healthy people sick, with increasing
+	for( int i = 0; i < healthy; i++){
 		int sick_chance=CHANCE_SICK+(CHANCE_INCREASE*sick);
 		int roll_sick = rand() %100;
 		if(roll_sick < sick_chance){
 			sickcount++;
 		}
 	}
-	
+
 	c->setSick(sickcount);
 }
 
