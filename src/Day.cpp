@@ -6,6 +6,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <string>
 #include "Day.h"
 #include "People.h"
 #include "Colony.h"
@@ -192,7 +193,7 @@ int* Day::search(){
 
 int* Day::getInput(){
 	int cook, prepare, search;
-	char t;
+	string t;
 	do{
 		cout << "Everybody is ready to work.";
 		cout << "\nSearch: ";
@@ -207,9 +208,9 @@ int* Day::getInput(){
 		}
 		cout << search << " searching, "<< prepare << " defending, " << cook << "cooking food\n";
 		cout<<"Happy? (y/n)\n";
-		cin>>t;
+		getline(cin,t);
 
-	}while(t!="y" && t!="Y");
+	}while(t[0]!="y" && t[0]!="Y");
 	
 
 	int a[3];
