@@ -12,6 +12,8 @@ using namespace std;
 
 void Day::printStatus(){
 	int member, ration, weapon, sick, medicine;
+	member = getPeople();
+	sick   = getSick();
 	cout << "The colony has " << member << " members. \n";
 	cout << "You have " << ration << " rations of food. \n";
 	cout << sick << " member is sick. \n";
