@@ -9,11 +9,10 @@
 #define COLONY_H_
 
 class Colony {
+	int rations, medicine, weapons;
 public:
 	Colony();
 	virtual ~Colony();
-private:
-	Member[] members;
 };
 
 #endif /* COLONY_H_ */

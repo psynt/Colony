@@ -11,6 +11,7 @@
 
 using namespace std;
 
+<<<<<<< HEAD
 void Day::printStatus_init(){
 	int dayNum = Colony.getDay();
 	
@@ -20,7 +21,17 @@ void Day::printStatus_init(){
 	cout << "You have " << ration << " ration(s) of food. \n";
 	cout << "You have " << uncooked << " uncooked food. \n"
 	cout << sick << " member is sick. \n";
+=======
+void Day::printStatus(){
+	int member, ration, uncooked, weapon, sick, medicine, barricades;
+	cout << "The colony has " << member << " members. \n";
+	cout << "You have " << ration << " rations of food. \n";
+	cout << "You have " << uncooked << " uncooked food. \n";
+	cout << "You have " << weapon << " weapons. \n";
+	cout << sick << " members are sick. \n";
+>>>>>>> origin/master
 	cout << "You have " << medicine << " medicine. \n";
+	cout << "You have " << barricades << " barricades. \n";
 }
 
 void Day::printStatus_find(){
@@ -73,4 +84,6 @@ Day::Day() {
 Day::~Day() {
 	// TODO Auto-generated destructor stub
 }
-
+void Day::incDay(){
+	dayNum++;
+}
