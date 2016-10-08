@@ -13,6 +13,7 @@ class Day {
 	void printStatus_init();
 	void printStatus_find();
 	void printStatus_result();
+	void getInput();
 public:
 	Day(Colony* c);
 	~Day();

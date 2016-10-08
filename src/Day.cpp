@@ -88,9 +88,21 @@ void Day::printStatus_result(){
 }
 
 int* Day::getInput(){
+	int cook, prepare, search;
+	cout << "Please assign your people for the day.";
+	cout << "\nSearch: ";
+	cin >> search;
+	cout << "\nPrepare for defense: "
+	cin >> prepare;
+	cout << "\nCook: "
+	cin >> cook;
 	
-	cout << "Number of ";
+	int a[3];
+	a[0]=search;
+	a[1]=prepare;
+	a[2]=cook;
 	
+	return a;
 }
 
 
