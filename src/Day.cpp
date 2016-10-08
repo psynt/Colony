@@ -32,7 +32,7 @@ void Day::printStatus_init(){
 	cout << "You have " << weapon << " weapon(s)\n";
 	cout << "You have " << medicine << " medicine. \n";
 	cout << "You have " << barricade << " barricades. \n";
-	cout << sick << " members are sick. \n";
+	cout << sick << " members fallclea sick. \n";
 }
 
 void Day::EndDay(){
@@ -173,7 +173,7 @@ void Day::printStatus_result(){
 
 }
 
-void Day::search(int people,int* k){
+void Day::search(int people,int* search_arr){
 
 	//if (people == 0) return NULL;
 
@@ -205,8 +205,6 @@ void Day::search(int people,int* k){
 			survivor++;
 		}
 	}
-
-	int search_arr[5];
 	search_arr[0]=ration;
 	search_arr[1]=uncooked;
 	search_arr[2]=weapon;
