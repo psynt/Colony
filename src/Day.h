@@ -17,7 +17,10 @@ public:
 	void morningDecisions();
 	void progressDay();
 	void deathRoll();
-
+private:
+	void printStatus_init;
+	void printStatus_lose;
+	void printStatus_find;
 };
 
 #endif /* DAY_H_ */

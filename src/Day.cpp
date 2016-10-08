@@ -84,7 +84,6 @@ void Day::printStatus_lose(){
 	
 }
 
-
 Day::Day() {
 	// TODO Auto-generated constructor stub
 
