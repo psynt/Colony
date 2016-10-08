@@ -24,7 +24,7 @@ void Day::printStatus_init(){
 	int medicine=c->getMed();
 	int barricade = c->getBar();
 
-	cout << "DAY " << dayNum << '\n';
+	cout << "\n\n\n\tDAY " << dayNum << '\n';
 	cout << "--------------------------------------------------\n";
 	cout << "The colony has " << member << " members. "<< "("  << member-sick <<" working members)"<<"\n";
 	cout << "You have " << ration << " ration(s) of food. \n";
@@ -60,7 +60,7 @@ void Day::EndDay(){
 void Day::deathRoll(){
 	int med=c->getMed(),sick=c->getSick();
 	int healed=med>sick?sick:med;
-	cout<<healed<<" members healed by medicine";
+	cout<<healed<<" members healed by medicine\n";
 	c->setMed(med-healed);
 
 
@@ -134,11 +134,13 @@ int Day::cookFood(int people, int &uncooked)
 {
 	int cooked = 0;
 
-	cooked = min(2 * people, uncooked) * 2;
+	cooked = min(2 * people, uncooked) ;
 
 	uncooked-=cooked;
-
-	return cooked;
+	if(DEBUG){
+		cout<<people << " people cooked " <<2*cooked<<" food. "<<uncooked<<" uncooked food remains.\n";
+	}
+	return 2*cooked;
 }
 
 void Day::printStatus_result(){
@@ -168,7 +170,9 @@ void Day::printStatus_result(){
 	cout << barricade << " barricade(s). \n";
 	cout << zombies << " zombies attack in the night. \n";
 
-	int res = healthy + healthy>c->getWep()?c->getWep():healthy + c->getBar() - zombies;
+
+
+	int res = healthy + (healthy>c->getWep()?c->getWep():healthy) + c->getBar() - zombies;
 	if (res==0){
 		cout << "You barely manage to hold them back.\n";
 	}
@@ -180,6 +184,14 @@ void Day::printStatus_result(){
 
 		Day::zombieBreakIn(res);
 	}
+	int barLoss=1 + rand()%barricade;
+	int bL=barLoss>zombies?zombies : barLoss;
+
+	cout<< bL << " barricades are destroyed in the attack\n";
+
+	c->setBar(barricade - bL);
+
+
 
 }
 
