@@ -9,12 +9,12 @@
 #include<string>
 using namespace std;
 
-Player::Member(string n) {
+Member::Member(string n) {
 	// TODO Auto-generated constructor stub
 	name=n;
 }
 
-Player::~Member() {
+Member::~Member() {
 	// TODO Auto-generated destructor stub
 
 }
