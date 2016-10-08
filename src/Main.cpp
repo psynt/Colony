@@ -12,7 +12,7 @@ using namespace std;
 
 int main() {
 	cout << "!!!Hello World!!!\n"; // prints !!!Hello World!!!
-	Player *p=new Player("Bob");
-	cout<<"I am "<<*(p->getName())<<"\n";
+	//Player *p=new Player("Bob");
+	//cout<<"I am "<<*(p->getName())<<"\n";
 	return 0;
 }
