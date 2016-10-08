@@ -3,13 +3,13 @@
  *
  *  Created on: Oct 8, 20 *      Author: nichita
  */
-#include <iostream>
-#include <cstdlib>
-#include <ctime>
-#include <string>
+
 #include "Day.h"
-#include "People.h"
-#include "Colony.h"
+
+#include <cstdlib>
+#include <iostream>
+#include <string>
+
 #include "Constants.h"
 
 using namespace std;
