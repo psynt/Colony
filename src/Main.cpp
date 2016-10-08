@@ -16,7 +16,6 @@ using namespace std;
 int main()
 {
 	srand(time(NULL));
-	cout << "Hello World. Main Started.\n";
 
 	Colony colony;
 	Day day(&colony);
