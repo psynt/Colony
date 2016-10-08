@@ -41,7 +41,7 @@ void Day::printStatus_init(){
 	cout << "You have " << barricade << " barricades. \n";
 }
 
-void Day::DeathRoll(){
+void Day::deathRoll(){
 	int dead = 0;
 	int healed = 0;
 	for(int i = 0; i < c->getSick(); i++){
@@ -55,8 +55,8 @@ void Day::DeathRoll(){
 	}
 	cout << dead << " sick colony members have died. \n";
 	cout << healed << " sick members have recovered. \n";
-	Colony.setPeople(Colony.getPeople()-dead);
-	Colony.setSick(Colony.getSick()-healed);
+	c->setPeople(c->getPeople()-dead);
+	c->setSick(c->getSick()-healed);
 }
 
 void Day::printStatus_find(){
@@ -82,6 +82,12 @@ void Day::printStatus_find(){
 	cout << "\t" << f_weap << " weapon(s)\n";
 	cout << "\t" << f_med << " medicine(s)\n";
 	cout << "The colony now has " << c->getBar() << " barricade(s)\n";
+}
+
+void Day::zombieBreakIn(int zombies)
+{
+	c->setPeople(c->getPeople() - zombies);
+	cout << zombies << " members of the colony perish.\n";
 }
 
 void Day::printStatus_result(){
@@ -125,18 +131,12 @@ void Day::printStatus_result(){
 	
 }
 
-Day::zombieBreakIn(int zombies)
-{
-	c->setPeople(c->getPeople() - zombies);
-	cout << zombies << " members of the colony perish.\n";
-}
-
 int* Day::getInput(){
 	int cook, prepare, search;
-	cout << "Please assign your people for the day.";
+	cout << "Everybody is ready to work.";
 	cout << "\nSearch: ";
 	cin >> search;
-	cout << "\nPrepare for defense: ";
+	cout << "\nPrepare defenses: ";
 	cin >> prepare;
 	cout << "\nCook: ";
 	cin >> cook;

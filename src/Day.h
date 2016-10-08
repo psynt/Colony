@@ -22,6 +22,7 @@ public:
 	void printStatus_find();
 	void printStatus_result();
 	void getInput();
+	void zombieBreakIn(int zombie);
 
 };
 
