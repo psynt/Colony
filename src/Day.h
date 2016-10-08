@@ -13,6 +13,7 @@ class Day {
 	void printStatus_init();
 	void printStatus_find();
 	void printStatus_result();
+	void printStatus_lose();
 	void getInput();
 public:
 	Day(Colony* c);
@@ -20,10 +21,6 @@ public:
 	void morningDecisions();
 	void progressDay();
 	void deathRoll();
-private:
-	void printStatus_init;
-	void printStatus_lose;
-	void printStatus_find;
 };
 
 #endif /* DAY_H_ */
