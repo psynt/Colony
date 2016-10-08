@@ -25,6 +25,7 @@ const int FIND_SURV = 2;
 
 //chance of getting sick at the end of day
 const int CHANCE_SICK = 20;
+const int CHANCE_INCREASE = 6; //increased sick chance per sick person in colony
 
 
 
