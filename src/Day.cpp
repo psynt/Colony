@@ -37,7 +37,7 @@ void Day::printStatus_init(){
 void Day::DeathRoll(){
 	int dead = 0;
 	int healed = 0;
-	for(int i = 0; i < Colony.getSick(); i++){
+	for(int i = 0; i < c->getSick(); i++){
 		srand(time(NULL));
 		int roll = rand() % 7 + 1;
 		if (roll == 0){
@@ -106,8 +106,8 @@ void Day::printStatus_result(){
 
 Day::zombieBreakIn(int zombies)
 {
-	c.people -= zombies;
-	cout << res << " members of the colony perish.\n";
+	c->setPeople(c->getPeople() - zombies);
+	cout << zombies << " members of the colony perish.\n";
 }
 
 Day::Day() {
