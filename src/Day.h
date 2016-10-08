@@ -15,13 +15,15 @@ class Day {
 	void printStatus_init();
 	void printStatus_find();
 	void printStatus_result();
-	void getInput();
+	int* getInput();
+
 public:
 	Day(Colony* c);
 	~Day();
 	void morningDecisions();
 	void progressDay();
 	void deathRoll();
+	void zombieBreakIn(int zombie);
 
 };
 
