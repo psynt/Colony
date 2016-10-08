@@ -18,3 +18,10 @@ Colony::Colony() {
 Colony::~Colony() {
 	// TODO Auto-generated destructor stub
 }
+void Colony::incDay(){
+	day++;
+}
+
+int Colony::getPeople(){
+	return people;
+}

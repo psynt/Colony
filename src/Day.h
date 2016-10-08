@@ -9,7 +9,6 @@
 #define DAY_H_
 
 class Day {
-	int dayNum;
 	void printStatus();
 public:
 	Day();
@@ -17,7 +16,6 @@ public:
 	void morningDecisions();
 	void progressDay();
 	void deathRoll();
-	void incDay();
 
 };
 
