@@ -127,13 +127,24 @@ void Day::printStatus_result(){
 
 int* Day::getInput(){
 	int cook, prepare, search;
-	cout << "Everybody is ready to work.";
-	cout << "\nSearch: ";
-	cin >> search;
-	cout << "\nPrepare defenses: ";
-	cin >> prepare;
-	cout << "\nCook: ";
-	cin >> cook;
+	char t;
+	do{
+		cout << "Everybody is ready to work.";
+		cout << "\nSearch: ";
+		cin >> search;
+		cout << "\nPrepare defenses: ";
+		cin >> prepare;
+		cout << "\nCook: ";
+		cin >> cook;
+		if(search+prepare+cook>c->(getPeople()-c->getSick()) || search<0 || prepare<0 || cook<0){
+			cout<<"Bad input. please reconsider\n";
+			continue;
+		}
+		cout << search << " searching, "<< prepare << " defending, " << cook << "cooking food\n";
+		cout<<"Happy? (y/n)\n";
+		cin>>t;
+
+	}while(t!="y" && t!="Y");
 	
 
 	int a[3];
