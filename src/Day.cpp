@@ -86,7 +86,7 @@ void Day::printStatus_find(){
     getInput(inp);
 	int member=c->getPeople();
 	int sick=c->getSick();
-	int healthy=member-sick;
+//	int healthy=member-sick;
 	int* k=new int[5];
 	search(inp[0],k);
 	/*
@@ -146,10 +146,10 @@ int Day::cookFood(int people, int &uncooked)
 void Day::printStatus_result(){
 	int weapon=c->getWep();
 	int member=c->getPeople();
-	int ration=c->getRat();
-	int uncooked=c->getUnc();
+//	int ration=c->getRat();
+//	int uncooked=c->getUnc();
 	int sick=c->getSick();
-	int medicine=c->getMed();
+//	int medicine=c->getMed();
 	int healthy=member-sick;
 	//int *r=search(healthy);
 	/*
