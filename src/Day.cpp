@@ -187,7 +187,7 @@ int* Day::getInput(){
 		cout<<"Happy? (y/n)\n";
 		getline(cin,t);
 	
-	}while(t[0]!="y" && t[0]!="Y");
+	}while(t[0]!='y' && t[0]!='Y');
 
 	int a[3];
 	a[0]=search;
