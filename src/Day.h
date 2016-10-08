@@ -15,15 +15,14 @@ class Day {
 	void printStatus_init();
 	void printStatus_find();
 	void printStatus_result();
-	void printStatus_lose();
 	void getInput();
-	void zombieBreakIn(int zombies);
 public:
 	Day(Colony* c);
 	~Day();
 	void morningDecisions();
 	void progressDay();
 	void deathRoll();
+
 };
 
 #endif /* DAY_H_ */
