@@ -7,6 +7,8 @@
 //============================================================================
 
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 #include "Day.h"
 #include "Colony.h"
 using namespace std;

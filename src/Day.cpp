@@ -6,6 +6,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <string>
 #include "Day.h"
 #include "People.h"
 #include "Colony.h"
@@ -135,9 +136,6 @@ int* Day::search(int people){
 	int survivor = 0;
 
 	for(int i = 0; i < people; i++){
-		srand(time(NULL));
-	int NumSearch = 3;
-	for(int i = 0; i < NumSearch; i++){
 		int roll_rat = rand() % 100;
 		if (roll_rat < FIND_RAT ){
 			ration++;
@@ -172,7 +170,7 @@ int* Day::search(int people){
 
 int* Day::getInput(){
 	int cook, prepare, search;
-	char t;
+	string t;
 	do{
 		cout << "Everybody is ready to work.";
 		cout << "\nSearch: ";
@@ -187,10 +185,9 @@ int* Day::getInput(){
 		}
 		cout << search << " searching, "<< prepare << " defending, " << cook << "cooking food\n";
 		cout<<"Happy? (y/n)\n";
-		cin>>t;
-
-	}while(t!='y' && t!='Y');
+		getline(cin,t);
 	
+	}while(t[0]!="y" && t[0]!="Y");
 
 	int a[3];
 	a[0]=search;
