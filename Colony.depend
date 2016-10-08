@@ -7,7 +7,7 @@
 
 1475940907 c:\users\win10\documents\github\colony\src\constants.h
 
-1475939331 source:c:\users\win10\documents\github\colony\src\day.cpp
+1475941038 source:c:\users\win10\documents\github\colony\src\day.cpp
 	"Day.h"
 	<cstdlib>
 	<iostream>
@@ -17,7 +17,7 @@
 1475941020 c:\users\win10\documents\github\colony\src\day.h
 	"Colony.h"
 
-1475938733 source:c:\users\win10\documents\github\colony\src\main.cpp
+1475941078 source:c:\users\win10\documents\github\colony\src\main.cpp
 	<iostream>
 	<cstdlib>
 	<ctime>
