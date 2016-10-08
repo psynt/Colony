@@ -110,7 +110,6 @@ Day::zombieBreakIn(int zombies)
 	cout << zombies << " members of the colony perish.\n";
 }
 
-Day::Day() {
 int* Day::getInput(){
 	int cook, prepare, search;
 	cout << "Please assign your people for the day.";
