@@ -20,6 +20,7 @@ int main()
 
 	while (colony.getPeople() > 0){
 		day.printStatus_init();
+		day.getInput();
 		day.printStatus_find();
 		day.printStatus_result();
 		day.deathRoll();

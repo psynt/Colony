@@ -8,7 +8,6 @@
 #include "Colony.h"
 
 #ifndef DAY_H_INCLUDED
-#define DAY_H_INCLUDED
 
 class Day {
 	Colony* c;
