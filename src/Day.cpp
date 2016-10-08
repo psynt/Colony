@@ -81,7 +81,12 @@ void Day::printStatus_find(){
 	cout << "\t" << f_weap << " weapon(s)\n";
 	cout << "\t" << f_med << " medicine(s)\n";
 	cout << "The colony now has " << c->getBar() << " barricade(s)\n";
-	system("PAUSE"); //debugging purposes
+
+	c->setBar(c->getBar()+barricade);
+	c->setMed(c->getMed()+f_med);
+	c->setWep(c->getWep()+f_weap);
+	c->setUnc(c->getUnc()+f_uncooked);
+	c->setRat(c->getRat()+f_ration);
 }
 
 void Day::zombieBreakIn(int zombies)
@@ -106,6 +111,8 @@ void Day::printStatus_result(){
 	int uncooked=c->getUnc();
 	int sick=c->getSick();
 	int medicine=c->getMed();
+	int healthy=member-sick;
+	int *r=search(healthy);
 	/*
 	variables to get
 	1) healthy members
@@ -115,7 +122,6 @@ void Day::printStatus_result(){
 
 	variables are not yet defined but are used in the function, please define
 	*/
-	int healthy=member-sick;
 	int barricade=c->getBar();
 	int zombies=1+rand()%3+(1+rand()%3)*c->getDay();
 
