@@ -208,7 +208,7 @@ int* Day::getInput(){
 			cout<<"Bad decisions. Reconsider.\n";
 			continue;
 		}
-		cout << search << " searching, "<< prepare << " defending, " << cook << "cooking food\n";
+		cout << search << " searching, "<< prepare << " defending, " << cook << " cooking food\n";
 		cout<<"Happy? (y/n)\n";
 		cin>>t;
 
