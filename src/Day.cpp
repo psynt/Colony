@@ -209,7 +209,7 @@ int* Day::getInput(){
 		cout<<"Happy? (y/n)\n";
 		cin>>t;
 
-	}while(t!="y" && t!="Y");
+	}while(t!='y' && t!='Y');
 	
 
 	int a[3];
