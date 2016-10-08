@@ -13,14 +13,15 @@
 class Day {
 	Colony* c;
 public:
-	~Day(Colony* c);
+	Day(Colony* c);
+	~Day();
 	void morningDecisions();
 	void progressDay();
 	void deathRoll();
 	void printStatus_init();
 	void printStatus_find();
 	void printStatus_result();
-	void getInput();
+	int* getInput();
 	void zombieBreakIn(int zombie);
 
 };
