@@ -9,6 +9,7 @@
 #define DAY_H_
 
 class Day {
+	Colony c=new Colony();
 	void printStatus();
 public:
 	Day();
