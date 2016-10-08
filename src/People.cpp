@@ -16,7 +16,10 @@ People::~People() {
 	// TODO Auto-generated destructor stub
 }
 
-int people::getPeople(){
+int People::getPeople(){
 	return people;
+}
+int People::getSick(){
+	return sick;
 }
 
