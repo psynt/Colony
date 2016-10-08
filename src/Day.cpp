@@ -16,6 +16,7 @@ void Day::printStatus_init(){
 	int member=c->getPeople();
 	int ration=c->getRat();
 	int uncooked=c->getUnc();
+	int weapon=c->getWep();
 	int sick=c->getSick();
 	int medicine=c->getMed();
 	int barricade = c->getBar();
@@ -26,18 +27,21 @@ void Day::printStatus_init(){
 	
 	variables are not yet defined but are used in the function, please define
 	*/
+	//done getting variables
 	
 	cout << "DAY " << dayNum << '\n';								 
 	cout << "--------------------------------------------------\n";
 	cout << "The colony has " << member << " members. \n";			 
 	cout << "You have " << ration << " ration(s) of food. \n";
 	cout << "You have " << uncooked << " uncooked food. \n";
+	cout << "You have " << weapon << " weapon(s)\n";
 	cout << sick << " member is sick. \n";
 	cout << "You have " << medicine << " medicine. \n";
 	cout << "You have " << barricade << " barricades. \n";
 }
 
 void Day::printStatus_find(){
+	
 	/*
 	variables to get
 	1) found rations
@@ -77,20 +81,27 @@ void Day::printStatus_result(){
 	cout << weapon << " weapon(s) and ";
 	cout << barricade << " barricade(s). \n";
 	
-	cout << zombies << " zombies attacked in the night. \n";
+	cout << zombies << " zombies attack in the night. \n";
 	
 	int res = healthy + weapon + barricade - zombies;
 	if (res==0){
-		cout << "You barely managed to hold them back.\n";
+		cout << "You barely manage to hold them back.\n";
 	}
 	else if(res>0){
-		cout << "Congratulations! You have successfully defended colony from the zombies.\n";
+		cout << "You have successfully defend the colony.\n";
 	}
 	else {
-		//lines to be printed when zombies > human
-		//insert lose battle function here
+		cout << res << " zombies break through your defences.\n";
+
+		Day::zombieBreakIn(res);
 	}
 	
+}
+
+Day::zombieBreakIn(int zombies)
+{
+	c.people -= zombies;
+	cout << res << " members of the colony perish.\n";
 }
 
 int* Day::getInput(){
@@ -98,9 +109,9 @@ int* Day::getInput(){
 	cout << "Please assign your people for the day.";
 	cout << "\nSearch: ";
 	cin >> search;
-	cout << "\nPrepare for defense: "
+	cout << "\nPrepare for defense: ";
 	cin >> prepare;
-	cout << "\nCook: "
+	cout << "\nCook: ";
 	cin >> cook;
 	
 	int a[3];
