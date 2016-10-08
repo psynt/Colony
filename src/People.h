@@ -22,6 +22,7 @@ public:
 	void cook();
 	void prepare();
 	void defend();
+	int getPeople();
 
 };
 
