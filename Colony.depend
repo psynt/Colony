@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1475933096 source:c:\users\win10\documents\github\colony\src\colony.cpp
+	"Colony.h"
+	"Constants.h"
+
+1475935752 c:\users\win10\documents\github\colony\src\colony.h
+
+1475934910 c:\users\win10\documents\github\colony\src\constants.h
+
