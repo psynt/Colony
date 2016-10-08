@@ -30,6 +30,3 @@ Day::Day() {
 Day::~Day() {
 	// TODO Auto-generated destructor stub
 }
-void Day::incDay(){
-	dayNum++;
-}

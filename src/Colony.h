@@ -9,10 +9,21 @@
 #define COLONY_H_
 
 class Colony {
-	int rations, medicine, weapons;
+	int day;
+	int rations, medicine,uncooked, weapons;
+	int people;
+	int sick;
 public:
 	Colony();
 	virtual ~Colony();
+	int getPeople();
+	int getSick();
+	int getRat();
+	int getMed();
+	int getWep();
+	int getUnc();
+	int getDay();
+	void incDay();
 };
 
 #endif /* COLONY_H_ */
