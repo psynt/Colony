@@ -84,6 +84,15 @@ void Day::zombieBreakIn(int zombies)
 	cout << zombies << " members of the colony perish.\n";
 }
 
+int Day::cookFood(int people, int uncooked)
+{
+	int cooked = 0;
+
+	cooked = min(2 * people, uncooked) * 2;
+
+	return cooked;
+}
+
 void Day::printStatus_result(){
 	int weapon=c->getWep();
 	int member=c->getPeople();
