@@ -22,14 +22,6 @@ void Day::printStatus_init(){
 	int sick=c->getSick();
 	int medicine=c->getMed();
 	int barricade = c->getBar();
-	/*
-	variables to get
-	current:
-	1) barricade
-	
-	variables are not yet defined but are used in the function, please define
-	*/
-	//done getting variables
 	
 	cout << "DAY " << dayNum << '\n';								 
 	cout << "--------------------------------------------------\n";
@@ -37,9 +29,9 @@ void Day::printStatus_init(){
 	cout << "You have " << ration << " ration(s) of food. \n";
 	cout << "You have " << uncooked << " uncooked food. \n";
 	cout << "You have " << weapon << " weapon(s)\n";
-	cout << sick << " member is sick. \n";
 	cout << "You have " << medicine << " medicine. \n";
 	cout << "You have " << barricade << " barricades. \n";
+	cout << sick << " members are sick. \n";
 }
 
 void Day::deathRoll(){
@@ -77,6 +69,7 @@ void Day::printStatus_find(){
 	int f_weap;
 	int f_med;
 	int barricade;
+
 	cout << "\nYour search party finds: \n";
 	cout << "\t" << f_ration << " ration(s) of food\n";
 	cout << "\t" << f_uncooked << " uncooked food\n";
