@@ -23,6 +23,8 @@ const int FIND_WEAP = 10;
 const int FIND_UNC = 50;
 const int FIND_SURV = 2;
 
+//chance of getting sick at the end of day
+const int CHANCE_SICK = 20;
 
 
 
