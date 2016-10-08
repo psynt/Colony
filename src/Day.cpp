@@ -14,10 +14,23 @@
 using namespace std;
 
 void Day::printStatus_init(){
-	int dayNum = Colony.getDay();
+	int dayNum=c->getDay();
+	int member=c->getPeople();
+	/*
+	variables to get
+	current:
+	1) day number
+	2) total members
+	3) uncooked food
+	4) sick
+	5) medicine
+	6) barricade
+	
+	variables are not yet defined but are used in the function, please define
+	*/
 	
 	cout << "DAY " << dayNum << '\n';								 
-	cout << "--------------------------------------------------\n"   
+	cout << "--------------------------------------------------\n";
 	cout << "The colony has " << member << " members. \n";			 
 	cout << "You have " << ration << " ration(s) of food. \n";
 	cout << "You have " << uncooked << " uncooked food. \n"
@@ -45,11 +58,16 @@ void Day::DeathRoll(){
 }
 
 void Day::printStatus_find(){
-	int f_ration;
-	int f_uncooked;
-	int f_weap;
-	int f_med;
-	int barricade;
+	/*
+	variables to get
+	1) found rations
+	2) found uncooked food
+	3) found weapons
+	4) found medicines
+	5) total barricades
+	
+	variables are not yet defined but are used in the function, please define
+	*/
 	cout << "\nYour search party finds: \n";
 	cout << "\t" << f_ration << " ration(s) of food\n";
 	cout << "\t" << f_uncooked << " uncooked food\n";
@@ -59,7 +77,15 @@ void Day::printStatus_find(){
 }
 
 void Day::printStatus_result(){
+	/*
+	variables to get
+	1) healthy members
+	2) total number of weapons
+	3) total number of barricades
+	4) number of zombies
 	
+	variables are not yet defined but are used in the function, please define
+	*/
 	cout << "Night falls.";
 	cout << "You have " << healthy << " healthy members, ";
 	cout << weapon << " weapon(s) and ";
@@ -75,12 +101,15 @@ void Day::printStatus_result(){
 		cout << "Congratulations! You have successfully defended colony from the zombies.\n";
 	}
 	else {
-		Day::printStatus_lose();
+		//lines to be printed when zombies > human
+		//insert deathroll function here
 	}
 	
 }
 
-void Day::printStatus_lose(){
+int* Day::getInput(){
+	
+	cout << "Number of ";
 	
 }
 
