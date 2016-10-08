@@ -141,6 +141,7 @@ int* Day::getInput(){
 	cout << "\nCook: ";
 	cin >> cook;
 	
+
 	int a[3];
 	a[0]=search;
 	a[1]=prepare;
