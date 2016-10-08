@@ -97,8 +97,9 @@ int* Day::getInput(){
 
 
 
-Day::Day() {
+Day::Day(Colony *c) {
 	// TODO Auto-generated constructor stub
+	this->c=c;
 
 }
 
