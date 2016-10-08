@@ -14,7 +14,7 @@ void Day::printStatus(){
 	int member, ration, weapon, sick, medicine;
 	cout << "The colony has " << member << " members. \n";
 	cout << "You have " << ration << " rations of food. \n";
-	cout << sick << " member is sick. \n";
+	cout << sick << " members are sick. \n";
 	cout << "You have " << medicine << " medicine. \n";
 }
 
