@@ -15,15 +15,17 @@ using namespace std;
 void Day::printStatus_init(){
 	int dayNum=c->getDay();
 	int member=c->getPeople();
+	int ration
 	/*
 	variables to get
 	current:
 	1) day number
 	2) total members
-	3) uncooked food
-	4) sick
-	5) medicine
-	6) barricade
+	3) rations
+	4) uncooked food
+	5) sick
+	6) medicine
+	7) barricade
 	
 	variables are not yet defined but are used in the function, please define
 	*/
@@ -101,15 +103,27 @@ void Day::printStatus_result(){
 	}
 	else {
 		//lines to be printed when zombies > human
-		//insert deathroll function here
+		//insert lose battle function here
 	}
 	
 }
 
 int* Day::getInput(){
+	int cook, prepare, search;
+	cout << "Please assign your people for the day.";
+	cout << "\nSearch: ";
+	cin >> search;
+	cout << "\nPrepare for defense: "
+	cin >> prepare;
+	cout << "\nCook: "
+	cin >> cook;
 	
-	cout << "Number of ";
+	int a[3];
+	a[0]=search;
+	a[1]=prepare;
+	a[2]=cook;
 	
+	return a;
 }
 
 Day::Day() {
