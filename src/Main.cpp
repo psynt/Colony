@@ -16,7 +16,6 @@ int main()
 	cout << "Hello World. Main Started.\n";
 	Colony *c=new Colony();
 	Day *d=new Day(c);
-	while()
 
 	Colony colony = new Colony();
 	Day day = new Day(colony);
