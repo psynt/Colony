@@ -181,7 +181,7 @@ int* Day::getInput(){
 		cout << "\nCook: ";
 		cin >> cook;
 		if(search+prepare+cook>(c->getPeople()-c->getSick()) || search<0 || prepare<0 || cook<0){
-			cout<<"Bad input. please reconsider\n";
+			cout<<"Bad decisions. Reconsider.\n";
 			continue;
 		}
 		cout << search << " searching, "<< prepare << " defending, " << cook << "cooking food\n";
