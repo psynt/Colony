@@ -8,7 +8,6 @@
 #include "Colony.h"
 
 #ifndef DAY_H_INCLUDED
-#define DAY_H_INCLUDED
 
 class Day {
 	Colony* c;
@@ -23,6 +22,7 @@ public:
 	void printStatus_result();
 	int* getInput();
 	void zombieBreakIn(int zombie);
+	int* search();
 
 };
 
