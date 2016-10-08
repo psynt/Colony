@@ -75,11 +75,14 @@ void Day::deathRoll(){
 
 void Day::printStatus_find(){
 
-    int* inp=getInput();
+	int *inp=new int[3];
+    getInput(inp);
 	int member=c->getPeople();
 	int sick=c->getSick();
 	int healthy=member-sick;
-	int* k=search(inp[0]);
+	//cout<<inp[0]<<' '<<inp[1]<<' '<<inp[2]<<endl;
+	int* k=new int[5];
+	search(inp[0],k);
 	/*
 	variables to get
 	1) found rations
@@ -136,7 +139,7 @@ void Day::printStatus_result(){
 	int sick=c->getSick();
 	int medicine=c->getMed();
 	int healthy=member-sick;
-	int *r=search(healthy);
+	//int *r=search(healthy);
 	/*
 	variables to get
 	1) healthy members
@@ -170,9 +173,9 @@ void Day::printStatus_result(){
 
 }
 
-int* Day::search(int people){
+void Day::search(int people,int* k){
 
-	if (people == 0) return NULL;
+	//if (people == 0) return NULL;
 
 	int ration = 0;
 	int uncooked = 0;
@@ -209,11 +212,9 @@ int* Day::search(int people){
 	search_arr[2]=weapon;
 	search_arr[3]=medicine;
 	search_arr[4]=survivor;
-
-	return search_arr;
 }
 
-int* Day::getInput(){
+void Day::getInput(int* a){
 	int cook, prepare, search;
 	char t;
 	do{
@@ -235,12 +236,9 @@ int* Day::getInput(){
 
 	}while(t!='y' && t!='Y');
 
-	int a[3];
 	a[0]=search;
 	a[1]=prepare;
 	a[2]=cook;
-
-	return a;
 }
 
 Day::Day(Colony *c) {

@@ -21,9 +21,9 @@ public:
 	void printStatus_init();
 	void printStatus_find();
 	void printStatus_result();
-	int* getInput();
+	void getInput(int* i);
 	void zombieBreakIn(int zombie);
-	int* search(int people);
+	void search(int people,int *k);
 	int cookFood(int people, int uncooked);
 
 };
