@@ -22,7 +22,7 @@ void Day::printStatus_init(){
 	cout << "You have " << uncooked << " uncooked food. \n"
 	cout << sick << " member is sick. \n";
 	cout << "You have " << medicine << " medicine. \n";
-	cout << "You have " << barricades << " barricades. \n";
+	cout << "You have " << barricade << " barricades. \n";
 }
 
 void Day::printStatus_find(){
