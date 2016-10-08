@@ -17,6 +17,7 @@ public:
 	void morningDecisions();
 	void progressDay();
 	void deathRoll();
+	void EndDay();
 	void printStatus_init();
 	void printStatus_find();
 	void printStatus_result();
