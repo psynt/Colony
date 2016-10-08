@@ -81,6 +81,7 @@ void Day::printStatus_find(){
 	cout << "\t" << f_weap << " weapon(s)\n";
 	cout << "\t" << f_med << " medicine(s)\n";
 	cout << "The colony now has " << c->getBar() << " barricade(s)\n";
+	system("PAUSE"); //debugging purposes
 }
 
 void Day::zombieBreakIn(int zombies)
