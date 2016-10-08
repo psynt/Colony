@@ -45,6 +45,11 @@ void Day::printStatus_find(){
 	
 	variables are not yet defined but are used in the function, please define
 	*/
+	int f_ration;
+	int f_uncooked;
+	int f_weap;
+	int f_med;
+	int barricade;
 	cout << "\nYour search party finds: \n";
 	cout << "\t" << f_ration << " ration(s) of food\n";
 	cout << "\t" << f_uncooked << " uncooked food\n";
@@ -63,6 +68,11 @@ void Day::printStatus_result(){
 	
 	variables are not yet defined but are used in the function, please define
 	*/
+	int healthy;
+	int weapon;
+	int barricade;
+	int zombies;
+	
 	cout << "Night falls.";
 	cout << "You have " << healthy << " healthy members, ";
 	cout << weapon << " weapon(s) and ";
