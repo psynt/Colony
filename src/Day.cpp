@@ -84,8 +84,8 @@ void Day::printStatus_find(){
 
 	int *inp=new int[3];
     getInput(inp);
-	int member=c->getPeople();
-	int sick=c->getSick();
+//	int member=c->getPeople();
+//	int sick=c->getSick();
 //	int healthy=member-sick;
 	int* k=new int[5];
 	search(inp[0],k);
