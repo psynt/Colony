@@ -47,9 +47,9 @@ void Day::DeathRoll(){
 	for(int i = 0; i < c->getSick(); i++){
 		srand(time(NULL));
 		int roll = rand() % 7 + 1;
-		if (roll == 0){
+		if (roll == 1){
 			dead++;
-		}else if (roll == 0){
+		}else if (roll == 7){
 			healed++;
 		}
 	}
