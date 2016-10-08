@@ -15,7 +15,7 @@ void Day::printStatus_init(){
 	int dayNum = Colony.getDay();
 	
 	cout << "DAY " << dayNum << '\n';								 
-	cout << "--------------------------------------------------\n"   
+	cout << "--------------------------------------------------\n";
 	cout << "The colony has " << member << " members. \n";			 
 	cout << "You have " << ration << " ration(s) of food. \n";
 	cout << "You have " << uncooked << " uncooked food. \n"
@@ -55,14 +55,12 @@ void Day::printStatus_result(){
 		cout << "Congratulations! You have successfully defended colony from the zombies.\n";
 	}
 	else {
-		Day::printStatus_lose();
+		//lines to be printed when zombies > human
+		//insert deathroll function here
 	}
 	
 }
 
-void Day::printStatus_lose(){
-	
-}
 
 
 
