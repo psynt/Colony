@@ -14,11 +14,9 @@ using namespace std;
 int main()
 {
 	cout << "Hello World. Main Started.\n";
-	Colony *c=new Colony();
-	Day *d=new Day(c);
 
-	Colony colony = new Colony();
-	Day day = new Day(colony);
+	Colony colony;
+	Day day(colony);
 
 	while (colony.getPeople() > 0){
 		day.printStatus_init();
