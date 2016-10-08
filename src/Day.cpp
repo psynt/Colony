@@ -87,6 +87,8 @@ void Day::printStatus_find(){
 	c->setWep(c->getWep()+f_weap);
 	c->setUnc(c->getUnc()+f_uncooked);
 	c->setRat(c->getRat()+f_ration);
+
+	c->setRat(c->getRat() + cookFood(inp[1], c->getUnc()));
 }
 
 void Day::zombieBreakIn(int zombies)
