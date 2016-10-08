@@ -16,7 +16,7 @@ int main()
 	cout << "Hello World. Main Started.\n";
 
 	Colony colony;
-	Day day(colony);
+	Day day(&colony);
 
 	while (colony.getPeople() > 0){
 		day.printStatus_init();

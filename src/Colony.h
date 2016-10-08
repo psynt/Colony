@@ -5,8 +5,8 @@
  *      Author: zaxa1
  */
 
-#ifndef COLONY_H_
-#define COLONY_H_
+#ifndef COLONY_H_INCLUDED
+#define COLONY_H_INCLUDED
 
 class Colony {
 	int day;

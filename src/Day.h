@@ -7,21 +7,21 @@
 
 #include "Colony.h"
 
-#ifndef DAY_H_
-#define DAY_H_
+#ifndef DAY_H_INCLUDED
+#define DAY_H_INCLUDED
 
 class Day {
 	Colony* c;
+public:
+	Day(Colony* c);
+	~Day();
+	void morningDecisions();
+	void progressDay();
+	void deathRoll();
 	void printStatus_init();
 	void printStatus_find();
 	void printStatus_result();
 	int* getInput();
-
-public:
-	~Day(Colony* c);
-	void morningDecisions();
-	void progressDay();
-	void deathRoll();
 	void zombieBreakIn(int zombie);
 
 };
