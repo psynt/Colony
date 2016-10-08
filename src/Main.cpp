@@ -26,6 +26,7 @@ int main()
 		day.printStatus_find();
 		day.printStatus_result();
 		day.deathRoll();
+		day.EndDay();
 	}
 
 	return 0;
