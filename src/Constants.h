@@ -14,11 +14,13 @@ const int INITIAL_WEAPONS = 0;
 const int INITIAL_SICK = 0;
 const int INITIAL_MEDICINE = 0;
 const int INITIAL_BARRICADES = 0;
+
 //chances for finding stuff in %
 const int FIND_RAT = 40;
 const int FIND_MED = 20;
-const int FIND_WEAP = 40;
+const int FIND_WEAP = 10;
 const int FIND_UNC = 50;
+const int FIND_SURV = 2;
 
 
 

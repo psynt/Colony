@@ -22,6 +22,7 @@ public:
 	void printStatus_result();
 	int* getInput();
 	void zombieBreakIn(int zombie);
+	int* search(int people);
 
 };
 
