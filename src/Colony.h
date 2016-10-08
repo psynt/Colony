@@ -24,6 +24,12 @@ public:
 	int getUnc();
 	int getDay();
 	void incDay();
+	void setPeople(int people);
+	void setSick(int sick);
+	void setRat(int rations);
+	void setMed(int m);
+	void setWep(int w);
+	void setUnc(int u);
 };
 
 #endif /* COLONY_H_ */
