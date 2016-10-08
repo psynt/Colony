@@ -7,12 +7,16 @@
 //============================================================================
 
 #include <iostream>
-#include "Player.h"
+#include "Day.h"
+#include "Colony.h"
 using namespace std;
 
 int main()
 {
 	cout << "Hello World. Main Started.\n";
+	Colony *c=new Colony();
+	Day *d=new Day(c);
+	while()
 
 	Colony colony = new Colony();
 	Day day = new Day(colony);

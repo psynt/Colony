@@ -10,7 +10,7 @@
 
 class Colony {
 	int day;
-	int rations, medicine,uncooked, weapons;
+	int rations, medicine,uncooked, weapons,barricade;
 	int people;
 	int sick;
 public:
@@ -30,6 +30,8 @@ public:
 	void setMed(int m);
 	void setWep(int w);
 	void setUnc(int u);
+	int getBar();
+	void setBar(int b);
 };
 
 #endif /* COLONY_H_ */
