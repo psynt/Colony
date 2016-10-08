@@ -8,14 +8,20 @@
 #ifndef PEOPLE_H_
 #define PEOPLE_H_
 
-#include "Skillset.h"
+//#include "Skillset.h"
 
 
 class People {
-	Skillset s;
+//	Skillset s;
+	int people;
 public:
 	People();
 	~People();
+	void search();
+	void cook();
+	void prepare();
+	void defend();
+
 };
 
 #endif /* PEOPLE_H_ */
