@@ -17,21 +17,18 @@ void Day::printStatus_init(){
 	int member=c->getPeople();
 	int ration=c->getRat();
 	int uncooked=c->getUnc();
+	int weapon=c->getWep();
 	int sick=c->getSick();
 	int medicine=c->getMed();
-	/*
-	variables to get
-	current:
-	1) barricade
-	
-	variables are not yet defined but are used in the function, please define
-	*/
+	int barricade=->getBar();
+	//done getting variables
 	
 	cout << "DAY " << dayNum << '\n';								 
 	cout << "--------------------------------------------------\n";
 	cout << "The colony has " << member << " members. \n";			 
 	cout << "You have " << ration << " ration(s) of food. \n";
-	cout << "You have " << uncooked << " uncooked food. \n"
+	cout << "You have " << uncooked << " uncooked food. \n";
+	cout << "You have " << weapon << " weapon(s)\n";
 	cout << sick << " member is sick. \n";
 	cout << "You have " << medicine << " medicine. \n";
 	cout << "You have " << barricade << " barricades. \n";
@@ -56,6 +53,7 @@ void Day::DeathRoll(){
 }
 
 void Day::printStatus_find(){
+	
 	/*
 	variables to get
 	1) found rations
@@ -89,22 +87,30 @@ void Day::printStatus_result(){
 	cout << c->getWep() << " weapon(s) and ";
 	cout << c->getBar() << " barricade(s). \n";
 	
-	cout << zombies << " zombies attacked in the night. \n";
+	cout << zombies << " zombies attack in the night. \n";
 	
 	int res = c->getHealthy() + c->getWep() + c->getBar() - zombies;
 	if (res==0){
-		cout << "You barely managed to hold them back.\n";
+		cout << "You barely manage to hold them back.\n";
 	}
 	else if(res>0){
-		cout << "Congratulations! You have successfully defended colony from the zombies.\n";
+		cout << "You have successfully defend the colony.\n";
 	}
 	else {
-		//lines to be printed when zombies > human
-		//insert lose battle function here
+		cout << res << " zombies break through your defences.\n";
+
+		Day::zombieBreakIn(res);
 	}
 	
 }
 
+Day::zombieBreakIn(int zombies)
+{
+	c.people -= zombies;
+	cout << res << " members of the colony perish.\n";
+}
+
+Day::Day() {
 int* Day::getInput(){
 	int cook, prepare, search;
 	cout << "Please assign your people for the day.";
