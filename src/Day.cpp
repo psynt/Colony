@@ -38,7 +38,6 @@ void Day::deathRoll(){
 	int dead = 0;
 	int healed = 0;
 	for(int i = 0; i < c->getSick(); i++){
-		srand(time(NULL));
 		int roll = rand() % 7 + 1;
 		if (roll == 1){
 			dead++;
@@ -127,7 +126,7 @@ void Day::printStatus_result(){
 
 int* Day::search(int people){
 
-	if (people == 0) return 0;
+	if (people == 0) return NULL;
 
 	int ration = 0;
 	int uncooked = 0;
@@ -137,6 +136,8 @@ int* Day::search(int people){
 
 	for(int i = 0; i < people; i++){
 		srand(time(NULL));
+	int NumSearch = 3;
+	for(int i = 0; i < NumSearch; i++){
 		int roll_rat = rand() % 100;
 		if (roll_rat < FIND_RAT ){
 			ration++;
@@ -165,6 +166,7 @@ int* Day::search(int people){
 	search_arr[2]=weapon;
 	search_arr[3]=medicine;
 	search_arr[4]=survivor;
+
 	return search_arr;
 }
 
@@ -175,11 +177,11 @@ int* Day::getInput(){
 		cout << "Everybody is ready to work.";
 		cout << "\nSearch: ";
 		cin >> search;
-		cout << "\nPrepare defenses: ";
+		cout << "\nPrepare defences: ";
 		cin >> prepare;
 		cout << "\nCook: ";
 		cin >> cook;
-		if(search+prepare+cook>c->(getPeople()-c->getSick()) || search<0 || prepare<0 || cook<0){
+		if(search+prepare+cook>(c->getPeople()-c->getSick()) || search<0 || prepare<0 || cook<0){
 			cout<<"Bad input. please reconsider\n";
 			continue;
 		}
@@ -187,7 +189,7 @@ int* Day::getInput(){
 		cout<<"Happy? (y/n)\n";
 		cin>>t;
 
-	}while(t!="y" && t!="Y");
+	}while(t!='y' && t!='Y');
 	
 
 	int a[3];
