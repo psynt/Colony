@@ -26,13 +26,13 @@ void Day::printStatus_init(){
 
 	cout << "DAY " << dayNum << '\n';
 	cout << "--------------------------------------------------\n";
-	cout << "The colony has " << member << " members. \n";
+	cout << "The colony has " << member << " members. "<< "("  << member-sick <<" working members)"<<"\n";
 	cout << "You have " << ration << " ration(s) of food. \n";
 	cout << "You have " << uncooked << " uncooked food. \n";
 	cout << "You have " << weapon << " weapon(s)\n";
 	cout << "You have " << medicine << " medicine. \n";
 	cout << "You have " << barricade << " barricades. \n";
-	cout << sick << " members fallclea sick. \n";
+	cout << sick << " members fall sick. \n";
 }
 
 void Day::EndDay(){
@@ -54,11 +54,18 @@ void Day::EndDay(){
 	}
 
 	c->setSick(sickcount);
+	c->incDay();
 }
 
 void Day::deathRoll(){
+	int med=c->getMed(),sick=c->getSick();
+	int healed=med>sick?sick:med;
+	cout<<healed<<" members healed by medicine";
+	c->setMed(med-healed);
+
+
 	int dead = 0;
-	int healed = 0;
+	healed = 0;
 	for(int i = 0; i < c->getSick(); i++){
 		int roll = rand() % 7 + 1;
 		if (roll == 1){
@@ -80,7 +87,6 @@ void Day::printStatus_find(){
 	int member=c->getPeople();
 	int sick=c->getSick();
 	int healthy=member-sick;
-	//cout<<inp[0]<<' '<<inp[1]<<' '<<inp[2]<<endl;
 	int* k=new int[5];
 	search(inp[0],k);
 	/*
@@ -113,7 +119,9 @@ void Day::printStatus_find(){
 	c->setRat(c->getRat()+f_ration);
 
 	c->setBar(c->getBar() + inp[1]);
-	c->setRat(c->getRat() + cookFood(inp[2], c->getUnc()));
+	int u=c->getUnc();
+	c->setRat(c->getRat() + cookFood(inp[2],u));
+	c->setUnc(u);
 }
 
 void Day::zombieBreakIn(int zombies)
@@ -122,11 +130,13 @@ void Day::zombieBreakIn(int zombies)
 	cout << zombies << " members of the colony perish.\n";
 }
 
-int Day::cookFood(int people, int uncooked)
+int Day::cookFood(int people, int &uncooked)
 {
 	int cooked = 0;
 
 	cooked = min(2 * people, uncooked) * 2;
+
+	uncooked-=cooked;
 
 	return cooked;
 }
@@ -163,7 +173,7 @@ void Day::printStatus_result(){
 		cout << "You barely manage to hold them back.\n";
 	}
 	else if(res>0){
-		cout << "You have successfully defend the colony.\n";
+		cout << "You have successfully defended the colony.\n";
 	}
 	else {
 		cout << res << " zombies break through your defences.\n";
@@ -175,7 +185,6 @@ void Day::printStatus_result(){
 
 void Day::search(int people,int* search_arr){
 
-	//if (people == 0) return NULL;
 
 	int ration = 0;
 	int uncooked = 0;
@@ -216,7 +225,6 @@ void Day::getInput(int* a){
 	int cook, prepare, search;
 	char t;
 	do{
-		//t=NULL;
 		cout << "Everybody is ready to work.";
 		cout << "\nSearch: ";
 		cin >> search;
@@ -228,7 +236,7 @@ void Day::getInput(int* a){
 			cout<<"Bad decisions. Reconsider.\n";
 			continue;
 		}
-		cout << search << " searching, "<< prepare << " defending, " << cook << "cooking food\n";
+		cout << search << " searching, "<< prepare << " defending, " << cook << " cooking food\n";
 		cout<<"Happy? (y/n)\n";
 		cin>>t;
 
