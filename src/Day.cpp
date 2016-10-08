@@ -91,6 +91,8 @@ void Day::printStatus_result(){
 	int uncooked=c->getUnc();
 	int sick=c->getSick();
 	int medicine=c->getMed();
+	int healthy=member-sick;
+	int *r=search(healthy);
 	/*
 	variables to get
 	1) healthy members
@@ -100,7 +102,6 @@ void Day::printStatus_result(){
 	
 	variables are not yet defined but are used in the function, please define
 	*/
-	int healthy=member-sick;
 	int barricade=c->getBar();
 	int zombies=1+rand()%3+(1+rand()%3)*c->getDay();
 	
