@@ -1,10 +1,11 @@
 /*
  * Day.cpp
  *
- *  Created on: Oct 8, 2016
- *      Author: nichita
+ *  Created on: Oct 8, 20 *      Author: nichita
  */
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 #include "Day.h"
 #include "People.h"
 #include "Colony.h"
@@ -40,6 +41,24 @@ void Day::printStatus_init(){
 	cout << "You have " << barricade << " barricades. \n";
 }
 
+void Day::DeathRoll(){
+	int dead = 0;
+	int healed = 0;
+	for(int i = 0; i < c->getSick(); i++){
+		srand(time(NULL));
+		int roll = rand() % 7 + 1;
+		if (roll == 0){
+			dead++;
+		}else if (roll == 0){
+			healed++;
+		}
+	}
+	cout << dead << " sick colony members have died. \n";
+	cout << healed << " sick members have recovered. \n";
+	Colony.setPeople(Colony.getPeople()-dead);
+	Colony.setSick(Colony.getSick()-healed);
+}
+
 void Day::printStatus_find(){
 	
 	/*
@@ -62,7 +81,7 @@ void Day::printStatus_find(){
 	cout << "\t" << f_uncooked << " uncooked food\n";
 	cout << "\t" << f_weap << " weapon(s)\n";
 	cout << "\t" << f_med << " medicine(s)\n";
-	cout << "The colony now has " << barricade << " barricade(s)\n";
+	cout << "The colony now has " << c->getBar() << " barricade(s)\n";
 }
 
 void Day::printStatus_result(){
@@ -81,19 +100,17 @@ void Day::printStatus_result(){
 	
 	variables are not yet defined but are used in the function, please define
 	*/
-	int healthy;
-	int weapon;
+	int healthy=member-sick;
 	int barricade;
 	int zombies;
 	
 	cout << "Night falls.";
-	cout << "You have " << member-sick << " healthy members, ";
+	cout << "You have " << healthy << " healthy members, ";
 	cout << weapon << " weapon(s) and ";
 	cout << barricade << " barricade(s). \n";
-	
 	cout << zombies << " zombies attack in the night. \n";
 	
-	int res = healthy + weapon + barricade - zombies;
+	int res = healthy + c->getWep() + c->getBar() - zombies;
 	if (res==0){
 		cout << "You barely manage to hold them back.\n";
 	}
@@ -110,8 +127,8 @@ void Day::printStatus_result(){
 
 Day::zombieBreakIn(int zombies)
 {
-	c.people -= zombies;
-	cout << res << " members of the colony perish.\n";
+	c->setPeople(c->getPeople() - zombies);
+	cout << zombies << " members of the colony perish.\n";
 }
 
 int* Day::getInput(){
@@ -131,10 +148,6 @@ int* Day::getInput(){
 	
 	return a;
 }
-
-
-
-
 
 Day::Day(Colony *c) {
 	// TODO Auto-generated constructor stub
