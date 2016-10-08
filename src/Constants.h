@@ -10,7 +10,9 @@
 
 const int INITIAL_PEOPLE = 10;
 const int INITIAL_FOOD = 2*INITIAL_PEOPLE;
-
+const int INITIAL_WEAPONS = 0;
+const int INITIAL_SICK = 0;
+const int INITIAL_MEDICINE = 0;
 
 
 

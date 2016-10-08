@@ -6,10 +6,13 @@
  */
 
 #include "Colony.h"
+#include "Constants.h"
 
 Colony::Colony() {
 	// TODO Auto-generated constructor stub
-
+	medicine=INITIAL_MEDICINE;
+	rations = INITIAL_FOOD;
+	weapons = INITIAL_WEAPONS;
 }
 
 Colony::~Colony() {
