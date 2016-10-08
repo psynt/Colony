@@ -1,8 +1,7 @@
 /*
  * Day.cpp
  *
- *  Created on: Oct 8, 2016
- *      Author: nichita
+ *  Created on: Oct 8, 20 *      Author: nichita
  */
 #include <iostream>
 #include <cstdlib>
@@ -114,7 +113,10 @@ int* Day::getInput(){
 }
 
 Day::Day() {
+
+Day::Day(Colony *c) {
 	// TODO Auto-generated constructor stub
+	this->c=c;
 
 }
 

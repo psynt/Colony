@@ -9,12 +9,12 @@
 #define DAY_H_
 
 class Day {
-	Colony* c=new Colony();
+	Colony* c;
 	void printStatus_init();
 	void printStatus_find();
 	void printStatus_result();
 public:
-	Day();
+	Day(Colony* c);
 	~Day();
 	void morningDecisions();
 	void progressDay();
