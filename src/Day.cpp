@@ -23,10 +23,10 @@ void Day::printStatus_init(){
 	int sick=c->getSick();
 	int medicine=c->getMed();
 	int barricade = c->getBar();
-	
-	cout << "DAY " << dayNum << '\n';								 
+
+	cout << "DAY " << dayNum << '\n';
 	cout << "--------------------------------------------------\n";
-	cout << "The colony has " << member << " members. \n";			 
+	cout << "The colony has " << member << " members. \n";
 	cout << "You have " << ration << " ration(s) of food. \n";
 	cout << "You have " << uncooked << " uncooked food. \n";
 	cout << "You have " << weapon << " weapon(s)\n";
@@ -53,7 +53,12 @@ void Day::deathRoll(){
 }
 
 void Day::printStatus_find(){
-	
+
+    int* inp=getInput();
+	int member=c->getPeople();
+	int sick=c->getSick();
+	int healthy=member-sick;
+	int* k=search(inp[0]);
 	/*
 	variables to get
 	1) found rations
@@ -61,14 +66,14 @@ void Day::printStatus_find(){
 	3) found weapons
 	4) found medicines
 	5) total barricades
-	
+
 	variables are not yet defined but are used in the function, please define
 	*/
-	int f_ration;
-	int f_uncooked;
-	int f_weap;
-	int f_med;
-	int barricade;
+	int f_ration=k[0];
+	int f_uncooked=k[1];
+	int f_weap=k[2];
+	int f_med=k[3];
+	int barricade=inp[1];
 
 	cout << "\nYour search party finds: \n";
 	cout << "\t" << f_ration << " ration(s) of food\n";
@@ -97,19 +102,19 @@ void Day::printStatus_result(){
 	2) total number of weapons
 	3) total number of barricades
 	4) number of zombies
-	
+
 	variables are not yet defined but are used in the function, please define
 	*/
 	int healthy=member-sick;
 	int barricade;
 	int zombies;
-	
+
 	cout << "Night falls.";
 	cout << "You have " << healthy << " healthy members, ";
 	cout << weapon << " weapon(s) and ";
 	cout << barricade << " barricade(s). \n";
 	cout << zombies << " zombies attack in the night. \n";
-	
+
 	int res = healthy + c->getWep() + c->getBar() - zombies;
 	if (res==0){
 		cout << "You barely manage to hold them back.\n";
@@ -122,7 +127,7 @@ void Day::printStatus_result(){
 
 		Day::zombieBreakIn(res);
 	}
-	
+
 }
 
 int* Day::search(int people){
@@ -186,14 +191,14 @@ int* Day::getInput(){
 		cout << search << " searching, "<< prepare << " defending, " << cook << "cooking food\n";
 		cout<<"Happy? (y/n)\n";
 		getline(cin,t);
-	
+
 	}while(t[0]!='y' && t[0]!='Y');
 
 	int a[3];
 	a[0]=search;
 	a[1]=prepare;
 	a[2]=cook;
-	
+
 	return a;
 }
 
