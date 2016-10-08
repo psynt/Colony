@@ -198,7 +198,7 @@ int* Day::getInput(){
 		cout << "Everybody is ready to work.";
 		cout << "\nSearch: ";
 		cin >> search;
-		cout << "\nPrepare defenses: ";
+		cout << "\nPrepare defences: ";
 		cin >> prepare;
 		cout << "\nCook: ";
 		cin >> cook;
@@ -211,7 +211,6 @@ int* Day::getInput(){
 		getline(cin,t);
 
 	}while(t[0]!="y" && t[0]!="Y");
-	
 
 	int a[3];
 	a[0]=search;
