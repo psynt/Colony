@@ -14,7 +14,7 @@ using namespace std;
 void Day::printStatus_init(){
 	int dayNum=c->getDay();
 	int member=c->getPeople();
-	int un
+	int ration
 	/*
 	variables to get
 	current:
@@ -84,7 +84,7 @@ void Day::printStatus_result(){
 	}
 	else {
 		//lines to be printed when zombies > human
-		//insert deathroll function here
+		//insert lose battle function here
 	}
 	
 }
