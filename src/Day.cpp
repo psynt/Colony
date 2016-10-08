@@ -71,7 +71,7 @@ void Day::printStatus_find(){
 	cout << "\t" << f_uncooked << " uncooked food\n";
 	cout << "\t" << f_weap << " weapon(s)\n";
 	cout << "\t" << f_med << " medicine(s)\n";
-	cout << "The colony now has " << barricade << " barricade(s)\n";
+	cout << "The colony now has " << c->getBar() << " barricade(s)\n";
 }
 
 void Day::printStatus_result(){
@@ -87,11 +87,11 @@ void Day::printStatus_result(){
 	cout << "Night falls.";
 	cout << "You have " << c->getHealthy() << " healthy members, ";
 	cout << c->getWep() << " weapon(s) and ";
-	cout << c->getBarricades() << " barricade(s). \n";
+	cout << c->getBar() << " barricade(s). \n";
 	
 	cout << zombies << " zombies attacked in the night. \n";
 	
-	int res = c->getHealthy() + c->getWep() + c->getBarricades() - zombies;
+	int res = c->getHealthy() + c->getWep() + c->getBar() - zombies;
 	if (res==0){
 		cout << "You barely managed to hold them back.\n";
 	}
@@ -122,8 +122,6 @@ int* Day::getInput(){
 	
 	return a;
 }
-
-Day::Day() {
 
 Day::Day(Colony *c) {
 	// TODO Auto-generated constructor stub
