@@ -13,8 +13,7 @@
 class Day {
 	Colony* c;
 public:
-	Day(Colony* c);
-	~Day();
+	~Day(Colony* c);
 	void morningDecisions();
 	void progressDay();
 	void deathRoll();
