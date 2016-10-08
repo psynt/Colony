@@ -9,6 +9,8 @@
 #define DAY_H_
 
 class Day {
+
+	void printStatus();
 public:
 	Day();
 	~Day();

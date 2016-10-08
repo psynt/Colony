@@ -7,6 +7,11 @@
 
 #include "Day.h"
 
+void Day::printStatus(){
+
+}
+
+
 Day::Day() {
 	// TODO Auto-generated constructor stub
 
