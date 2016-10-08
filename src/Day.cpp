@@ -101,8 +101,8 @@ void Day::printStatus_result(){
 	variables are not yet defined but are used in the function, please define
 	*/
 	int healthy=member-sick;
-	int barricade;
-	int zombies;
+	int barricade=c->getBar();
+	int zombies=1+rand()%3+(1+rand()%3)*c->getDay();
 	
 	cout << "Night falls.";
 	cout << "You have " << healthy << " healthy members, ";
@@ -170,8 +170,9 @@ int* Day::search(int people){
 
 int* Day::getInput(){
 	int cook, prepare, search;
-	string t;
+	char t;
 	do{
+		//t=NULL;
 		cout << "Everybody is ready to work.";
 		cout << "\nSearch: ";
 		cin >> search;
@@ -185,9 +186,9 @@ int* Day::getInput(){
 		}
 		cout << search << " searching, "<< prepare << " defending, " << cook << "cooking food\n";
 		cout<<"Happy? (y/n)\n";
-		getline(cin,t);
+		cin>>t;
 	
-	}while(t[0]!='y' && t[0]!='Y');
+	}while(t!='y' && t!='Y');
 
 	int a[3];
 	a[0]=search;
