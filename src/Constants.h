@@ -14,6 +14,7 @@ const int INITIAL_WEAPONS = 0;
 const int INITIAL_SICK = 0;
 const int INITIAL_MEDICINE = 0;
 const int INITIAL_BARRICADES = 0;
+#define DEBUG 1
 
 //chances for finding stuff in %
 const int FIND_RAT = 40;
