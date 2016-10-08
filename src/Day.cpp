@@ -55,14 +55,12 @@ void Day::printStatus_result(){
 		cout << "Congratulations! You have successfully defended colony from the zombies.\n";
 	}
 	else {
-		Day::printStatus_lose();
+		//lines to be printed when zombies > human
+		//insert deathroll function here
 	}
 	
 }
 
-void Day::printStatus_lose(){
-	
-}
 
 
 

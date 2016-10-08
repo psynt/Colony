@@ -10,7 +10,9 @@
 
 class Day {
 	Colony c=new Colony();
-	void printStatus();
+	void printStatus_init();
+	void printStatus_find();
+	void printStatus_result();
 public:
 	Day();
 	~Day();
