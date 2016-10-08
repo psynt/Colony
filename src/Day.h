@@ -5,6 +5,8 @@
  *      Author: nichita
  */
 
+#include "Colony.h"
+
 #ifndef DAY_H_
 #define DAY_H_
 
