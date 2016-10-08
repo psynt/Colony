@@ -88,13 +88,13 @@ void Day::printStatus_result(){
 	variables are not yet defined but are used in the function, please define
 	*/
 	cout << "Night falls.";
-	cout << "You have " << healthy << " healthy members, ";
-	cout << weapon << " weapon(s) and ";
-	cout << barricade << " barricade(s). \n";
+	cout << "You have " << c->getHealthy() << " healthy members, ";
+	cout << c->getWep() << " weapon(s) and ";
+	cout << c->getBarricades() << " barricade(s). \n";
 	
 	cout << zombies << " zombies attacked in the night. \n";
 	
-	int res = healthy + weapon + barricade - zombies;
+	int res = c->getHealthy() + c->getWep() + c->getBarricades() - zombies;
 	if (res==0){
 		cout << "You barely managed to hold them back.\n";
 	}
