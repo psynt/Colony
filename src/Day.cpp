@@ -12,6 +12,8 @@
 using namespace std;
 
 void Day::printStatus_init(){
+	int dayNum=c->getDay();
+	int member=c->getPeople();
 	/*
 	variables to get
 	current:
