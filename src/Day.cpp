@@ -125,47 +125,17 @@ void Day::printStatus_result(){
 	
 }
 
-int* Day::search(){
-	int ration = 0;
-	int uncooked = 0;
-	int weapon = 0;
-	int medicine = 0;
-	//PLEASE CHANGE NEXT LINE
-	int NumSearch = 3; //PLEASE CHANGE THIS LINE TO CALLING THE NUMBER OF PEOPLE ALLOCATED TO SEARCH
-	for(int i = 0; i < NumSearch; i++){
-		int roll_rat = rand() % 100;
-		if (roll_rat < FIND_RAT ){
-			ration++;
-		}
-		int roll_unc = rand() % 100;
-		if (roll_unc < FIND_UNC){
-			uncooked++;
-		}
-		int roll_weap = rand() % 100;
-		if (roll_weap < FIND_WEAP){
-			weapon++;
-		}
-		int roll_med = rand() % 100;
-		if (roll_med < FIND_MED){
-			medicine++;
-		}
-	}
-	int search_arr[4];
-	search_arr[0]=ration;
-	search_arr[1]=uncooked;
-	search_arr[2]=weapon;
-	search_arr[3]=medicine;
-	return search_arr;
-}
+int* Day::search(int people){
 
-int* Day::search(){
+	if (people == 0) return NULL;
+
 	int ration = 0;
 	int uncooked = 0;
 	int weapon = 0;
 	int medicine = 0;
-	//PLEASE CHANGE NEXT LINE
-	int NumSearch = 3; //PLEASE CHANGE THIS LINE TO CALLING THE NUMBER OF PEOPLE ALLOCATED TO SEARCH
-	for(int i = 0; i < NumSearch; i++){
+	int survivor = 0;
+
+	for(int i = 0; i < people; i++){
 		int roll_rat = rand() % 100;
 		if (roll_rat < FIND_RAT ){
 			ration++;
@@ -182,12 +152,19 @@ int* Day::search(){
 		if (roll_med < FIND_MED){
 			medicine++;
 		}
+		int roll_surv = rand() % 100;
+		if(roll_surv < FIND_SURV){
+			survivor++;
+		}
 	}
-	int search_arr[4];
+
+	int search_arr[5];
 	search_arr[0]=ration;
 	search_arr[1]=uncooked;
 	search_arr[2]=weapon;
 	search_arr[3]=medicine;
+	search_arr[4]=survivor;
+
 	return search_arr;
 }
 
@@ -209,7 +186,7 @@ int* Day::getInput(){
 		cout << search << " searching, "<< prepare << " defending, " << cook << "cooking food\n";
 		cout<<"Happy? (y/n)\n";
 		getline(cin,t);
-
+	
 	}while(t[0]!="y" && t[0]!="Y");
 
 	int a[3];
