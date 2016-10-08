@@ -133,7 +133,7 @@ void Day::printStatus_result(){
 	cout << barricade << " barricade(s). \n";
 	cout << zombies << " zombies attack in the night. \n";
 
-	int res = healthy + c->getWep() + c->getBar() - zombies;
+	int res = healthy + healthy>c->getWep()?c->getWep():healthy + c->getBar() - zombies;
 	if (res==0){
 		cout << "You barely manage to hold them back.\n";
 	}
