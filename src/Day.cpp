@@ -156,5 +156,6 @@ Day::Day(Colony *c) {
 }
 
 Day::~Day() {
+	delete c;
 	// TODO Auto-generated destructor stub
 }
