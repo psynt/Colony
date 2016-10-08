@@ -13,8 +13,6 @@
 
 class People {
 //	Skillset s;
-	int people;
-	int sick;
 public:
 	People();
 	~People();
@@ -22,8 +20,6 @@ public:
 	void cook();
 	void prepare();
 	void defend();
-	int getPeople();
-	int getSick();
 
 };
 
