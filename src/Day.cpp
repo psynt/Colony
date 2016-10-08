@@ -89,12 +89,22 @@ void Day::printStatus_find(){
 	c->setRat(c->getRat()+f_ration);
 
 	c->setBar(c->getBar() + inp[2]);
+	c->setRat(c->getRat() + cookFood(inp[1], c->getUnc()));
 }
 
 void Day::zombieBreakIn(int zombies)
 {
 	c->setPeople(c->getPeople() - zombies);
 	cout << zombies << " members of the colony perish.\n";
+}
+
+int Day::cookFood(int people, int uncooked)
+{
+	int cooked = 0;
+
+	cooked = min(2 * people, uncooked) * 2;
+
+	return cooked;
 }
 
 void Day::printStatus_result(){
@@ -124,7 +134,7 @@ void Day::printStatus_result(){
 	cout << barricade << " barricade(s). \n";
 	cout << zombies << " zombies attack in the night. \n";
 
-	int res = healthy + c->getWep() + c->getBar() - zombies;
+	int res = healthy + healthy>c->getWep()?c->getWep():healthy + c->getBar() - zombies;
 	if (res==0){
 		cout << "You barely manage to hold them back.\n";
 	}

@@ -23,6 +23,7 @@ public:
 	int* getInput();
 	void zombieBreakIn(int zombie);
 	int* search(int people);
+	int cookFood(int people, int uncooked);
 
 };
 
