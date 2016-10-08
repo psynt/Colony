@@ -27,7 +27,5 @@ int main()
 		day.deathRoll();
 	}
 
-	day.printStatus_lose();
-
 	return 0;
 }
