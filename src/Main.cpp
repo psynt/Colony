@@ -10,9 +10,9 @@
 #include "Player.h"
 using namespace std;
 
-int main() {
-	cout << "!!!Hello World!!!\n"; // prints !!!Hello World!!!
-	Player *p=new Player("Bob");
-	cout<<"I am "<<*(p->getName())<<"\n";
+int main()
+{
+	cout << "Hello World. Main Started.\n";
+
 	return 0;
 }
