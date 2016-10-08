@@ -35,6 +35,27 @@ void Day::printStatus_init(){
 	cout << sick << " members are sick. \n";
 }
 
+void Day::EndDay(){
+	int member=c->getPeople();
+	int sick=c->getSick();
+	int ration=c->getRat();
+	int healthy=member-sick;
+	int sickcount=0;
+	
+	c->setRat(ration-member); //reduce ration count
+	
+	//loop to make healthy people sick, with increasing 
+	for( i = 0; i < healthy; i++){
+		int sick_chance=CHANCE_SICK+(CHANCE_INCREASE*sick);
+		int roll_sick = rand() %100;
+		if(roll_sick < sick_chance){
+			sickcount++;
+		}
+	}
+	
+	c->setSick(sickcount);
+}
+
 void Day::deathRoll(){
 	int dead = 0;
 	int healed = 0;
@@ -208,7 +229,7 @@ int* Day::getInput(){
 			cout<<"Bad decisions. Reconsider.\n";
 			continue;
 		}
-		cout << search << " searching, "<< prepare << " defending, " << cook << " cooking food\n";
+		cout << search << " searching, "<< prepare << " defending, " << cook << "cooking food\n";
 		cout<<"Happy? (y/n)\n";
 		cin>>t;
 
