@@ -45,26 +45,22 @@ void Day::printStatus_result(){
 	cout << weapon << " weapon(s) and ";
 	cout << barricade << " barricade(s). \n";
 	
-	cout << zombies << " zombies attacked in the night. \n";
+	cout << zombies << " zombies attack in the night. \n";
 	
 	int res = healthy + weapon + barricade - zombies;
 	if (res==0){
-		cout << "You barely managed to hold them back.\n";
+		cout << "You barely manage to hold them back.\n";
 	}
 	else if(res>0){
-		cout << "Congratulations! You have successfully defended colony from the zombies.\n";
+		cout << "You have successfully defend the colony.\n";
 	}
 	else {
-		Day::printStatus_lose();
+		cout << res << " zombies break through your defences.\n";
+		healthy -= res;
+		cout << res << " members of the colony perish.\n"
 	}
 	
 }
-
-void Day::printStatus_lose(){
-	
-}
-
-
 
 Day::Day() {
 	// TODO Auto-generated constructor stub
