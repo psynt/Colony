@@ -38,7 +38,6 @@ void Day::deathRoll(){
 	int dead = 0;
 	int healed = 0;
 	for(int i = 0; i < c->getSick(); i++){
-		srand(time(NULL));
 		int roll = rand() % 7 + 1;
 		if (roll == 1){
 			dead++;
@@ -133,7 +132,6 @@ int* Day::search(){
 	//PLEASE CHANGE NEXT LINE
 	int NumSearch = 3; //PLEASE CHANGE THIS LINE TO CALLING THE NUMBER OF PEOPLE ALLOCATED TO SEARCH
 	for(int i = 0; i < NumSearch; i++){
-		srand(time(NULL));
 		int roll_rat = rand() % 100;
 		if (roll_rat < FIND_RAT ){
 			ration++;
@@ -167,7 +165,6 @@ int* Day::search(){
 	//PLEASE CHANGE NEXT LINE
 	int NumSearch = 3; //PLEASE CHANGE THIS LINE TO CALLING THE NUMBER OF PEOPLE ALLOCATED TO SEARCH
 	for(int i = 0; i < NumSearch; i++){
-		srand(time(NULL));
 		int roll_rat = rand() % 100;
 		if (roll_rat < FIND_RAT ){
 			ration++;
@@ -204,7 +201,7 @@ int* Day::getInput(){
 		cin >> prepare;
 		cout << "\nCook: ";
 		cin >> cook;
-		if(search+prepare+cook>c->(getPeople()-c->getSick()) || search<0 || prepare<0 || cook<0){
+		if(search+prepare+cook>(c->getPeople()-c->getSick()) || search<0 || prepare<0 || cook<0){
 			cout<<"Bad input. please reconsider\n";
 			continue;
 		}
