@@ -18,6 +18,7 @@ void Day::printStatus_init(){
 	int uncooked=c->getUnc();
 	int sick=c->getSick();
 	int medicine=c->getMed();
+	int barricade = c->getBar();
 	/*
 	variables to get
 	current:
@@ -30,7 +31,7 @@ void Day::printStatus_init(){
 	cout << "--------------------------------------------------\n";
 	cout << "The colony has " << member << " members. \n";			 
 	cout << "You have " << ration << " ration(s) of food. \n";
-	cout << "You have " << uncooked << " uncooked food. \n"
+	cout << "You have " << uncooked << " uncooked food. \n";
 	cout << sick << " member is sick. \n";
 	cout << "You have " << medicine << " medicine. \n";
 	cout << "You have " << barricade << " barricades. \n";
@@ -56,6 +57,12 @@ void Day::printStatus_find(){
 }
 
 void Day::printStatus_result(){
+	int weapon=c->getWep();
+	int member=c->getPeople();
+	int ration=c->getRat();
+	int uncooked=c->getUnc();
+	int sick=c->getSick();
+	int medicine=c->getMed();
 	/*
 	variables to get
 	1) healthy members
@@ -66,7 +73,7 @@ void Day::printStatus_result(){
 	variables are not yet defined but are used in the function, please define
 	*/
 	cout << "Night falls.";
-	cout << "You have " << healthy << " healthy members, ";
+	cout << "You have " << member-sick << " healthy members, ";
 	cout << weapon << " weapon(s) and ";
 	cout << barricade << " barricade(s). \n";
 	
