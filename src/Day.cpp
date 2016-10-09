@@ -59,11 +59,10 @@ void Day::EndDay(){
 }
 
 void Day::deathRoll(){
-	int med=c->getMed(),sick=c->getSick();
-	int healed=med>sick?sick:med;
-	cout<<healed<<" members healed by medicine\n";
-	c->setMed(med-healed);
-
+	int med = c->getMed(), sick = c->getSick();
+	int healed = min(sick, med);
+	cout << healed << " sick members use medicine and recover.\n";
+	c->setMed(med - healed);
 
 	int dead = 0;
 	healed = 0;
@@ -75,10 +74,12 @@ void Day::deathRoll(){
 			healed++;
 		}
 	}
-	cout << dead << " sick colony members have died. \n";
-	cout << healed << " sick members have recovered. \n";
-	c->setPeople(c->getPeople()-dead);
-	c->setSick(c->getSick()-healed);
+
+	cout << healed << " sick members have recovered naturally.\n";
+	cout << dead << " sick members have died from illness.\n";
+
+	c->setPeople(c->getPeople() - dead);
+	c->setSick(c->getSick() - healed);
 }
 
 void Day::printStatus_find(){
@@ -99,6 +100,7 @@ void Day::printStatus_find(){
 	c->setWep(c->getWep()+f_weap);
 	c->setUnc(c->getUnc()+f_uncooked);
 	c->setRat(c->getRat()+f_ration);
+	c->setPeople(c->getPeople()+f_surv);
 
 	if (inp[0] > 0) {
 		cout << "Your search party finds: \n";
@@ -174,10 +176,14 @@ void Day::printStatus_result(){
 		Day::zombieBreakIn(res);
 	}
 
-	int barLoss = rand() % barricade;
-	int bL = (barLoss > zombies) ? zombies : barLoss;
+	int barLoss = 0;
+	int bL;
 
-	cout << bL << " barricades are destroyed in the attack.\n";
+	if (barricade > 0)
+		barLoss = rand() % barricade;
+	bL = (barLoss > zombies) ? zombies : barLoss;
+
+	cout << bL << " barricades are destroyed in the attack.\n\n";
 
 	c->setBar(barricade - bL);
 }
@@ -245,12 +251,9 @@ void Day::getInput(int* a){
 }
 
 Day::Day(Colony *c) {
-	// TODO Auto-generated constructor stub
 	this->c=c;
-
 }
 
 Day::~Day() {
 	delete c;
-	// TODO Auto-generated destructor stub
 }
