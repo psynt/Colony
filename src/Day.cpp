@@ -98,7 +98,7 @@ void Day::printStatus_find(){
 	c->setRat(c->getRat()+f_ration);
 
 	if (inp[0] > 0) {
-		cout << "\nYour search party finds: \n";
+		cout << "Your search party finds: \n";
 		cout << "\t" << f_ration << " ration(s) of food\n";
 		cout << "\t" << f_uncooked << " uncooked food\n";
 		cout << "\t" << f_weap << " weapon(s)\n";
@@ -119,9 +119,6 @@ void Day::printStatus_find(){
 	if (inp[2] > 0) {
 		cout << "Your cooking party produces " << i << "rations of food, using " << i / 2 << " uncooked food.\n\n";
 	}
-
-	cout << "Press Enter to continue...\n\n";
-	cin.ignore();
 }
 
 void Day::zombieBreakIn(int zombies)
@@ -173,8 +170,8 @@ void Day::printStatus_result(){
 		Day::zombieBreakIn(res);
 	}
 
-	int barLoss=1 + rand()%barricade;
-	int bL=barLoss>zombies?zombies : barLoss;
+	int barLoss = rand() % barricade;
+	int bL = (barLoss > zombies) ? zombies : barLoss;
 
 	cout << bL << " barricades are destroyed in the attack.\n";
 
