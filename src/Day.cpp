@@ -100,8 +100,8 @@ void Day::printStatus_find(){
 	inp[1] = 0;
 	inp[2] = 0;
 
-	if
-    getInput(inp);
+	if (c->getSick() < c->getPeople())
+		getInput(inp);
 
 	int* k =new int[5];
 	search(inp[0], k);
