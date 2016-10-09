@@ -144,25 +144,12 @@ int Day::cookFood(int people, int &uncooked)
 }
 
 void Day::printStatus_result(){
-	int weapon=c->getWep();
-	int member=c->getPeople();
-//	int ration=c->getRat();
-//	int uncooked=c->getUnc();
-	int sick=c->getSick();
-//	int medicine=c->getMed();
-	int healthy=member-sick;
-	//int *r=search(healthy);
-	/*
-	variables to get
-	1) healthy members
-	2) total number of weapons
-	3) total number of barricades
-	4) number of zombies
-
-	variables are not yet defined but are used in the function, please define
-	*/
-	int barricade=c->getBar();
-	int zombies=1+rand()%3+(1+rand()%3)*c->getDay();
+	int weapon = c->getWep();
+	int member = c->getPeople();
+	int sick = c->getSick();
+	int healthy = member - sick;
+	int barricade = c->getBar();
+	int zombies = 1 + rand() % 3 + (1 + rand() % 3) * c->getDay();
 
 	cout << "Night falls.";
 	cout << "You have " << healthy << " healthy members, ";
@@ -187,7 +174,7 @@ void Day::printStatus_result(){
 	int barLoss=1 + rand()%barricade;
 	int bL=barLoss>zombies?zombies : barLoss;
 
-	cout<< bL << " barricades are destroyed in the attack\n";
+	cout<< bL << " barricades are destroyed in the attack.\n";
 
 	c->setBar(barricade - bL);
 
