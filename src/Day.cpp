@@ -43,7 +43,7 @@ void Day::EndDay(){
 	int healthy = member - sick;
 	int sickcount = 0;
 
-	if (member >= ration)
+	if (member <= ration)
 		c->setRat(ration - member); //reduce ration count
 	else {
 		int i = member - ration;
@@ -64,7 +64,7 @@ void Day::EndDay(){
 	c->setSick(sickcount);
 
 	if (sickcount > 0)
-		cout << sickcount << "members fall ill.\n";
+		cout << sickcount << " members fall ill.\n";
 
 	c->incDay();
 }
@@ -196,7 +196,7 @@ void Day::printStatus_result(){
 
 	if (barricade > 0)
 		barLoss = rand() % barricade;
-	bL = (barLoss > zombies) ? zombies : barLoss;
+	bL = (res < 0) ? barricade : barLoss;
 
 	cout << bL << " barricades are destroyed in the attack.\n\n";
 
