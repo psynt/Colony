@@ -157,8 +157,8 @@ void Day::printStatus_result(){
 
 
 
-	int res = healthy + (healthy>c->getWep()?c->getWep():healthy) + c->getBar() - zombies;
-	if (res==0){
+	int res = healthy + min(c->getWep(), healthy) + c->getBar() - zombies;
+	if (res == 0 || res == 1){
 		cout << "You barely manage to hold them back.\n";
 	}
 	else if(res>0){
