@@ -83,14 +83,17 @@ void Day::deathRoll(){
 
 void Day::printStatus_find(){
 
-	int *inp=new int[3];
+	int *inp = new int[3];
+
     getInput(inp);
-	int* k=new int[5];
-	search(inp[0],k);
-	int f_ration=k[0];
-	int f_uncooked=k[1];
-	int f_weap=k[2];
-	int f_med=k[3];
+
+	int* k =new int[5];
+	search(inp[0], k);
+	int f_ration = k[0];
+	int f_uncooked = k[1];
+	int f_weap = k[2];
+	int f_med = k[3];
+	int f_surv = k[4];
 
 	c->setMed(c->getMed()+f_med);
 	c->setWep(c->getWep()+f_weap);
@@ -103,6 +106,7 @@ void Day::printStatus_find(){
 		cout << "\t" << f_uncooked << " uncooked food\n";
 		cout << "\t" << f_weap << " weapon(s)\n";
 		cout << "\t" << f_med << " medicine(s)\n";
+		cout << "\t" << f_surv << " survivor(s)\n";
 	}
 
 	c->setBar(c->getBar() + inp[1]);
@@ -165,7 +169,7 @@ void Day::printStatus_result(){
 		cout << "You successfully defend the colony.\n";
 	}
 	else {
-		cout << res << " zombies break through your defences.\n";
+		cout << res << " zombies break through your defenses.\n";
 
 		Day::zombieBreakIn(res);
 	}

@@ -28,5 +28,4 @@ const int CHANCE_SICK = 5;
 const int CHANCE_INCREASE = 5; //increased sick chance per sick person in colony
 
 
-
 #endif /* CONSTANTS_H_ */
