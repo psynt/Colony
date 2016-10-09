@@ -156,10 +156,10 @@ int Day::cookFood(int people, int &uncooked)
 	uncooked-=cooked;
 
 	if(DEBUG){
-		cout<<people << " people cooked " <<2*cooked<<" food. "<<uncooked<<" uncooked food remains.\n";
+		cout << people << " people cooked " <<2*cooked<<" food. " << uncooked << " uncooked food remains.\n";
 	}
 
-	return 2*cooked;
+	return 3 * cooked;
 }
 
 void Day::printStatus_result(){
