@@ -21,11 +21,11 @@ const int FIND_RAT = 40;
 const int FIND_MED = 20;
 const int FIND_WEAP = 10;
 const int FIND_UNC = 50;
-const int FIND_SURV = 2;
+const int FIND_SURV = 5;
 
 //chance of getting sick at the end of day
 const int CHANCE_SICK = 5;
-const int CHANCE_INCREASE = 5; //increased sick chance per sick person in colony
+const int CHANCE_INCREASE = 5;
 
 
 #endif /* CONSTANTS_H_ */
