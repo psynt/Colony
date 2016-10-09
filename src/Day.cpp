@@ -32,29 +32,40 @@ void Day::printStatus_init(){
 	cout << "You have " << uncooked << " uncooked food. \n";
 	cout << "You have " << weapon << " weapon(s)\n";
 	cout << "You have " << medicine << " medicine. \n";
-	cout << "You have " << barricade << " barricades. \n";
-	cout << "The " << member - sick << " healthy members are ready to work.\n\n";
+	cout << "You have " << barricade << " barricades. \n\n";
+	cout << "There are " << member - sick << " healthy members ready to work.\n";
 }
 
 void Day::EndDay(){
-	int member=c->getPeople();
-	int sick=c->getSick();
-	int ration=c->getRat();
-	int healthy=member-sick;
-	int sickcount=0;
+	int member = c->getPeople();
+	int sick = c->getSick();
+	int ration = c->getRat();
+	int healthy = member - sick;
+	int sickcount = 0;
 
-	c->setRat(ration-member); //reduce ration count
+	if (member >= ration)
+		c->setRat(ration - member); //reduce ration count
+	else {
+		int i = member - ration;
+		c->setPeople(c->getPeople() - i);
+		c->setSick(min(c->getSick(), i));
 
-	//loop to make healthy people sick, with increasing
-	for( int i = 0; i < healthy; i++){
-		int sick_chance=CHANCE_SICK+(CHANCE_INCREASE*sick);
-		int roll_sick = rand() %100;
-		if(roll_sick < sick_chance){
+		cout << i << " members die of starvation.\n";
+	}
+
+	for( int i = 0; i < healthy; i++) {
+		int sick_chance = CHANCE_SICK + (CHANCE_INCREASE * sick);
+		int roll_sick = rand() % 100;
+
+		if(roll_sick < sick_chance)
 			sickcount++;
-		}
 	}
 
 	c->setSick(sickcount);
+
+	if (sickcount > 0)
+		cout << sickcount << "members fall ill.\n";
+
 	c->incDay();
 }
 
@@ -85,7 +96,11 @@ void Day::deathRoll(){
 void Day::printStatus_find(){
 
 	int *inp = new int[3];
+	inp[0] = 0;
+	inp[1] = 0;
+	inp[2] = 0;
 
+	if
     getInput(inp);
 
 	int* k =new int[5];
@@ -107,7 +122,7 @@ void Day::printStatus_find(){
 		cout << "\t" << f_ration << " ration(s) of food\n";
 		cout << "\t" << f_uncooked << " uncooked food\n";
 		cout << "\t" << f_weap << " weapon(s)\n";
-		cout << "\t" << f_med << " medicine(s)\n";
+		cout << "\t" << f_med << " medicine\n";
 		cout << "\t" << f_surv << " survivor(s)\n";
 	}
 
@@ -123,7 +138,7 @@ void Day::printStatus_find(){
 	c->setUnc(u);
 
 	if (inp[2] > 0) {
-		cout << "Your cooking party produces " << i << "rations of food, using " << i / 2 << " uncooked food.\n\n";
+		cout << "Your cooking party produces " << i << " rations of food, using " << i / 2 << " uncooked food.\n\n";
 	}
 }
 
