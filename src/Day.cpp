@@ -222,7 +222,7 @@ void Day::printStatus_result(){
 	}
 	bL = (brokenIn) ? barricade : barLoss;
 
-	if (barricade > 0)
+	if (bL > 0)
 		cout << bL << " barricades are destroyed in the attack.\n\n";
 
 	c->setBar(barricade - bL);
