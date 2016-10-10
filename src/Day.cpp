@@ -72,8 +72,10 @@ void Day::EndDay(){
 void Day::deathRoll(){
 	int med = c->getMed(), sick = c->getSick();
 	int healed = min(sick, med);
-	cout << healed << " sick members use medicine and recover.\n";
+
 	c->setMed(med - healed);
+	if (healed > 0)
+		cout << healed << " sick members use medicine and recover.\n";
 
 	int dead = 0;
 	healed = 0;
