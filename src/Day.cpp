@@ -92,13 +92,17 @@ void Day::deathRoll(){
 		}
 	}
 
-	c->setSick(c->getSick() - healed);
-	if (healed > 0)
-		cout << healed << " sick members have recovered naturally.\n";
 
-	c->setPeople(c->getPeople() - dead);
-	if (dead > 0)
+	if (healed > 0) {
+		c->setSick(c->getSick() - healed);
+		cout << healed << " sick members have recovered naturally.\n";
+	}
+
+
+	if (dead > 0) {
+		c->setPeople(c->getPeople() - dead);
 		cout << dead << " sick members have died from illness.\n";
+	}
 }
 
 void Day::printStatus_find(){
