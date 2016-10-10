@@ -156,10 +156,13 @@ void Day::printStatus_find(){
 	cout << "\n";
 }
 
-void Day::zombieBreakIn(int zombies) //TODO: If zombies kill more than people remaining, bugs happen. Fix plz.
+void Day::zombieBreakIn(int zombies)
 {
-	c->setPeople(c->getPeople() - zombies);
-	cout << zombies << " members of the colony perish.\n";
+	int p=c->getPeople();
+	p-=zombies;
+	if(p<0) p=0;
+	cout << c->getPeople()-p << " members of the colony perish.\n";
+	c->setPeople( p );
 }
 
 int Day::cookFood(int people, int &uncooked)
