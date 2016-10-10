@@ -204,6 +204,7 @@ void Day::printStatus_result(){
 		cout << "You successfully defend the colony.\n";
 	}
 	else {
+		res=-res;
 		cout << res << " zombies break through your defenses.\n";
 
 		Day::zombieBreakIn(res);
