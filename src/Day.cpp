@@ -70,7 +70,8 @@ void Day::EndDay(){
 }
 
 void Day::deathRoll(){
-	int med = c->getMed(), sick = c->getSick();
+	int med = c->getMed();
+	int sick = c->getSick();
 	int healed = min(sick, med);
 
 	if (healed > 0){
@@ -91,13 +92,17 @@ void Day::deathRoll(){
 		}
 	}
 
-	if (healed > 0)
-		cout << healed << " sick members have recovered naturally.\n";
-	if (dead > 0)
-		cout << dead << " sick members have died from illness.\n";
 
-	c->setPeople(c->getPeople() - dead);
-	c->setSick(c->getSick() - healed);
+	if (healed > 0) {
+		c->setSick(c->getSick() - healed);
+		cout << healed << " sick members have recovered naturally.\n";
+	}
+
+
+	if (dead > 0) {
+		c->setPeople(c->getPeople() - dead);
+		cout << dead << " sick members have died from illness.\n";
+	}
 }
 
 void Day::printStatus_find(){
