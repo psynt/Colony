@@ -150,7 +150,7 @@ void Day::printStatus_find(){
 	c->setUnc(u);
 
 	if (inp[2] > 0) {
-		cout << "Your cooking party produces " << i << " rations of food, using " << i / 2 << " uncooked food.\n";
+		cout << "Your cooking party produces " << i << " rations of food, using " << i / UNC_FOOD_CONV << " uncooked food.\n";
 	}
 
 	cout << "\n";
@@ -164,14 +164,17 @@ void Day::zombieBreakIn(int zombies)
 
 int Day::cookFood(int people, int &uncooked)
 {
+	if (DEBUG)
+		cout << "cookFood() called with " << people << " people and " << uncooked << " uncooked.\n";
+
 	int cooked = 0;
 
 	cooked = min(COOK_SPEED * people, uncooked);
-	uncooked-=cooked;
+	uncooked -= cooked;
 	cooked *= UNC_FOOD_CONV;
 
 	if(DEBUG){
-		cout << people << " people cooked " << cooked << " food. " << uncooked << " uncooked food remains.\n";
+		cout << people << " people cooked " << cooked << " food using " << cooked / UNC_FOOD_CONV << " uncooked food.\n";
 	}
 
 	return cooked;
