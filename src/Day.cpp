@@ -154,14 +154,15 @@ int Day::cookFood(int people, int &uncooked)
 {
 	int cooked = 0;
 
-	cooked = min(2 * people, uncooked);
+	cooked = min(COOK_SPEED * people, uncooked);
 	uncooked-=cooked;
+	cooked *= UNC_FOOD_CONV;
 
 	if(DEBUG){
-		cout << people << " people cooked " <<2*cooked<<" food. " << uncooked << " uncooked food remains.\n";
+		cout << people << " people cooked " << cooked << " food. " << uncooked << " uncooked food remains.\n";
 	}
 
-	return 3 * cooked;
+	return cooked;
 }
 
 void Day::printStatus_result(){
