@@ -20,7 +20,7 @@ int main()
 		day.EndDay();
 	}
 
-	cout<<"You lasted "<<colony.getDay();
+	cout << "You lasted " << colony.getDay();
 
 	return 0;
 }
