@@ -73,10 +73,11 @@ void Day::deathRoll(){
 	int med = c->getMed(), sick = c->getSick();
 	int healed = min(sick, med);
 
-	c->setMed(med - healed);
-	if (healed > 0)
+	if (healed > 0){
+		c->setMed(med - healed);
+		c->setSick(c->getSick() - healed);
 		cout << healed << " sick members use medicine and recover.\n";
-
+	}
 
 	int dead = 0;
 	healed = 0;
