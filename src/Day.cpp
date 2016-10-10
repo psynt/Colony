@@ -61,7 +61,7 @@ void Day::EndDay(){
 			sickcount++;
 	}
 
-	c->setSick(sickcount);
+	c->setSick(sick + sickcount);
 
 	if (sickcount > 0)
 		cout << sickcount << " members fall ill.\n";
