@@ -150,7 +150,7 @@ void Day::printStatus_find(){
 	c->setUnc(u);
 
 	if (inp[2] > 0) {
-		cout << "Your cooking party produces " << i << " rations of food, using " << i / 2 << " uncooked food.\n";
+		cout << "Your cooking party produces " << i << " rations of food, using " << i / UNC_FOOD_CONV << " uncooked food.\n";
 	}
 
 	cout << "\n";
