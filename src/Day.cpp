@@ -164,14 +164,17 @@ void Day::zombieBreakIn(int zombies)
 
 int Day::cookFood(int people, int &uncooked)
 {
+	if (DEBUG)
+		cout << "cookFood() called with " << people << " people and " << uncooked << " uncooked.\n";
+
 	int cooked = 0;
 
 	cooked = min(COOK_SPEED * people, uncooked);
-	uncooked-=cooked;
+	uncooked -= cooked;
 	cooked *= UNC_FOOD_CONV;
 
 	if(DEBUG){
-		cout << people << " people cooked " << cooked << " food. " << uncooked << " uncooked food remains.\n";
+		cout << people << " people cooked " << cooked << " food using " << cooked / UNC_FOOD_CONV << " uncooked food.\n";
 	}
 
 	return cooked;
