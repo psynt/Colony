@@ -194,6 +194,7 @@ void Day::printStatus_result(){
 	cout << barricade << " barricade(s).\n\n";
 	cout << zombies << " zombies attack in the night.\n";
 
+	bool brokenIn=false;
 
 
 	int res = healthy + min(c->getWep(), healthy) + c->getBar() - zombies;
@@ -206,16 +207,20 @@ void Day::printStatus_result(){
 	else {
 		res=-res;
 		cout << res << " zombies break through your defenses.\n";
-
+		brokenIn=true;
 		Day::zombieBreakIn(res);
 	}
 
 	int barLoss = 0;
 	int bL;
 
-	if (barricade > 0)
+	if (barricade > 0){
 		barLoss = rand() % barricade;
-	bL = (res < 0) ? barricade : barLoss;
+	}
+	if (barLoss > zombies){
+		barLoss=zombies;
+	}
+	bL = (brokenIn) ? barricade : barLoss;
 
 	if (barricade > 0)
 		cout << bL << " barricades are destroyed in the attack.\n\n";
