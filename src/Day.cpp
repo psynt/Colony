@@ -201,7 +201,8 @@ void Day::printStatus_result(){
 		barLoss = rand() % barricade;
 	bL = (res < 0) ? barricade : barLoss;
 
-	cout << bL << " barricades are destroyed in the attack.\n\n";
+	if (barricade > 0)
+		cout << bL << " barricades are destroyed in the attack.\n\n";
 
 	c->setBar(barricade - bL);
 }
