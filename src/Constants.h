@@ -8,7 +8,7 @@
 #ifndef CONSTANTS_H_
 #define CONSTANTS_H_
 
-#define DEBUG 1
+#define DEBUG 0
 
 //initial resources
 const int INITIAL_PEOPLE = 10;
