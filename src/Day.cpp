@@ -77,8 +77,10 @@ void Day::deathRoll(){
 	if (healed > 0)
 		cout << healed << " sick members use medicine and recover.\n";
 
+
 	int dead = 0;
 	healed = 0;
+
 	for(int i = 0; i < c->getSick(); i++){
 		int roll = rand() % 7 + 1;
 		if (roll == 1){
@@ -88,8 +90,10 @@ void Day::deathRoll(){
 		}
 	}
 
-	cout << healed << " sick members have recovered naturally.\n";
-	cout << dead << " sick members have died from illness.\n";
+	if (healed > 0)
+		cout << healed << " sick members have recovered naturally.\n";
+	if (dead > 0)
+		cout << dead << " sick members have died from illness.\n";
 
 	c->setPeople(c->getPeople() - dead);
 	c->setSick(c->getSick() - healed);
