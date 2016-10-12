@@ -48,7 +48,7 @@ void Day::morningEvent() {
 		cout << "A member of the colony spots a small search party as they happen upon your base.\n";
 		cout << "They are running low on supplies and struggling to survive. You offer for them to join.\n";
 
-		int surv = 2 + rand() % 6;
+		int surv = 2 + rand() % 5;
 		int rat = surv + rand() % surv;
 		int unc = rand() % surv;
 		int wep = rand() % (surv + 1);
