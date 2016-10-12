@@ -207,7 +207,8 @@ void Day::printStatus_result(){
 	int sick = c->getSick();
 	int healthy = member - sick;
 	int barricade = c->getBar();
-	int zombies = 1 + rand() % 3 + (1 + rand() % 3) * c->getDay();
+	//int zombies = 1 + rand() % 3 + (1 + rand() % 3) * c->getDay();
+	int zombies = c->getDay() + (rand() % c->getDay());
 
 	cout << "Night falls.\n";
 	cout << "You have " << healthy << " healthy members, ";
