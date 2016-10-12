@@ -13,7 +13,7 @@ Colony::Colony() {
 	rations = INITIAL_FOOD;
 	weapons = INITIAL_WEAPONS;
 	day=0;
-	uncooked=0;
+	uncooked=INITIAL_UNCOOKED;
 	sick=INITIAL_SICK;
 	people=INITIAL_PEOPLE;
 	barricade=INITIAL_BARRICADES;
