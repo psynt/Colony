@@ -41,12 +41,12 @@ void Day::printStatus_init(){
 }
 
 void Day::morningEvent() {
-	// a random event may happen when the colony wakes up
+	// a random event may happen before the day's events
 	// e.g. theft, new survivors, attack etc.
 
 	if (EVENT_PARTY_JOIN > rand() % 100) {
 		cout << "A member of the colony spots a small search party as they happen upon your base.\n";
-		cout << "They are running low on supplies and struggling to survive. You offer for them to join.\n";
+		cout << "They are running low on supplies and struggling to survive. You offer for them to join your cause.\n";
 
 		int surv = 2 + rand() % 5;
 		int rat = surv + rand() % surv;
