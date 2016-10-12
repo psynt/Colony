@@ -16,6 +16,12 @@ using namespace std;
 
 void Day::printStatus_init(){
 	int dayNum=c->getDay();
+
+	cout << "\n\n\n\tDAY " << dayNum << '\n';
+	cout << "--------------------------------------------------\n";
+
+	morningEvent();
+
 	int member=c->getPeople();
 	int ration=c->getRat();
 	int uncooked=c->getUnc();
@@ -23,11 +29,6 @@ void Day::printStatus_init(){
 	int sick=c->getSick();
 	int medicine=c->getMed();
 	int barricade = c->getBar();
-
-	cout << "\n\n\n\tDAY " << dayNum << '\n';
-	cout << "--------------------------------------------------\n";
-
-	morningEvent();
 
 	cout << "The colony has " << member << " members.\n";
 	cout << sick << " members are sick. \n";
@@ -42,6 +43,29 @@ void Day::printStatus_init(){
 void Day::morningEvent() {
 	// a random event may happen when the colony wakes up
 	// e.g. theft, new survivors, attack etc.
+
+	if (EVENT_PARTY_JOIN > rand() % 100) {
+		cout << "A member of the colony spots a small search party as they happen upon your base.\n";
+		cout << "They are running low on supplies and struggling to survive. You offer for them to join.\n";
+
+		int surv = 2 + rand() % 6;
+		int rat = surv + rand() % surv;
+		int unc = rand() % surv;
+		int wep = rand() % (surv + 1);
+		int med = rand() % 3;
+
+		c->setPeople(c->getPeople()+surv);
+		c->setRat(c->getRat()+rat);
+		c->setUnc(c->getUnc()+unc);
+		c->setWep(c->getWep()+wep);
+		c->setMed(c->getMed()+med);
+
+		cout << "+" << surv << " survivors, +" << rat << " rations";
+		if (unc > 0) cout << ", +" << unc << " uncooked food";
+		if (wep > 0) cout << ", +" << wep << " weapons";
+		if (med > 0) cout << ", +" << med << " medicine";
+		cout << ".\n\n";
+	}
 }
 
 void Day::eveningEvent() {
