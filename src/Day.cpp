@@ -26,6 +26,9 @@ void Day::printStatus_init(){
 
 	cout << "\n\n\n\tDAY " << dayNum << '\n';
 	cout << "--------------------------------------------------\n";
+
+	morningEvent();
+
 	cout << "The colony has " << member << " members.\n";
 	cout << sick << " members are sick. \n";
 	cout << "You have " << ration << " ration(s) of food. \n";
@@ -36,11 +39,20 @@ void Day::printStatus_init(){
 	cout << "There are " << member - sick << " healthy members ready to work.\n";
 }
 
+void Day::morningEvent() {
+	// a random event may happen when the colony wakes up
+	// e.g. theft, new survivors, attack etc.
+}
+
+void Day::eveningEvent() {
+	// a random event may happen after the day's events
+	// e.g. morale boost gets members to do something productive before bed
+}
+
 void Day::EndDay(){
 	int member = c->getPeople();
 	int sick = c->getSick();
 	int ration = c->getRat();
-	int healthy = member - sick;
 	int sickcount = 0;
 
 	if (member <= ration)
@@ -52,6 +64,10 @@ void Day::EndDay(){
 
 		cout << i << " members die of starvation.\n";
 	}
+
+	member = c->getPeople();
+	sick = c->getSick();
+	int healthy = member - sick;
 
 	for( int i = 0; i < healthy; i++) {
 		int sick_chance = CHANCE_SICK + (CHANCE_INCREASE * sick);
@@ -65,6 +81,8 @@ void Day::EndDay(){
 
 	if (sickcount > 0)
 		cout << sickcount << " members fall ill.\n";
+
+	eveningEvent();
 
 	c->incDay();
 }

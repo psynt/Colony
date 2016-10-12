@@ -21,6 +21,8 @@ public:
 	void printStatus_init();
 	void printStatus_find();
 	void printStatus_result();
+	void morningEvent();
+	void eveningEvent();
 	void getInput(int* i);
 	void zombieBreakIn(int zombie);
 	void search(int people,int *k);
