@@ -165,13 +165,13 @@ void Day::printStatus_find(){
 	int f_med = k[3];
 	int f_surv = k[4];
 
-	c->setMed(c->getMed()+f_med);
-	c->setWep(c->getWep()+f_weap);
-	c->setUnc(c->getUnc()+f_uncooked);	// move all of this into if for optimisation
-	c->setRat(c->getRat()+f_ration);
-	c->setPeople(c->getPeople()+f_surv);
-
 	if (inp[0] > 0) {
+		c->setMed(c->getMed()+f_med);
+		c->setWep(c->getWep()+f_weap);
+		c->setUnc(c->getUnc()+f_uncooked);
+		c->setRat(c->getRat()+f_ration);
+		c->setPeople(c->getPeople()+f_surv);
+
 		cout << "Your search party finds: \n";
 		cout << "\t" << f_ration << " ration(s) of food\n";
 		cout << "\t" << f_uncooked << " uncooked food\n";
@@ -180,18 +180,18 @@ void Day::printStatus_find(){
 		cout << "\t" << f_surv << " survivor(s)\n";
 	}
 
-	c->setBar(c->getBar() + inp[1]); // move this into IF for optimisation
-
 	if (inp[1] > 0) {
+		c->setBar(c->getBar() + inp[1]);
+
 		cout << "Your building party constructs " << inp[1] << " new barricades.\n";
 	}
 
-	int u = c->getUnc();
-	int i = cookFood(inp[2], u);	// move all of this into if for optimisation
-	c->setRat(c->getRat() + i);
-	c->setUnc(u);
-
 	if (inp[2] > 0) {
+		int u = c->getUnc();
+		int i = cookFood(inp[2], u);
+		c->setRat(c->getRat() + i);
+		c->setUnc(u);
+
 		cout << "Your cooking party produces " << i << " rations of food, using " << i / UNC_FOOD_CONV << " uncooked food.\n";
 	}
 

@@ -29,6 +29,9 @@ const int FIND_WEAP = 10;
 const int FIND_UNC = 50;
 const int FIND_SURV = 5;
 
+//chance of random events in %
+const int EVENT_PARTY_JOIN = 5;
+
 //sick details
 const int CHANCE_SICK = 5;		// % static chance for each member to get sick each night
 const int CHANCE_INCREASE = 5;	// % increase chance to get sick for each member already sick
@@ -36,9 +39,6 @@ const int CHANCE_INCREASE = 5;	// % increase chance to get sick for each member 
 //turret details
 const int TURRET_BASE = 3;		// minimum zombies killed by each turret
 const int TURRET_SHOOT = 60;	// % chance for turret to shoot again recursively
-
-//chance of random events in %
-const int EVENT_PARTY_JOIN = 5;
 
 //cooking details
 const int UNC_FOOD_CONV = 3;	// rations made from 1 uncooked food
