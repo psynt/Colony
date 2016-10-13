@@ -80,6 +80,30 @@ int Colony::getDay(){
 	return day;
 }
 
+int Colony::getScr() {
+	return scrap;
+}
+
+int Colony::getCookB() {
+	return cookBots;
+}
+
+int Colony::getTur() {
+	return turrets;
+}
+
+void Colony::setScr(int s) {
+	this->scrap = s;
+}
+
+void Colony::setCookB(int c) {
+	this->cookBots = c;
+}
+
+void Colony::setTur(int t) {
+	this->turrets = t;
+}
+
 void Colony::setPeople(int people){
 	this->people=people;
 }

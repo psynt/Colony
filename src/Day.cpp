@@ -231,14 +231,17 @@ void Day::printStatus_result(){
 	int sick = c->getSick();
 	int healthy = member - sick;
 	int barricade = c->getBar();
+	int turret = c->getTur();
 	//int zombies = 1 + rand() % 3 + (1 + rand() % 3) * c->getDay();
 	int zombies = c->getDay() + (rand() % c->getDay());
 
 	cout << "Night falls.\n";
 	cout << "You have " << healthy << " healthy members, ";
-	cout << weapon << " weapon(s) and ";
-	cout << barricade << " barricade(s).\n\n";
-	cout << zombies << " zombies attack in the night.\n";
+	cout << weapon << " weapon(s), ";
+	cout << barricade << " barricade(s) and ";
+	cout << turret << " turret(s).";
+
+	cout << "\n\n" << zombies << " zombies attack in the night.\n";
 
 	bool brokenIn=false;
 

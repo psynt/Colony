@@ -15,7 +15,7 @@ class Colony {
 	int cookBots, turrets;
 public:
 	Colony();
-	Colony(int r, int m, int u, int w, int d, int p, int sc, int c, int t, int si=0, int b=0);
+	Colony(int, int, int, int, int, int, int, int, int, int si=0, int b=0);
 	virtual ~Colony();
 	int getPeople();
 	int getSick();
@@ -24,15 +24,21 @@ public:
 	int getWep();
 	int getUnc();
 	int getDay();
-	void incDay();
-	void setPeople(int );
-	void setSick(int );
-	void setRat(int );
-	void setMed(int );
-	void setWep(int );
-	void setUnc(int );
 	int getBar();
-	void setBar(int b);
+	int getScr();
+	int getCookB();
+	int getTur();
+	void incDay();
+	void setPeople(int);
+	void setSick(int);
+	void setRat(int);
+	void setMed(int);
+	void setWep(int);
+	void setUnc(int);
+	void setBar(int);
+	void setScr(int);
+	void setCookB(int);
+	void setTur(int);
 	void operator+=(Colony*);
 };
 
