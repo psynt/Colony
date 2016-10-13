@@ -18,6 +18,9 @@ const int INITIAL_SICK = 0;
 const int INITIAL_MEDICINE = 0;
 const int INITIAL_BARRICADES = 0;
 const int INITIAL_UNCOOKED = 0;
+const int INITIAL_SCRAP = 0;
+const int INITIAL_COOKBOTS = 0;
+const int INITIAL_TURRETS = 0;
 
 //chances for finding stuff in %
 const int FIND_RAT = 40;

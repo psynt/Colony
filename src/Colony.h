@@ -10,11 +10,12 @@
 
 class Colony {
 	int day;
-	int rations, medicine, uncooked, weapons, barricade;
+	int rations, medicine, uncooked, weapons, barricade, scrap;
 	int people, sick;
+	int cookBots, turrets;
 public:
 	Colony();
-	Colony(int r,int m, int u, int w, int d, int p, int s=0, int b=0);
+	Colony(int r, int m, int u, int w, int d, int p, int sc, int c, int t, int si=0, int b=0);
 	virtual ~Colony();
 	int getPeople();
 	int getSick();
