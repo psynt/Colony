@@ -19,6 +19,30 @@ Colony::Colony() {
 	barricade=INITIAL_BARRICADES;
 }
 
+Colony::Colony(int r,int m, int u, int w, int d, int p, int s, int b){
+	medicine=m;
+	rations = r;
+	weapons = w;
+	day=d;
+	uncooked=u;
+	sick=s;
+	people=p;
+	barricade=b;
+}
+
+void Colony::operator+=(Colony *c){
+	medicine+=c->medicine;
+	rations+=c->rations;
+	weapons+=c->weapons;
+	uncooked+=c->uncooked;
+	sick+=c->sick;
+	people+=c->people;
+	barricade+=c->barricade;
+
+	day = day>c->day?day:c->day;
+
+}
+
 Colony::~Colony() {
 	//important destructor
 }

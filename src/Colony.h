@@ -15,6 +15,7 @@ class Colony {
 	int sick;
 public:
 	Colony();
+	Colony(int r,int m, int u, int w, int d, int p, int s=0, int b=0);
 	virtual ~Colony();
 	int getPeople();
 	int getSick();
@@ -24,14 +25,15 @@ public:
 	int getUnc();
 	int getDay();
 	void incDay();
-	void setPeople(int people);
-	void setSick(int sick);
-	void setRat(int rations);
-	void setMed(int m);
-	void setWep(int w);
-	void setUnc(int u);
+	void setPeople(int );
+	void setSick(int );
+	void setRat(int );
+	void setMed(int );
+	void setWep(int );
+	void setUnc(int );
 	int getBar();
 	void setBar(int b);
+	void operator+=(Colony*);
 };
 
 #endif /* COLONY_H_ */
