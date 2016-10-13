@@ -12,7 +12,7 @@ Colony::Colony() {
 	medicine = INITIAL_MEDICINE;
 	rations = INITIAL_FOOD;
 	weapons = INITIAL_WEAPONS;
-	day = 0;
+	day = 1;
 	uncooked = INITIAL_UNCOOKED;
 	sick = INITIAL_SICK;
 	people = INITIAL_PEOPLE;
@@ -22,7 +22,7 @@ Colony::Colony() {
 	turrets = INITIAL_TURRETS;
 }
 
-Colony::Colony(int r, int m, int u, int w, int d, int p, int sc, int c, int t, int si, int b){
+Colony::Colony(int r, int m, int u, int w, int p, int sc, int c, int t, int d, int si, int b){
 	medicine=m;
 	rations = r;
 	weapons = w;

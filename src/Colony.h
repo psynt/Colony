@@ -15,7 +15,7 @@ class Colony {
 	int cookBots, turrets;
 public:
 	Colony();
-	Colony(int, int, int, int, int, int, int, int, int, int si=0, int b=0);
+	Colony(int, int, int, int, int, int, int, int, int d=1, int si=0, int b=0);
 	virtual ~Colony();
 	int getPeople();
 	int getSick();

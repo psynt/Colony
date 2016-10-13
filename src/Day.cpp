@@ -167,7 +167,7 @@ void Day::printStatus_find(){
 
 	c->setMed(c->getMed()+f_med);
 	c->setWep(c->getWep()+f_weap);
-	c->setUnc(c->getUnc()+f_uncooked);
+	c->setUnc(c->getUnc()+f_uncooked);	// move all of this into if for optimisation
 	c->setRat(c->getRat()+f_ration);
 	c->setPeople(c->getPeople()+f_surv);
 
@@ -180,14 +180,14 @@ void Day::printStatus_find(){
 		cout << "\t" << f_surv << " survivor(s)\n";
 	}
 
-	c->setBar(c->getBar() + inp[1]);
+	c->setBar(c->getBar() + inp[1]); // move this into IF for optimisation
 
 	if (inp[1] > 0) {
 		cout << "Your building party constructs " << inp[1] << " new barricades.\n";
 	}
 
 	int u = c->getUnc();
-	int i = cookFood(inp[2], u);
+	int i = cookFood(inp[2], u);	// move all of this into if for optimisation
 	c->setRat(c->getRat() + i);
 	c->setUnc(u);
 
