@@ -244,9 +244,19 @@ void Day::printStatus_result(){
 	cout << "\n\n" << zombies << " zombies attack in the night.\n";
 
 	bool brokenIn=false;
+	int turretKills = 0;
 
+	for (int i = 0; i < turret; i++) {
+		do {
+			turretKills++;
+		} while (TURRET_SHOOT > rand() % 100);
+	}
 
-	int res = healthy + min(c->getWep(), healthy) + c->getBar() - zombies;
+	if (turretKills > zombies) turretKills = zombies;
+
+	if (turret > 0) cout << "Your turrets automatically gun down " << turretKills << " zombies.\n";
+
+	int res = healthy + min(c->getWep(), healthy) + c->getBar() + turretKills - zombies;
 	if (res == 0 || res == 1){
 		cout << "You barely manage to hold them back.\n";
 	}
