@@ -10,9 +10,8 @@
 
 class Colony {
 	int day;
-	int rations, medicine,uncooked, weapons,barricade;
-	int people;
-	int sick;
+	int rations, medicine, uncooked, weapons, barricade;
+	int people, sick;
 public:
 	Colony();
 	Colony(int r,int m, int u, int w, int d, int p, int s=0, int b=0);

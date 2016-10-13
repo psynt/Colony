@@ -16,6 +16,12 @@ using namespace std;
 
 void Day::printStatus_init(){
 	int dayNum=c->getDay();
+
+	cout << "\n\n\n\tDAY " << dayNum << '\n';
+	cout << "--------------------------------------------------\n";
+
+	morningEvent();
+
 	int member=c->getPeople();
 	int ration=c->getRat();
 	int uncooked=c->getUnc();
@@ -24,8 +30,6 @@ void Day::printStatus_init(){
 	int medicine=c->getMed();
 	int barricade = c->getBar();
 
-	cout << "\n\n\n\tDAY " << dayNum << '\n';
-	cout << "--------------------------------------------------\n";
 	cout << "The colony has " << member << " members.\n";
 	cout << sick << " members are sick. \n";
 	cout << "You have " << ration << " ration(s) of food. \n";
@@ -36,11 +40,43 @@ void Day::printStatus_init(){
 	cout << "There are " << member - sick << " healthy members ready to work.\n";
 }
 
+void Day::morningEvent() {
+	// a random event may happen before the day's events
+	// e.g. theft, new survivors, attack etc.
+
+	if (EVENT_PARTY_JOIN > rand() % 100) {
+		cout << "A member of the colony spots a small search party as they happen upon your base.\n";
+		cout << "They are running low on supplies and struggling to survive. You offer for them to join your cause.\n";
+
+		int surv = 2 + rand() % 5;
+		int rat = surv + rand() % surv;
+		int unc = rand() % surv;
+		int wep = rand() % (surv + 1);
+		int med = rand() % 3;
+
+		c->setPeople(c->getPeople()+surv);
+		c->setRat(c->getRat()+rat);
+		c->setUnc(c->getUnc()+unc);
+		c->setWep(c->getWep()+wep);
+		c->setMed(c->getMed()+med);
+
+		cout << "+" << surv << " survivors, +" << rat << " rations";
+		if (unc > 0) cout << ", +" << unc << " uncooked food";
+		if (wep > 0) cout << ", +" << wep << " weapons";
+		if (med > 0) cout << ", +" << med << " medicine";
+		cout << ".\n\n";
+	}
+}
+
+void Day::eveningEvent() {
+	// a random event may happen after the day's events
+	// e.g. morale boost gets members to do something productive before bed
+}
+
 void Day::EndDay(){
 	int member = c->getPeople();
 	int sick = c->getSick();
 	int ration = c->getRat();
-	int healthy = member - sick;
 	int sickcount = 0;
 
 	if (member <= ration)
@@ -52,6 +88,10 @@ void Day::EndDay(){
 
 		cout << i << " members die of starvation.\n";
 	}
+
+	member = c->getPeople();
+	sick = c->getSick();
+	int healthy = member - sick;
 
 	for( int i = 0; i < healthy; i++) {
 		int sick_chance = CHANCE_SICK + (CHANCE_INCREASE * sick);
@@ -65,6 +105,8 @@ void Day::EndDay(){
 
 	if (sickcount > 0)
 		cout << sickcount << " members fall ill.\n";
+
+	eveningEvent();
 
 	c->incDay();
 }
@@ -189,7 +231,8 @@ void Day::printStatus_result(){
 	int sick = c->getSick();
 	int healthy = member - sick;
 	int barricade = c->getBar();
-	int zombies = 1 + rand() % 3 + (1 + rand() % 3) * c->getDay();
+	//int zombies = 1 + rand() % 3 + (1 + rand() % 3) * c->getDay();
+	int zombies = c->getDay() + (rand() % c->getDay());
 
 	cout << "Night falls.\n";
 	cout << "You have " << healthy << " healthy members, ";
