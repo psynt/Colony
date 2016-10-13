@@ -24,7 +24,7 @@ const int INITIAL_TURRETS = 0;
 
 //chances for finding stuff in %
 const int FIND_RAT = 40;
-const int FIND_MED = 20;
+const int FIND_MED = 15;
 const int FIND_WEAP = 10;
 const int FIND_UNC = 50;
 const int FIND_SURV = 5;
