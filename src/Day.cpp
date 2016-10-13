@@ -247,9 +247,11 @@ void Day::printStatus_result(){
 	int turretKills = 0;
 
 	for (int i = 0; i < turret; i++) {
-		do {
+		turretKills += TURRET_BASE;
+
+		while (TURRET_SHOOT > rand() % 100) {
 			turretKills++;
-		} while (TURRET_SHOOT > rand() % 100);
+		}
 	}
 
 	if (turretKills > zombies) turretKills = zombies;
