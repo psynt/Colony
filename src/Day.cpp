@@ -29,14 +29,19 @@ void Day::printStatus_init(){
 	int sick=c->getSick();
 	int medicine=c->getMed();
 	int barricade = c->getBar();
+	int cookBot = c->getCookB();
+	int turret = c->getTur();
 
 	cout << "The colony has " << member << " members.\n";
-	cout << sick << " members are sick. \n";
-	cout << "You have " << ration << " ration(s) of food. \n";
-	cout << "You have " << uncooked << " uncooked food. \n";
+	cout << sick << " members are sick.\n";
+	cout << "You have " << ration << " ration(s) of food.\n";
+	cout << "You have " << uncooked << " uncooked food.\n";
 	cout << "You have " << weapon << " weapon(s)\n";
-	cout << "You have " << medicine << " medicine. \n";
-	cout << "You have " << barricade << " barricades. \n\n";
+	cout << "You have " << medicine << " medicine.\n";
+	cout << "You have " << barricade << " barricades.\n";
+	cout << "You have " << cookBot << " cooking robots.\n";
+	cout << "You have " << turret << " turrets.\n";
+	cout << "\n";
 	cout << "There are " << member - sick << " healthy members ready to work.\n";
 }
 
