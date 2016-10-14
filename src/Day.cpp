@@ -32,7 +32,10 @@ void Day::printStatus_init(){
 	int cookBot = c->getCookB();
 	int turret = c->getTur();
 
-	cout << "The colony has " << member << " members.\n";
+	string grammar;
+
+	grammar = (member > 1) ? "s" : "";
+	cout << "The colony has " << member << " member" << grammar << ".\n";
 	cout << sick << " members are sick.\n";
 	cout << "You have " << ration << " ration(s) of food.\n";
 	cout << "You have " << uncooked << " uncooked food.\n";
