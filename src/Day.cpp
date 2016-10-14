@@ -273,10 +273,10 @@ void Day::printStatus_result(){
 	int healthy = member - sick;
 	int barricade = c->getBar();
 	int turret = c->getTur();
-	//int zombies = 1 + rand() % 3 + (1 + rand() % 3) * c->getDay();
-	int zombies = 0, n=zmult(c->getDay());
+	int zombies = 0;
+	int i = zmult(c->getDay());
 
-	while(n--){
+	while(i--){
 		zombies += (rand() % c->getDay());
 	}
 
@@ -292,7 +292,7 @@ void Day::printStatus_result(){
 	bool brokenIn=false;
 	int turretKills = 0;
 
-	for (int i = 0; i < turret; i++) {
+	for (i = 0; i < turret; i++) {
 		turretKills += TURRET_BASE;
 
 		while (TURRET_SHOOT > rand() % 100) {
