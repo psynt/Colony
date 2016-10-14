@@ -46,6 +46,7 @@ void Day::printStatus_init(){
 	cout << "You have " << weapon << " weapon" << grammar << ".\n";
 	cout << "You have " << medicine << " medicine.\n";
 	grammar = (barricade == 1) ? "" : "s";
+	// TODO: add scrap
 	cout << "You have " << barricade << " barricade" << grammar << ".\n";
 	grammar = (cookBot == 1) ? "" : "s";
 	cout << "You have " << cookBot << " cooking robot" << grammar << ".\n";
@@ -95,9 +96,9 @@ void Day::EndDay(){
 	int ration = c->getRat();
 	int sickcount = 0;
 
-	if (member <= ration)
-		c->setRat(ration - member); //reduce ration count
-	else {
+	c->setRat(ration - member); // reduce ration count
+
+	if (member > ration) {
 		int i = member - ration;
 		c->setPeople(c->getPeople() - i);
 		c->setSick(min(c->getSick(), i));
@@ -365,7 +366,7 @@ void Day::getInput(int* a){
 		cin >> prepare;
 		cout << "Cook: ";
 		cin >> cook;
-		if(search+prepare+cook>(c->getPeople()-c->getSick()) || search<0 || prepare<0 || cook<0){
+		if(search+prepare+cook>(c->getPeople()-c->getSick()) || search<0 || prepare<0 || cook<0){	// TODO: improve this code
 			cout<<"Bad decisions. Reconsider.\n";
 			continue;
 		}
