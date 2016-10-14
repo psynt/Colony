@@ -28,6 +28,7 @@ void Day::printStatus_init(){
 	int weapon=c->getWep();
 	int sick=c->getSick();
 	int medicine=c->getMed();
+	int scrap=c->getScr();
 	int barricade = c->getBar();
 	int cookBot = c->getCookB();
 	int turret = c->getTur();
@@ -45,8 +46,8 @@ void Day::printStatus_init(){
 	grammar = (weapon == 1) ? "" : "s";
 	cout << "You have " << weapon << " weapon" << grammar << ".\n";
 	cout << "You have " << medicine << " medicine.\n";
+	cout << "You have " << scrap << " scrap.\n";
 	grammar = (barricade == 1) ? "" : "s";
-	// TODO: add scrap
 	cout << "You have " << barricade << " barricade" << grammar << ".\n";
 	grammar = (cookBot == 1) ? "" : "s";
 	cout << "You have " << cookBot << " cooking robot" << grammar << ".\n";
