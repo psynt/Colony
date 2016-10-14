@@ -26,5 +26,5 @@ void Game::play() {
 		day->EndDay();
 	}
 
-	cout << "You lasted " << colony->getDay() << " days. Congratulations.\n\n\n\n";
+	cout << "You lasted " << colony->getDay() << " days. Congratulations.\n";
 }

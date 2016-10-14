@@ -8,6 +8,9 @@ class Colony {
 	int rations, medicine, uncooked, weapons, barricade, scrap;
 	int people, sick;
 	int cookBots, turrets;
+	int radioProgress;
+	bool radioWorking;
+
 public:
 	Colony();
 	Colony(int r, int m, int u, int w, int p, int sc, int c, int t, int d=1, int si=INITIAL_SICK, int b=INITIAL_BARRICADES);
