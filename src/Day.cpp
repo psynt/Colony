@@ -33,7 +33,6 @@ void Day::printStatus_init(){
 	int cookBot = c->getCookB();
 	int turret = c->getTur();
 	int healthy = member - sick;
-	int scrap=c->getScr();
 
 	string grammar;
 
