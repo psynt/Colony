@@ -274,7 +274,12 @@ void Day::printStatus_result(){
 	int barricade = c->getBar();
 	int turret = c->getTur();
 	//int zombies = 1 + rand() % 3 + (1 + rand() % 3) * c->getDay();
-	int zombies = c->getDay() + (rand() % c->getDay());
+	int zombies = 0, n=zmult(c->getDay());
+
+	while(n--){
+		zombies += (rand() % c->getDay());
+	}
+
 
 	cout << "Night falls.\n";
 	cout << "You have " << healthy << " healthy members, ";
