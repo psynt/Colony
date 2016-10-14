@@ -270,6 +270,7 @@ void Day::printStatus_result(){
 
 
 	cout << "Night falls.\n";
+	if(1>rand()%100) cout<<"Joey catches it.\n";
 	cout << "You have " << healthy << " healthy members, ";
 	cout << weapon << " weapon(s), ";
 	cout << barricade << " barricade(s) and ";
