@@ -29,6 +29,7 @@ void Day::printStatus_init(){
 
 	grammar = (member == 1) ? "" : "s";
 	cout << "The colony has " << member << " member" << grammar << ", ";
+
 	grammar = (sick == 1) ? " is" : " are";
 	cout << "of which " << sick << grammar << " sick.\n";
 	grammar = (ration == 1) ? "" : "s";

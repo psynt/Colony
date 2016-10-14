@@ -6,13 +6,13 @@
 #define SRC_GAME_H_
 
 class Game {
-
+	Colony* colony;
+	Day* day;
 public:
 	Game();
+	Game(Colony* c, Day* d);
 	~Game();
-	void newGame();
-//	void loadGame();
-	void play(Colony colony, Day day);
+	void play();
 };
 
 #endif /* SRC_GAME_H_ */

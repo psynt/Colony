@@ -9,8 +9,6 @@ int main()
 {
 	srand(time(NULL));
 
-	Game* game = new Game();
-
 	int option;
 
 	do {
@@ -24,7 +22,9 @@ int main()
 		cin >> option;
 
 		if (option == 1) {
-			game->newGame();
+			Game* game = new Game();
+			game->play();
+			delete game;
 		}
 
 	} while (option != 2);
