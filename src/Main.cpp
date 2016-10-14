@@ -15,7 +15,8 @@ int main()
 		cout << "========== COLONY ==========\n";
 		cout << "\n";
 		cout << "1. New Game\n";
-		cout << "2. Quit\n";
+		cout << "2. Load Game\n";
+		cout << "0. Quit\n";
 		cout << "\n";
 		cout << "OPTION: ";
 
@@ -27,7 +28,12 @@ int main()
 			delete game;
 		}
 
-	} while (option != 2);
+		if (option == 2) {
+			cout << "Feature not yet implemented.\n";
+		}
+
+
+	} while (option != 0);
 
 	cout << "\nQuitting...\n";
 

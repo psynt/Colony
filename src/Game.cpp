@@ -13,16 +13,9 @@ Game::Game() {
 }
 
 Game::~Game() {
-	// important destructor
 	delete colony;
 	delete day;
 }
-
-/*
-void Game::loadGame() {
-
-}
-*/
 
 void Game::play() {
 	while (colony->getPeople() > 0){
