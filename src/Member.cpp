@@ -10,16 +10,13 @@
 using namespace std;
 
 Member::Member(string n) {
-	// TODO Auto-generated constructor stub
 	name=n;
 }
 
 Member::~Member() {
-	// TODO Auto-generated destructor stub
-
+	// important destructor
 }
 
 string* Member::getName(){
 	return &name;
 }
-

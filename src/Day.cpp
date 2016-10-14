@@ -28,6 +28,7 @@ void Day::printStatus_init(){
 	int weapon=c->getWep();
 	int sick=c->getSick();
 	int medicine=c->getMed();
+	int scrap=c->getScr();
 	int barricade = c->getBar();
 	int cookBot = c->getCookB();
 	int turret = c->getTur();
@@ -46,6 +47,7 @@ void Day::printStatus_init(){
 	grammar = (weapon == 1) ? "" : "s";
 	cout << "You have " << weapon << " weapon" << grammar << ".\n";
 	cout << "You have " << medicine << " medicine.\n";
+	cout << "You have " << scrap << " scrap.\n";
 	grammar = (barricade == 1) ? "" : "s";
 	cout << "You have " << scrap << " scrap.\n";
 	cout << "You have " << barricade << " barricade" << grammar << ".\n";
@@ -375,7 +377,10 @@ void Day::search(int people,int* search_arr){
 
 void Day::getInput(int* a){
 	int cook, prepare, search;
+	int total;
+	int healthy = c->getPeople() - c->getSick();
 	char t;
+
 	do {
 		cout << "Search: ";
 		cin >> search;
@@ -383,11 +388,24 @@ void Day::getInput(int* a){
 		cin >> prepare;
 		cout << "Cook: ";
 		cin >> cook;
-		if(search+prepare+cook>(c->getPeople()-c->getSick()) || search<0 || prepare<0 || cook<0){	// TODO: improve this code
-			cout<<"Bad decisions. Reconsider.\n";
+
+		cout << "\n";
+
+		total = search + prepare + cook;
+
+		if (search < 0 || prepare < 0 || cook < 0) {
+			cout << "Bad input. Reconsider.\n";
 			continue;
 		}
-		cout << search << " searching, "<< prepare << " defending, " << cook << " cooking food\n";
+		if (total > healthy){
+			cout << "Not enough people. Reconsider.\n";
+			continue;
+		}
+
+		cout << search << " searching, "<< prepare << " defending, " << cook << " cooking food.\n";
+		if (total < healthy)
+			cout << healthy - total << " member(s) not assigned to a task.\n";
+
 		cout << "Are you sure? (y/n)\n";
 		cin >> t;
 		cout << "\n\n";
