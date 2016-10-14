@@ -10,10 +10,20 @@ Game::~Game() {
 	// important destructor
 }
 
-void Game::play(){
+/*
+void Game::loadGame() {
+
+}
+*/
+
+void Game::newGame() {
 	Colony colony;
 	Day day(&colony);
 
+	play(colony, day);
+}
+
+void Game::play(Colony colony, Day day) {
 	while (colony.getPeople() > 0){
 		day.printStatus_init();
 		day.printStatus_find();

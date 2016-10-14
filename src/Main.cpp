@@ -1,15 +1,15 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include "Day.h"
-#include "Colony.h"
+#include "Game.h"
+
 using namespace std;
 
 int main()
 {
 	srand(time(NULL));
 
-	Game *g=new Game();
+	Game* g = new Game();
 
 	int option;
 
@@ -24,7 +24,7 @@ int main()
 		cin >> option;
 
 		if (option == 1) {
-			g->play();
+			g->newGame();
 		}
 
 	} while (option != 2);
