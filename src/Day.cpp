@@ -31,21 +31,29 @@ void Day::printStatus_init(){
 	int barricade = c->getBar();
 	int cookBot = c->getCookB();
 	int turret = c->getTur();
+	int healthy = member - sick;
 
-	string grammar;	// TODO: fix grammar for each output message below
+	string grammar;
 
-	grammar = (member > 1) ? "s" : "";
-	cout << "The colony has " << member << " member" << grammar << ".\n";
-	cout << sick << " members are sick.\n";
-	cout << "You have " << ration << " ration(s) of food.\n";
+	grammar = (member == 1) ? "" : "s";
+	cout << "The colony has " << member << " member" << grammar << ", ";
+	grammar = (sick == 1) ? " is" : " are";
+	cout << "of which " << sick << grammar << " sick.\n";
+	grammar = (ration == 1) ? "" : "s";
+	cout << "You have " << ration << " ration" << grammar << " of food.\n";
 	cout << "You have " << uncooked << " uncooked food.\n";
-	cout << "You have " << weapon << " weapon(s)\n";
+	grammar = (weapon == 1) ? "" : "s";
+	cout << "You have " << weapon << " weapon" << grammar << ".\n";
 	cout << "You have " << medicine << " medicine.\n";
-	cout << "You have " << barricade << " barricades.\n";
-	cout << "You have " << cookBot << " cooking robots.\n";
-	cout << "You have " << turret << " turrets.\n";
+	grammar = (barricade == 1) ? "" : "s";
+	cout << "You have " << barricade << " barricade" << grammar << ".\n";
+	grammar = (cookBot == 1) ? "" : "s";
+	cout << "You have " << cookBot << " cooking robot" << grammar << ".\n";
+	grammar = (turret == 1) ? "" : "s";
+	cout << "You have " << turret << " turret" << grammar << ".\n";
 	cout << "\n";
-	cout << "There are " << member - sick << " healthy members ready to work.\n";
+	grammar = (healthy == 1) ? " is" : "s are";
+	cout << "The " << healthy << " healthy member" << grammar << " ready to work.\n";
 }
 
 void Day::morningEvent() {
@@ -298,9 +306,11 @@ void Day::printStatus_result(){
 	bL = (brokenIn) ? barricade : barLoss;
 
 	if (bL > 0)
-		cout << bL << " barricades are destroyed in the attack.\n\n";
+		cout << bL << " barricades are destroyed in the attack.\n";
 
 	c->setBar(barricade - bL);
+
+	cout << "\n";
 }
 
 void Day::search(int people,int* search_arr){
