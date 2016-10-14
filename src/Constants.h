@@ -22,6 +22,12 @@ const int INITIAL_SCRAP = 0;
 const int INITIAL_COOKBOTS = 0;
 const int INITIAL_TURRETS = 0;
 
+//cost of machinery
+const int COST_TURRET_SCRAP = 8;
+const int COST_TURRET_WEAPONS = 2;
+const int COST_COOKBOT = 4;
+const int COST_RADIO = 25;
+
 //number of activities able to be done in a day
 const int ACTIVITIES = 3;
 
