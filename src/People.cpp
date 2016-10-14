@@ -8,12 +8,11 @@
 #include "People.h"
 
 People::People() {
-	// TODO Auto-generated constructor stub
-
+	// important constructor
 }
 
 People::~People() {
-	// TODO Auto-generated destructor stub
+	// important destructor
 }
 
 int People::getPeople(){
@@ -22,4 +21,3 @@ int People::getPeople(){
 int People::getSick(){
 	return sick;
 }
-
