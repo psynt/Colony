@@ -149,54 +149,55 @@ void Day::deathRoll(){
 
 void Day::printStatus_find(){
 
-	int *inp = new int[3];
-	inp[0] = 0;
-	inp[1] = 0;
-	inp[2] = 0;
+	if (c->getSick() < c->getPeople()) {
+		int *inp = new int[3];
+		inp[0] = 0;
+		inp[1] = 0;
+		inp[2] = 0;
 
-	if (c->getSick() < c->getPeople())
 		getInput(inp);
 
-	if (inp[0] > 0) {
-		int* k =new int[5];
-		search(inp[0], k);
+		if (inp[0] > 0) {
+			int* k =new int[5];
+			search(inp[0], k);
 
-		int f_ration = k[0];
-		int f_uncooked = k[1];
-		int f_weap = k[2];
-		int f_med = k[3];
-		int f_surv = k[4];
+			int f_ration = k[0];
+			int f_uncooked = k[1];
+			int f_weap = k[2];
+			int f_med = k[3];
+			int f_surv = k[4];
 
-		c->setMed(c->getMed()+f_med);
-		c->setWep(c->getWep()+f_weap);
-		c->setUnc(c->getUnc()+f_uncooked);
-		c->setRat(c->getRat()+f_ration);
-		c->setPeople(c->getPeople()+f_surv);
+			c->setMed(c->getMed()+f_med);
+			c->setWep(c->getWep()+f_weap);
+			c->setUnc(c->getUnc()+f_uncooked);
+			c->setRat(c->getRat()+f_ration);
+			c->setPeople(c->getPeople()+f_surv);
 
-		cout << "Your search party finds: \n";
-		cout << "\t" << f_ration << " ration(s) of food\n";
-		cout << "\t" << f_uncooked << " uncooked food\n";
-		cout << "\t" << f_weap << " weapon(s)\n";
-		cout << "\t" << f_med << " medicine\n";
-		cout << "\t" << f_surv << " survivor(s)\n";
+			cout << "Your search party finds: \n";
+			cout << "\t" << f_ration << " ration(s) of food\n";
+			cout << "\t" << f_uncooked << " uncooked food\n";
+			cout << "\t" << f_weap << " weapon(s)\n";
+			cout << "\t" << f_med << " medicine\n";
+			cout << "\t" << f_surv << " survivor(s)\n";
+		}
+
+		if (inp[1] > 0) {
+			c->setBar(c->getBar() + inp[1]);
+
+			cout << "Your building party constructs " << inp[1] << " new barricades.\n";
+		}
+
+		if (inp[2] > 0) {
+			int u = c->getUnc();
+			int i = cookFood(inp[2], u);
+			c->setRat(c->getRat() + i);
+			c->setUnc(u);
+
+			cout << "Your cooking party produces " << i << " rations of food, using " << i / UNC_FOOD_CONV << " uncooked food.\n";
+		}
+
+		cout << "\n";
 	}
-
-	if (inp[1] > 0) {
-		c->setBar(c->getBar() + inp[1]);
-
-		cout << "Your building party constructs " << inp[1] << " new barricades.\n";
-	}
-
-	if (inp[2] > 0) {
-		int u = c->getUnc();
-		int i = cookFood(inp[2], u);
-		c->setRat(c->getRat() + i);
-		c->setUnc(u);
-
-		cout << "Your cooking party produces " << i << " rations of food, using " << i / UNC_FOOD_CONV << " uncooked food.\n";
-	}
-
-	cout << "\n";
 }
 
 void Day::zombieBreakIn(int zombies)
