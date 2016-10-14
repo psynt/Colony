@@ -290,7 +290,7 @@ void Day::printStatus_result(){
 		res=-res;
 		cout << res << " zombies break through your defenses.\n";
 		brokenIn=true;
-		Day::zombieBreakIn(res);
+		zombieBreakIn(res);
 		if(c->getPeople()<=0){ return; }
 	}
 
