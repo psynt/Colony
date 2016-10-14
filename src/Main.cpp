@@ -9,7 +9,7 @@ int main()
 {
 	srand(time(NULL));
 
-	Game* g = new Game();
+	Game* game = new Game();
 
 	int option;
 
@@ -24,7 +24,7 @@ int main()
 		cin >> option;
 
 		if (option == 1) {
-			g->newGame();
+			game->newGame();
 		}
 
 	} while (option != 2);
