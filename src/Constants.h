@@ -22,11 +22,16 @@ const int INITIAL_SCRAP = 0;
 const int INITIAL_COOKBOTS = 0;
 const int INITIAL_TURRETS = 0;
 
+//number of activities able to be done in a day
+const int ACTIVITIES = 3;
+
 //chances to find stuff in %
+const int SEARCHABLES = 6;		// # of different resources able to be found when searching
 const int FIND_RAT = 40;
 const int FIND_MED = 15;
 const int FIND_WEAP = 10;
 const int FIND_UNC = 50;
+const int FIND_SCR = 30;
 const int FIND_SURV = 5;
 
 //chance of random events in %

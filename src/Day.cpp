@@ -150,7 +150,7 @@ void Day::deathRoll(){
 void Day::printStatus_find(){
 
 	if (c->getSick() < c->getPeople()) {
-		int *inp = new int[3];
+		int *inp = new int[ACTIVITIES];
 		inp[0] = 0;
 		inp[1] = 0;
 		inp[2] = 0;
@@ -158,19 +158,21 @@ void Day::printStatus_find(){
 		getInput(inp);
 
 		if (inp[0] > 0) {
-			int* k =new int[5];
+			int* k =new int[SEARCHABLES];
 			search(inp[0], k);
 
 			int f_ration = k[0];
 			int f_uncooked = k[1];
 			int f_weap = k[2];
 			int f_med = k[3];
-			int f_surv = k[4];
+			int f_scr = k[4];
+			int f_surv = k[5];
 
 			c->setMed(c->getMed()+f_med);
 			c->setWep(c->getWep()+f_weap);
 			c->setUnc(c->getUnc()+f_uncooked);
 			c->setRat(c->getRat()+f_ration);
+			c->setScr(c->getScr()+f_scr);
 			c->setPeople(c->getPeople()+f_surv);
 
 			cout << "Your search party finds: \n";
@@ -178,6 +180,7 @@ void Day::printStatus_find(){
 			cout << "\t" << f_uncooked << " uncooked food\n";
 			cout << "\t" << f_weap << " weapon(s)\n";
 			cout << "\t" << f_med << " medicine\n";
+			cout << "\t" << f_scr << " scrap\n";
 			cout << "\t" << f_surv << " survivor(s)\n";
 		}
 
@@ -297,6 +300,7 @@ void Day::search(int people,int* search_arr){
 	int uncooked = 0;
 	int weapon = 0;
 	int medicine = 0;
+	int scrap = 0;
 	int survivor = 0;
 
 	for(int i = 0; i < people; i++){
@@ -316,6 +320,10 @@ void Day::search(int people,int* search_arr){
 		if (roll_med < FIND_MED){
 			medicine++;
 		}
+		int roll_scr = rand() % 100;
+		if (roll_scr < FIND_SCR){
+			scrap++;
+		}
 		int roll_surv = rand() % 100;
 		if(roll_surv < FIND_SURV){
 			survivor++;
@@ -325,7 +333,8 @@ void Day::search(int people,int* search_arr){
 	search_arr[1]=uncooked;
 	search_arr[2]=weapon;
 	search_arr[3]=medicine;
-	search_arr[4]=survivor;
+	search_arr[4]=scrap;
+	search_arr[5]=survivor;
 }
 
 void Day::getInput(int* a){
