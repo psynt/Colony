@@ -1,9 +1,3 @@
-/*
- * Day.cpp
- *
- *  Created on: Oct 8, 20 *      Author: nichita
- */
-
 #include "Day.h"
 
 #include <cstdlib>
@@ -192,22 +186,10 @@ void Day::printStatus_find(){
 			int* k =new int[SEARCHABLES];
 			search(inp[0], k);
 
-//			int f_ration = k[0];
-//			int f_uncooked = k[1];
-//			int f_weap = k[2];
-//			int f_med = k[3];
-//			int f_scr = k[4];
-//			int f_surv = k[5];
-			//					 r 	  m	   u 	w 	 p 	  sc 	c t d si b
-			Colony *f=new Colony(k[0],k[3],k[1],k[2],k[5],k[4], 0,0,1,0, 0);
+//									r	  m		u	  w		p	  sc   c  t  d  si b
+			Colony* f = new Colony(k[0], k[3], k[1], k[2], k[5], k[4], 0, 0, 0, 0, 0);
 
-//			c->setMed(c->getMed()+f_med);
-//			c->setWep(c->getWep()+f_weap);
-//			c->setUnc(c->getUnc()+f_uncooked);
-//			c->setRat(c->getRat()+f_ration);
-//			c->setScr(c->getScr()+f_scr);
-//			c->setPeople(c->getPeople()+f_surv);
-			*c+=f;
+			*c += f;
 
 			cout << "Your search party finds: \n";
 			cout << "\t" << k[0] << " ration(s) of food\n";
@@ -216,6 +198,7 @@ void Day::printStatus_find(){
 			cout << "\t" << k[3] << " medicine\n";
 			cout << "\t" << k[4] << " scrap\n";
 			cout << "\t" << k[5] << " survivor(s)\n";
+
 			delete f;
 		}
 

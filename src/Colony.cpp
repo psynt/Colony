@@ -1,10 +1,3 @@
-/*
- * Colony.cpp
- *
- *  Created on: 8 Oct 2016
- *      Author: zaxa1
- */
-
 #include "Colony.h"
 #include "Constants.h"
 

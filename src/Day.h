@@ -1,10 +1,3 @@
-/*
- * Day.h
- *
- *  Created on: Oct 8, 2016
- *      Author: nichita
- */
-
 #include "Colony.h"
 
 #ifndef DAY_H_INCLUDED

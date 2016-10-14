@@ -1,10 +1,3 @@
-/*
- * Colony.h
- *
- *  Created on: 8 Oct 2016
- *      Author: zaxa1
- */
-
 #ifndef COLONY_H_INCLUDED
 #define COLONY_H_INCLUDED
 
