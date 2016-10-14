@@ -39,7 +39,6 @@ void Day::printStatus_init(){
 	cout << "You have " << medicine << " medicine.\n";
 	cout << "You have " << scrap << " scrap.\n";
 	grammar = (barricade == 1) ? "" : "s";
-	cout << "You have " << scrap << " scrap.\n";
 	cout << "You have " << barricade << " barricade" << grammar << ".\n";
 	grammar = (cookBot == 1) ? "" : "s";
 	cout << "You have " << cookBot << " cooking robot" << grammar << ".\n";
