@@ -14,6 +14,7 @@ class Day {
 public:
 	Day(Colony* c);
 	~Day();
+	static int zmult(int d);
 	void morningDecisions();
 	void progressDay();
 	void deathRoll();

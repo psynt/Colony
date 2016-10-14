@@ -32,6 +32,7 @@ void Day::printStatus_init(){
 	int cookBot = c->getCookB();
 	int turret = c->getTur();
 	int healthy = member - sick;
+	int scrap=c->getScr();
 
 	string grammar;
 
@@ -46,7 +47,7 @@ void Day::printStatus_init(){
 	cout << "You have " << weapon << " weapon" << grammar << ".\n";
 	cout << "You have " << medicine << " medicine.\n";
 	grammar = (barricade == 1) ? "" : "s";
-	// TODO: add scrap
+	cout << "You have " << scrap << " scrap.\n";
 	cout << "You have " << barricade << " barricade" << grammar << ".\n";
 	grammar = (cookBot == 1) ? "" : "s";
 	cout << "You have " << cookBot << " cooking robot" << grammar << ".\n";
@@ -71,17 +72,22 @@ void Day::morningEvent() {
 		int wep = rand() % (surv + 1);
 		int med = rand() % 3;
 
-		c->setPeople(c->getPeople()+surv);
-		c->setRat(c->getRat()+rat);
-		c->setUnc(c->getUnc()+unc);
-		c->setWep(c->getWep()+wep);
-		c->setMed(c->getMed()+med);
+		//					 r 	 m	  u  w 	 p 	  sc 	c t d si b
+		Colony *f=new Colony(rat,med,unc,wep,surv,0, 	0,0,1,0, 0);
+
+//		c->setPeople(c->getPeople()+surv);
+//		c->setRat(c->getRat()+rat);
+//		c->setUnc(c->getUnc()+unc);
+//		c->setWep(c->getWep()+wep);
+//		c->setMed(c->getMed()+med);
+		*c+=f;
 
 		cout << "+" << surv << " survivors, +" << rat << " rations";
 		if (unc > 0) cout << ", +" << unc << " uncooked food";
 		if (wep > 0) cout << ", +" << wep << " weapons";
 		if (med > 0) cout << ", +" << med << " medicine";
 		cout << ".\n\n";
+		delete f;
 	}
 }
 
@@ -164,6 +170,13 @@ void Day::deathRoll(){
 	}
 }
 
+int Day::zmult(int day){
+	if(day<30) return 2;
+	if(day<70) return 3;
+	if(day<150) return 4;
+	return 5;
+}
+
 void Day::printStatus_find(){
 
 	if (c->getSick() < c->getPeople()) {
@@ -178,27 +191,31 @@ void Day::printStatus_find(){
 			int* k =new int[SEARCHABLES];
 			search(inp[0], k);
 
-			int f_ration = k[0];
-			int f_uncooked = k[1];
-			int f_weap = k[2];
-			int f_med = k[3];
-			int f_scr = k[4];
-			int f_surv = k[5];
+//			int f_ration = k[0];
+//			int f_uncooked = k[1];
+//			int f_weap = k[2];
+//			int f_med = k[3];
+//			int f_scr = k[4];
+//			int f_surv = k[5];
+			//					 r 	  m	   u 	w 	 p 	  sc 	c t d si b
+			Colony *f=new Colony(k[0],k[3],k[1],k[2],k[5],k[4], 0,0,1,0, 0);
 
-			c->setMed(c->getMed()+f_med);
-			c->setWep(c->getWep()+f_weap);
-			c->setUnc(c->getUnc()+f_uncooked);
-			c->setRat(c->getRat()+f_ration);
-			c->setScr(c->getScr()+f_scr);
-			c->setPeople(c->getPeople()+f_surv);
+//			c->setMed(c->getMed()+f_med);
+//			c->setWep(c->getWep()+f_weap);
+//			c->setUnc(c->getUnc()+f_uncooked);
+//			c->setRat(c->getRat()+f_ration);
+//			c->setScr(c->getScr()+f_scr);
+//			c->setPeople(c->getPeople()+f_surv);
+			*c+=f;
 
 			cout << "Your search party finds: \n";
-			cout << "\t" << f_ration << " ration(s) of food\n";
-			cout << "\t" << f_uncooked << " uncooked food\n";
-			cout << "\t" << f_weap << " weapon(s)\n";
-			cout << "\t" << f_med << " medicine\n";
-			cout << "\t" << f_scr << " scrap\n";
-			cout << "\t" << f_surv << " survivor(s)\n";
+			cout << "\t" << k[0] << " ration(s) of food\n";
+			cout << "\t" << k[1] << " uncooked food\n";
+			cout << "\t" << k[2] << " weapon(s)\n";
+			cout << "\t" << k[3] << " medicine\n";
+			cout << "\t" << k[4] << " scrap\n";
+			cout << "\t" << k[5] << " survivor(s)\n";
+			delete f;
 		}
 
 		if (inp[1] > 0) {
