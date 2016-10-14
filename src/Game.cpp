@@ -2,12 +2,20 @@
 #include "Game.h"
 using namespace std;
 
+Game::Game(Colony* c, Day* d) {
+	colony = c;
+	day = d;
+}
+
 Game::Game() {
-	// important constructor
+	colony = new Colony();
+	day = new Day(colony);
 }
 
 Game::~Game() {
 	// important destructor
+	delete colony;
+	delete day;
 }
 
 /*
@@ -16,21 +24,14 @@ void Game::loadGame() {
 }
 */
 
-void Game::newGame() {
-	Colony colony;
-	Day day(&colony);
-
-	play(colony, day);
-}
-
-void Game::play(Colony colony, Day day) {
-	while (colony.getPeople() > 0){
-		day.printStatus_init();
-		day.printStatus_find();
-		day.printStatus_result();
-		day.deathRoll();
-		day.EndDay();
+void Game::play() {
+	while (colony->getPeople() > 0){
+		day->printStatus_init();
+		day->printStatus_find();
+		day->printStatus_result();
+		day->deathRoll();
+		day->EndDay();
 	}
 
-	cout << "You lasted " << colony.getDay() << " days. Congratulations.\n\n\n\n";
+	cout << "You lasted " << colony->getDay() << " days. Congratulations.\n\n\n\n";
 }

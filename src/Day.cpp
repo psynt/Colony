@@ -32,20 +32,30 @@ void Day::printStatus_init(){
 
 	grammar = (sick == 1) ? " is" : " are";
 	cout << "of which " << sick << grammar << " sick.\n";
+
 	grammar = (ration == 1) ? "" : "s";
 	cout << "You have " << ration << " ration" << grammar << " of food.\n";
+
 	cout << "You have " << uncooked << " uncooked food.\n";
+
 	grammar = (weapon == 1) ? "" : "s";
 	cout << "You have " << weapon << " weapon" << grammar << ".\n";
+
 	cout << "You have " << medicine << " medicine.\n";
+
 	cout << "You have " << scrap << " scrap.\n";
+
 	grammar = (barricade == 1) ? "" : "s";
 	cout << "You have " << barricade << " barricade" << grammar << ".\n";
+
 	grammar = (cookBot == 1) ? "" : "s";
 	cout << "You have " << cookBot << " cooking robot" << grammar << ".\n";
+
 	grammar = (turret == 1) ? "" : "s";
 	cout << "You have " << turret << " turret" << grammar << ".\n";
+
 	cout << "\n";
+
 	grammar = (healthy == 1) ? " is" : "s are";
 	cout << "The " << healthy << " healthy member" << grammar << " ready to work.\n";
 }
