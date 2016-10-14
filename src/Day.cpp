@@ -157,15 +157,16 @@ void Day::printStatus_find(){
 	if (c->getSick() < c->getPeople())
 		getInput(inp);
 
-	int* k =new int[5];
-	search(inp[0], k);
-	int f_ration = k[0];
-	int f_uncooked = k[1];
-	int f_weap = k[2];
-	int f_med = k[3];
-	int f_surv = k[4];
-
 	if (inp[0] > 0) {
+		int* k =new int[5];
+		search(inp[0], k);
+
+		int f_ration = k[0];
+		int f_uncooked = k[1];
+		int f_weap = k[2];
+		int f_med = k[3];
+		int f_surv = k[4];
+
 		c->setMed(c->getMed()+f_med);
 		c->setWep(c->getWep()+f_weap);
 		c->setUnc(c->getUnc()+f_uncooked);
