@@ -9,6 +9,8 @@ int main()
 {
 	srand(time(NULL));
 
+	Game *g=new Game();
+
 	int option;
 
 	do {
@@ -22,18 +24,7 @@ int main()
 		cin >> option;
 
 		if (option == 1) {
-			Colony colony;
-			Day day(&colony);
-
-			while (colony.getPeople() > 0){
-				day.printStatus_init();
-				day.printStatus_find();
-				day.printStatus_result();
-				day.deathRoll();
-				day.EndDay();
-			}
-
-			cout << "You lasted " << colony.getDay() << " days. Congratulations.\n\n\n\n";
+			g->play();
 		}
 
 	} while (option != 2);

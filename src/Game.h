@@ -6,6 +6,7 @@ class Game {
 public:
 	Game();
 	~Game();
+	void play();
 };
 
 #endif /* SRC_GAME_H_ */
