@@ -1,19 +1,5 @@
 #include "Colony.h"
 
-Colony::Colony() {
-	medicine = INITIAL_MEDICINE;
-	rations = INITIAL_FOOD;
-	weapons = INITIAL_WEAPONS;
-	day = 1;
-	uncooked = INITIAL_UNCOOKED;
-	sick = INITIAL_SICK;
-	people = INITIAL_PEOPLE;
-	barricade = INITIAL_BARRICADES;
-	scrap = INITIAL_SCRAP;
-	cookBots = INITIAL_COOKBOTS;
-	turrets = INITIAL_TURRETS;
-}
-
 Colony::Colony(int r, int m, int u, int w, int p, int sc, int c, int t, int d, int si, int b){
 	medicine=m;
 	rations = r;
@@ -26,7 +12,24 @@ Colony::Colony(int r, int m, int u, int w, int p, int sc, int c, int t, int d, i
 	scrap = sc;
 	cookBots = c;
 	turrets = t;
+	projects=new std::vector<Project*>(10);
 }
+//Colony::Colony() {
+//	this(INITIAL_FOOD,INITIAL_MEDICINE,INITIAL_UNCOOKED,INITIAL_WEAPONS,INITIAL_PEOPLE,INITIAL_SCRAP);
+//	medicine = INITIAL_MEDICINE;
+//	rations = INITIAL_FOOD;
+//	weapons = INITIAL_WEAPONS;
+//	day = 1;
+//	uncooked = INITIAL_UNCOOKED;
+//	sick = INITIAL_SICK;
+//	people = INITIAL_PEOPLE;
+//	barricade = INITIAL_BARRICADES;
+//	scrap = INITIAL_SCRAP;
+//	cookBots = INITIAL_COOKBOTS;
+//	turrets = INITIAL_TURRETS;
+//	projects=new std::vector<Project*>(10);
+}
+
 
 void Colony::operator+=(Colony *c){
 	medicine+=c->medicine;
