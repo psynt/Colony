@@ -8,7 +8,8 @@
 #include "People.h"
 
 People::People() {
-	// important constructor
+	people = 0;
+	sick = 0;
 }
 
 People::~People() {
