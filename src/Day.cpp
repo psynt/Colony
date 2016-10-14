@@ -32,7 +32,7 @@ void Day::printStatus_init(){
 	int cookBot = c->getCookB();
 	int turret = c->getTur();
 
-	string grammar;
+	string grammar;	// TODO: fix grammar for each output message below
 
 	grammar = (member > 1) ? "s" : "";
 	cout << "The colony has " << member << " member" << grammar << ".\n";
