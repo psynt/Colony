@@ -76,6 +76,7 @@ void Day::morningEvent() {
 		if (med > 0) cout << ", +" << med << " medicine";
 		if (scr > 0) cout << ", +" << scr << " scrap";
 		cout << ".\n\n";
+
 		delete f;
 	}
 }
@@ -94,11 +95,11 @@ void Day::EndDay(){
 	c->setRat(ration - member); // reduce ration count
 
 	if (member > ration) {
-		int i = member - ration;
-		c->setPeople(c->getPeople() - i);
-		c->setSick(min(c->getSick(), i));
+		int death = member - ration;
+		c->setPeople(c->getPeople() - death);
+		c->setSick(min(c->getSick(), death));
 
-		cout << i << " members die of starvation.\n";
+		cout << death << " members die of starvation.\n";
 	}
 
 	member = c->getPeople();
