@@ -110,6 +110,7 @@ void Day::EndDay(){
 		c->setSick(min(c->getSick(), death));
 
 		cout << death << " members die of starvation.\n";
+		c->setRat(0);
 	}
 
 	member = c->getPeople();
