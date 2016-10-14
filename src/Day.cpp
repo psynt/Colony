@@ -1,10 +1,7 @@
 #include "Day.h"
-
 #include <cstdlib>
 #include <iostream>
 #include <string>
-
-#include "Constants.h"
 
 using namespace std;
 
@@ -66,21 +63,18 @@ void Day::morningEvent() {
 		int unc = rand() % surv;
 		int wep = rand() % (surv + 1);
 		int med = rand() % 3;
+		int scr = rand() % 5;
 
-		//					 r 	 m	  u  w 	 p 	  sc 	c t d si b
-		Colony *f=new Colony(rat,med,unc,wep,surv,0, 	0,0,1,0, 0);
+//								r	 m	  u	   w	p	 sc	  c  t  d  si b
+		Colony* f = new Colony(rat, med, unc, wep, surv, scr, 0, 0, 0, 0, 0);
 
-//		c->setPeople(c->getPeople()+surv);
-//		c->setRat(c->getRat()+rat);
-//		c->setUnc(c->getUnc()+unc);
-//		c->setWep(c->getWep()+wep);
-//		c->setMed(c->getMed()+med);
-		*c+=f;
+		*c += f;
 
 		cout << "+" << surv << " survivors, +" << rat << " rations";
 		if (unc > 0) cout << ", +" << unc << " uncooked food";
 		if (wep > 0) cout << ", +" << wep << " weapons";
 		if (med > 0) cout << ", +" << med << " medicine";
+		if (scr > 0) cout << ", +" << scr << " scrap";
 		cout << ".\n\n";
 		delete f;
 	}

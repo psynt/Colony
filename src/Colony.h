@@ -1,3 +1,5 @@
+#include "Constants.h"
+
 #ifndef COLONY_H_INCLUDED
 #define COLONY_H_INCLUDED
 
@@ -8,7 +10,7 @@ class Colony {
 	int cookBots, turrets;
 public:
 	Colony();
-	Colony(int r, int m, int u, int w, int p, int sc, int c, int t, int d=1, int si=0, int b=0);
+	Colony(int r, int m, int u, int w, int p, int sc, int c, int t, int d=1, int si=INITIAL_SICK, int b=INITIAL_BARRICADES);
 	virtual ~Colony();
 	int getPeople();
 	int getSick();

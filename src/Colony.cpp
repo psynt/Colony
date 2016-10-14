@@ -1,5 +1,4 @@
 #include "Colony.h"
-#include "Constants.h"
 
 Colony::Colony() {
 	medicine = INITIAL_MEDICINE;
