@@ -25,8 +25,8 @@ Colony::Colony(int r, int m, int u, int w, int p, int sc, int c, int t, int d, i
 string Colony::printProjects(){
 	ostringstream os;
 
-	for(int i=0 ; i<getNoPr() ; i++){
-		os << i << ": " << projects->at(i)->toString() << "\n";
+	for(size_t i=0 ; i<projects->size() ; i++){
+		os << i+1 << ": " << projects->at(i)->toString() << "\n";
 
 	}
 
@@ -34,7 +34,25 @@ string Colony::printProjects(){
 }
 
 string Colony::progressProjects(int *a, int n){
+	for(int i=0 ; i<n ; i++){
+		projects->at(i)->advance(a[i]);
+	}
+	return finishedProjects();
+}
 
+string Colony::finishedProjects(){
+	ostringstream os;
+	vector<Project*>* np=new vector<Project*>(projects->size());
+	for (size_t i = 0; i < projects->size() ; ++i) {
+		if(projects->at(i)->isFinished()){
+			os<<"Project " << i+1 << ", working on " << projects->at(i)->toString() <<" \n";
+		}else{
+			np->push_back(projects->at(i));
+		}
+	}
+	delete projects;
+	projects=np;
+	return os.str();
 }
 
 void Colony::build(int type){

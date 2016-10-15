@@ -13,6 +13,7 @@ class Colony {
 	int people, sick;
 	int cookBots, turrets;
 	std::vector<Project*> *projects;
+	string finishedProjects();
 public:
 	Colony(int r=INITIAL_FOOD, int m=INITIAL_MEDICINE, int u=INITIAL_UNCOOKED, int w=INITIAL_WEAPONS, int p=INITIAL_PEOPLE, int sc=INITIAL_SCRAP, int c=0, int t=0, int d=1, int si=INITIAL_SICK, int b=INITIAL_BARRICADES);
 	virtual ~Colony();
