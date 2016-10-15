@@ -57,10 +57,12 @@ void Day::printStatus_init(){
 
 	cout << "\n";
 
-	cout << "Current projects:\n";
-	for(int i=0 ; i<c->getNoPr() ; i++){
-
+	cout << "Current projects: \n";
+	for(int i = 0 ; i < c->getNoPr(); i++) {
+		// TODO: output current projects
 	}
+
+	if (c->getNoPr() == 0) cout << "None\n";
 
 	cout << "\n";
 
@@ -272,7 +274,7 @@ void Day::printStatus_result(){
 	int zombies = 0;
 	int i = zmult(c->getDay());
 
-	while(i--){
+	while (i--) {
 		zombies += (rand() % c->getDay());
 	}
 
