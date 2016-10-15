@@ -304,7 +304,7 @@ void Day::printStatus_result(){
 
 	if (turretKills > zombies) turretKills = zombies;
 
-	if (turret > 0) cout << "Your turrets automatically gun down " << turretKills << " zombies.\n";
+	if (turretKills > 0) cout << "Your turrets automatically gun down " << turretKills << " zombies.\n";
 
 	int res = healthy + min(c->getWep(), healthy) + c->getBar() + turretKills - zombies;
 	if (res == 0 || res == 1){
