@@ -34,6 +34,7 @@ bool Project::isFinished(){
 }
 
 string Project::toString(){
+	if(type == 0) return Radio::toString();
 	ostringstream os;
 	os << name;
 	if(isFinished()){
