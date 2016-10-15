@@ -224,13 +224,15 @@ void Day::printStatus_find(){
 			cout << "Your building party constructs " << inp[1] << " new barricades.\n";
 		}
 
-		if (inp[2] > 0) {
-			int u = c->getUnc();
-			int i = cookFood(inp[2], u);
-			c->setRat(c->getRat() + i);
-			c->setUnc(u);
+		if (c->getCookB() > 0) {
 
-			cout << "Your cooking party produces " << i << " rations of food, using " << i / UNC_FOOD_CONV << " uncooked food.\n";
+		}
+
+		if (inp[2] > 0) {
+			int newFood = cookFood(inp[2]);
+			c->setRat(c->getRat() + newFood);
+
+			cout << "Your cooking party produces " << newFood << " rations of food, using " << newFood / UNC_FOOD_CONV << " uncooked food.\n";
 		}
 
 		cout << "\n";
@@ -246,8 +248,10 @@ void Day::zombieBreakIn(int zombies)
 	c->setPeople( p );
 }
 
-int Day::cookFood(int people, int &uncooked)
+int Day::cookFood(int people)
 {
+	int uncooked = c->getUnc();
+
 	if (DEBUG)
 		cout << "cookFood() called with " << people << " people and " << uncooked << " uncooked.\n";
 
@@ -255,11 +259,11 @@ int Day::cookFood(int people, int &uncooked)
 
 	cooked = min(COOK_SPEED * people, uncooked);
 	uncooked -= cooked;
+	c->setUnc(uncooked);
 	cooked *= UNC_FOOD_CONV;
 
-	if(DEBUG){
+	if(DEBUG)
 		cout << people << " people cooked " << cooked << " food using " << cooked / UNC_FOOD_CONV << " uncooked food.\n";
-	}
 
 	return cooked;
 }
