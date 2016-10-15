@@ -128,6 +128,7 @@ void Day::projInp(int* a){
 				do{
 					cin>>t;
 
+					//TURRET
 					if(strchr("tT",t)){
 						cout<<"Confirm new Turret project (y/n).\n";
 						do{
@@ -140,6 +141,22 @@ void Day::projInp(int* a){
 								c->setScr(c->getScr()-TUR_C_SCRAP);
 								c->setWep(c->getWep()-TUR_C_WEAPONS);
 								c->build(TUR_TYPE);
+							}
+						}
+					}
+
+					//AUTO_HOB
+					if(strchr("bB",t)){
+						cout<<"Confirm new Cookbot project (y/n).\n";
+						do{
+							cin>>t;
+						}while(!strchr("ynYN",t));
+						if(strchr("Yy",t)){
+							if(c->getScr()<HOB_C_SCRAP){
+								cout<<"Not enough resources.\n";
+							}else{
+								c->setScr(c->getScr()-HOB_C_SCRAP);
+								c->build(HOB_TYPE);
 							}
 						}
 					}
