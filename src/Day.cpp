@@ -120,6 +120,7 @@ void Day::projInp(int* a){
 		do{
 			cin>>t;
 
+			//NEW PROJECT
 			if(strchr("nN",t)){
 				cout<<"Costs:\n";
 				cout<<"Turret: "<< TUR_C_SCRAP<<" scrap and "<<TUR_C_WEAPONS<<" weapons.\n";
@@ -164,6 +165,8 @@ void Day::projInp(int* a){
 				}while(!strchr("tbcTBC",t));
 			}
 
+			//ASSIGN
+			//To be implemented
 
 		}while(!strchr("nacNAC",t));
 
