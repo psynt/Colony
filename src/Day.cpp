@@ -129,11 +129,18 @@ void Day::projInp(int* a){
 					cin>>t;
 
 					if(strchr("tT",t)){
+						cout<<"Confirm new Turret project (y/n).\n";
 						do{
 							cin>>t;
 						}while(!strchr("ynYN",t));
 						if(strchr("Yy",t)){
-							c->build(TUR_TYPE);
+							if(c->getScr()<TUR_C_SCRAP || c->getWep()<TUR_C_WEAPONS){
+								cout<<"Not enough resources.\n";
+							}else{
+								c->setScr(c->getScr()-TUR_C_SCRAP);
+								c->setWep(c->getWep()-TUR_C_WEAPONS);
+								c->build(TUR_TYPE);
+							}
 						}
 					}
 
