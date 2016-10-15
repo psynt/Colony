@@ -24,13 +24,13 @@ const int INITIAL_TURRETS = 0;
 const int ACTIVITIES = 3;
 
 //chances to find stuff in %
-	const int SEARCHABLES = 6;		// # of different resources able to be found when searching
-	const int FIND_RAT = 40;
-	const int FIND_MED = 15;
-	const int FIND_WEAP = 10;
-	const int FIND_UNC = 50;
-	const int FIND_SCR = 30;
-	const int FIND_SURV = 5;
+const int SEARCHABLES = 6;		// # of different resources able to be found when searching
+const int FIND_RAT = 40;
+const int FIND_MED = 15;
+const int FIND_WEAP = 10;
+const int FIND_UNC = 50;
+const int FIND_SCR = 30;
+const int FIND_SURV = 5;
 
 //chance of random events in %
 const int EVENT_PARTY_JOIN = 5;
@@ -45,7 +45,7 @@ const int TURRET_SHOOT = 60;	// % chance for turret to shoot again recursively
 
 //cooking details
 const int UNC_FOOD_CONV = 3;	// rations made from 1 uncooked food
-const int HOB_COOK_SPEED=1;		// AutoHob cooked food per day
+const int HOB_COOK_SPEED = 1;	// AutoHob cooked food per day
 const int COOK_SPEED = 2;		// maximum uncooked food cooked by each cook
 
 //Projects
@@ -68,9 +68,9 @@ const int COOK_SPEED = 2;		// maximum uncooked food cooked by each cook
 	const int RAD_MAX_T = 800;
 	const int RAD_MIN_T = 200;
 	//QuickConstructor
-#define TURRET TURRET_N,TUR_TIME,TUR_TYPE
-#define AUTO_HOB HOB_N,HOB_TIME,HOB_TYPE
-#define RADIO RADIO_N,RAD_MIN_T+rand()%RAD_MAX_T,RAD_TYPE
+#define TURRET TURRET_N, TUR_TIME, TUR_TYPE
+#define AUTO_HOB HOB_N, HOB_TIME, HOB_TYPE
+#define RADIO RADIO_N, RAD_MIN_T + rand() % RAD_MAX_T, RAD_TYPE
 
 
 
