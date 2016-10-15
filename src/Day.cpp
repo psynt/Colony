@@ -55,11 +55,13 @@ void Day::printStatus_init(){
 	grammar = (turret == 1) ? "" : "s";
 	cout << "You have " << turret << " turret" << grammar << ".\n";
 
-	cout << "\n";
+	if(c->getNoPr()>0){
 
-	cout << "Current projects:\n";
-	string s=c->printProjects();
-	cout << s;
+		cout << "\n";
+
+		cout << "Current projects:\n";
+		cout << c->printProjects();
+	}
 
 	cout << "\n";
 

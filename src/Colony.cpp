@@ -25,7 +25,7 @@ Colony::Colony(int r, int m, int u, int w, int p, int sc, int c, int t, int d, i
 		cout<<"made vector, pushing Radio"<<endl;
 	}
 
-	projects->push_back(Radio::giveRadio());
+	//projects->push_back(Radio::giveRadio());
 	if(DEBUG){
 		//cout<<(new Project(RADIO))->toString()<<endl;
 		cout<<"pushed Radio"<<endl;
