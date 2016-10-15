@@ -116,8 +116,8 @@ void Day::projInp(int* a){
 			if(t=='N' || t=='n') return;
 		}while(t!='y' && t!='Y');
 
-		cout<<"New project(n), assign workers to current projects(a), or cancel(c)?\n";
 		do{
+			cout<<"New project(n), assign workers to current projects(a), or cancel(c)?\n";
 			cin>>t;
 
 			//NEW PROJECT
@@ -148,7 +148,7 @@ void Day::projInp(int* a){
 
 					//AUTO_HOB
 					if(strchr("bB",t)){
-						cout<<"Confirm new Cookbot project (y/n).\n";
+						cout<<"Confirm new CookBot project (y/n).\n";
 						do{
 							cin>>t;
 						}while(!strchr("ynYN",t));
@@ -165,8 +165,7 @@ void Day::projInp(int* a){
 				}while(!strchr("tbcTBC",t));
 			}
 
-			//ASSIGN
-			//To be implemented
+			// TODO: ASSIGN
 
 		}while(!strchr("nacNAC",t));
 
