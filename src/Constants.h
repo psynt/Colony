@@ -60,7 +60,7 @@ const int COOK_SPEED = 2;		// maximum uncooked food cooked by each cook
 	//Costs
 	const int TUR_C_SCRAP = 50;
 	const int TUR_C_WEAPONS = 2;
-	const int HOB_C = 10;
+	const int HOB_C_SCRAP = 10;
 //	const int RADIO_C = 25;
 	//Time
 	const int TUR_TIME = 20;

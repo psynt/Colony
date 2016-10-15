@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <string>
+#include <cstring>
 #include "Constants.h"
 
 using namespace std;
@@ -103,6 +104,47 @@ void Day::morningEvent() {
 void Day::eveningEvent() {
 	// a random event may happen after the day's events
 	// e.g. morale boost gets members to do something productive before bed
+}
+
+void Day::projInp(int* a){
+	char t;
+	do{
+		cout<<"Do you want to want to change project status? (y/n)\n";
+
+		do{
+			cin >> t;
+			if(t=='N' || t=='n') return;
+		}while(t!='y' && t!='Y');
+
+		cout<<"New project(n), assign workers to current projects(a), or cancel(c)?\n";
+		do{
+			cin>>t;
+
+			if(strchr("nN",t)){
+				cout<<"Costs:\n";
+				cout<<"Turret: "<< TUR_C_SCRAP<<" scrap and "<<TUR_C_WEAPONS<<" weapons.\n";
+				cout<<"Cookbot: "<<HOB_C_SCRAP << " scrap.\n";
+				cout<<"Choose new project: Turret (t), cookbot(b), or cancel(c).\n";
+				do{
+					cin>>t;
+
+					if(strchr("tT",t)){
+						do{
+							cin>>t;
+						}while(!strchr("ynYN",t));
+						if(strchr("Yy",t)){
+							c->build(TUR_TYPE);
+						}
+					}
+
+				}while(!strchr("tbcTBC",t));
+			}
+
+
+		}while(!strchr("nacNAC",t));
+
+	}while(true);
+
 }
 
 void Day::EndDay(){
@@ -410,6 +452,9 @@ void Day::search(int people,int* search_arr){
 }
 
 void Day::getInput(int* a){
+
+
+
 	int cook, prepare, search;
 	int total;
 	int healthy = c->getPeople() - c->getSick();
