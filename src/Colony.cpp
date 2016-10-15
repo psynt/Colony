@@ -28,8 +28,10 @@ Colony::Colony(int r, int m, int u, int w, int p, int sc, int c, int t, int d, i
 //	cookBots = INITIAL_COOKBOTS;
 //	turrets = INITIAL_TURRETS;
 //	projects=new std::vector<Project*>(10);
-}
+//}
+void Colony::build(int type){
 
+}
 
 void Colony::operator+=(Colony *c){
 	medicine+=c->medicine;
