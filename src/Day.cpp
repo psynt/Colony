@@ -296,6 +296,7 @@ void Day::printStatus_result(){
 	int turret = c->getTur();
 	int zombies = 0;
 	int i = zmult(c->getDay());
+	int totalStrength;
 
 	while (i--) {
 		zombies += (rand() % c->getDay());
@@ -306,9 +307,12 @@ void Day::printStatus_result(){
 	cout << "You have " << healthy << " healthy members, ";
 	cout << weapon << " weapon(s), ";
 	cout << barricade << " barricade(s) and ";
-	cout << turret << " turret(s).";
+	cout << turret << " turret(s).\n";
 
-	cout << "\n\n" << zombies << " zombies attack in the night.\n";
+	if (DEBUG)
+		cout << "[DEBUG] Total strength: " << totalStrength << "\n";
+
+	cout << "\n" << zombies << " zombies attack in the night.\n";
 
 	bool brokenIn=false;
 	int turretKills = 0;
@@ -326,6 +330,10 @@ void Day::printStatus_result(){
 	if (turretKills > 0) cout << "Your turrets automatically gun down " << turretKills << " zombies.\n";
 
 	int res = healthy + min(c->getWep(), healthy) + c->getBar() + turretKills - zombies;
+
+	if (DEBUG)
+		cout << "\n[DEBUG] Resolution: " << res << "\n";
+
 	if (res == 0 || res == 1){
 		cout << "You barely manage to hold them back.\n";
 	}
