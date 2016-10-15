@@ -123,7 +123,7 @@ void Day::projInp(int* a){
 			if(strchr("nN",t)){
 				cout<<"Costs:\n";
 				cout<<"Turret: "<< TUR_C_SCRAP<<" scrap and "<<TUR_C_WEAPONS<<" weapons.\n";
-				cout<<"Cookbot: "<<HOB_C_SCRAP << "scrap.\n";
+				cout<<"Cookbot: "<<HOB_C_SCRAP << " scrap.\n";
 				cout<<"Choose new project: Turret (t), cookbot(b), or cancel(c).\n";
 				do{
 					cin>>t;
