@@ -21,7 +21,7 @@ public:
 	void getInput(int* i);
 	void zombieBreakIn(int zombie);
 	void search(int people,int *k);
-	int cookFood(int people);
+	int cookFood(int workers, int speed);
 };
 
 #endif /* DAY_H_ */
