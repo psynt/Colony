@@ -188,6 +188,7 @@ int Day::zmult(int day){
 void Day::printStatus_find(){
 
 	if (c->getSick() < c->getPeople()) {
+		string grammar;
 		int *inp = new int[ACTIVITIES];
 		inp[0] = 0;
 		inp[1] = 0;
@@ -205,12 +206,15 @@ void Day::printStatus_find(){
 			*c += f;
 
 			cout << "Your search party finds: \n";
-			cout << "\t" << k[0] << " ration(s) of food\n";
+			grammar = (k[0] == 1) ? "" : "s";
+			cout << "\t" << k[0] << " ration" << grammar << " of food\n";
 			cout << "\t" << k[1] << " uncooked food\n";
-			cout << "\t" << k[2] << " weapon(s)\n";
+			grammar = (k[2] == 1) ? "" : "s";
+			cout << "\t" << k[2] << " weapon" << grammar << "\n";
 			cout << "\t" << k[3] << " medicine\n";
 			cout << "\t" << k[4] << " scrap\n";
-			cout << "\t" << k[5] << " survivor(s)\n";
+			grammar = (k[5] == 1) ? "" : "s";
+			cout << "\t" << k[5] << " survivor" << grammar << "\n";
 
 			delete f;
 		}
@@ -218,14 +222,15 @@ void Day::printStatus_find(){
 		if (inp[1] > 0) {
 			c->setBar(c->getBar() + inp[1]);
 
-			cout << "Your building party constructs " << inp[1] << " new barricades.\n";
+			grammar = (inp[1] == 1) ? "" : "s";
+			cout << "Your building party constructs " << inp[1] << " new barricade" << grammar << ".\n";
 		}
 
 		if (c->getCookB() > 0) {
 			int autoFood = cookFood(c->getCookB(), HOB_COOK_SPEED);
 			c->setRat(c->getRat() + autoFood);
 
-			cout << "Your cooking robots automatically cook " << autoFood << " rations of food, using " << autoFood / UNC_FOOD_CONV << " uncooked food.\n";
+			cout << "Your cooking robots automatically produce " << autoFood << " rations of food, using " << autoFood / UNC_FOOD_CONV << " uncooked food.\n";
 		}
 
 		if (inp[2] > 0) {
