@@ -38,7 +38,7 @@ string Project::toString(){
 	if(type != 0){
 		os << name;
 		if(isFinished()){
-			os << " is finished.";
+			os << " has been completed.";
 		}else{
 			os << " should take " << timeLeft() << "longer.";
 		}

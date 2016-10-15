@@ -12,11 +12,7 @@
 using namespace std;
 
 Radio::Radio() : Project(RADIO){
-	//using Project::Project;
-	//Project p(RADIO);
-	//super(RADIO);
-	//using Project::Project(RADIO);
-
+	//important constructor
 }
 
 Radio* Radio::r;
