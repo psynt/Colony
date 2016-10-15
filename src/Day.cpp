@@ -58,8 +58,8 @@ void Day::printStatus_init(){
 	cout << "\n";
 
 	cout << "Current projects:\n";
-
-
+	string s=c->printProjects();
+	cout << s;
 
 	cout << "\n";
 

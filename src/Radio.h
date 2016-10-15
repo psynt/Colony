@@ -15,8 +15,8 @@ class Radio: public Project { //gonna try a singleton pattern
 	static Radio* r;
 	static void reset();
 	Radio();
-public:
 	virtual ~Radio();
+public:
 	typedef Project super;
 	static std::string toString();
 	static Radio* giveRadio();

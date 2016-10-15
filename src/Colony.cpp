@@ -4,6 +4,7 @@
 #include "Constants.h"
 #include <sstream>
 #include <string>
+#include <iostream>
 using namespace std;
 
 Colony::Colony(int r, int m, int u, int w, int p, int sc, int c, int t, int d, int si, int b){
@@ -18,19 +19,36 @@ Colony::Colony(int r, int m, int u, int w, int p, int sc, int c, int t, int d, i
 	scrap = sc;
 	cookBots = c;
 	turrets = t;
-	projects=new vector<Project*>(10);
+	projects=new vector<Project*>();
+
+	if(DEBUG){
+		cout<<"made vector, pushing Radio"<<endl;
+	}
+
 	projects->push_back(Radio::giveRadio());
+	if(DEBUG){
+		//cout<<(new Project(RADIO))->toString()<<endl;
+		cout<<"pushed Radio"<<endl;
+	}
 }
 
 string Colony::printProjects(){
 	ostringstream os;
 
 	for(size_t i=0 ; i<projects->size() ; i++){
+		if(DEBUG){
+			cout<<"Project "<<i<<" of "<<projects->size() << endl;
+		}
 		os << i+1 << ": " << projects->at(i)->toString() << "\n";
 
 	}
+	if(DEBUG){
+		cout<<"Got here"<<endl;
+	}
 
-	return os.str();
+	string s=os.str();
+
+	return s;
 }
 
 string Colony::progressProjects(int *a, int n){
@@ -42,7 +60,7 @@ string Colony::progressProjects(int *a, int n){
 
 string Colony::finishedProjects(){
 	ostringstream os;
-	vector<Project*>* np=new vector<Project*>(projects->size());
+	vector<Project*>* np=new vector<Project*>();
 	for (size_t i = 0; i < projects->size() ; ++i) {
 		if(projects->at(i)->isFinished()){
 			os<<"Project " << i+1 << ", working on " << projects->at(i)->toString() <<" \n";
