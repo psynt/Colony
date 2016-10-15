@@ -17,13 +17,12 @@ protected:
 	int time;
 	int duration;
 public:
-//	Project();
 	Project(string,int,int);
 	virtual ~Project();
 	void advance(int);
 	int timeLeft();
 	bool isFinished();
-	std::string toString();
+	string toString();
 };
 
 #endif /* SRC_PROJECT_H_ */

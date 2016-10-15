@@ -2,6 +2,9 @@
 #include "Radio.h"
 #include "Project.h"
 #include "Constants.h"
+#include <sstream>
+#include <string>
+using namespace std;
 
 Colony::Colony(int r, int m, int u, int w, int p, int sc, int c, int t, int d, int si, int b){
 	medicine=m;
@@ -15,24 +18,25 @@ Colony::Colony(int r, int m, int u, int w, int p, int sc, int c, int t, int d, i
 	scrap = sc;
 	cookBots = c;
 	turrets = t;
-	projects=new std::vector<Project*>(10);
+	projects=new vector<Project*>(10);
 	projects->push_back(Radio::giveRadio());
 }
-//Colony::Colony() {
-//	this(INITIAL_FOOD,INITIAL_MEDICINE,INITIAL_UNCOOKED,INITIAL_WEAPONS,INITIAL_PEOPLE,INITIAL_SCRAP);
-//	medicine = INITIAL_MEDICINE;
-//	rations = INITIAL_FOOD;
-//	weapons = INITIAL_WEAPONS;
-//	day = 1;
-//	uncooked = INITIAL_UNCOOKED;
-//	sick = INITIAL_SICK;
-//	people = INITIAL_PEOPLE;
-//	barricade = INITIAL_BARRICADES;
-//	scrap = INITIAL_SCRAP;
-//	cookBots = INITIAL_COOKBOTS;
-//	turrets = INITIAL_TURRETS;
-//	projects=new std::vector<Project*>(10);
-//}
+
+string Colony::printProjects(){
+	ostringstream os;
+
+	for(int i=0 ; i<getNoPr() ; i++){
+		os << i << ": " << projects->at(i)->toString() << "\n";
+
+	}
+
+	return os.str();
+}
+
+string Colony::progressProjects(int *a, int n){
+
+}
+
 void Colony::build(int type){
 	if(type == TUR_TYPE){
 		projects->push_back(new Project(TURRET));
