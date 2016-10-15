@@ -29,6 +29,7 @@ public:
 	int getScr();
 	int getCookB();
 	int getTur();
+	int getNoPr();
 	void build(int type);
 	void incDay();
 	void setPeople(int);

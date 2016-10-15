@@ -17,6 +17,10 @@ class Project {
 public:
 	Project(std::string*,int,int);
 	virtual ~Project();
+	void advance(int);
+	int timeLeft();
+	bool isFinished();
+	std::string toString();
 };
 
 #endif /* SRC_PROJECT_H_ */

@@ -13,6 +13,7 @@ Colony::Colony(int r, int m, int u, int w, int p, int sc, int c, int t, int d, i
 	cookBots = c;
 	turrets = t;
 	projects=new std::vector<Project*>(10);
+	projects->push_back(new Project(RADIO));
 }
 //Colony::Colony() {
 //	this(INITIAL_FOOD,INITIAL_MEDICINE,INITIAL_UNCOOKED,INITIAL_WEAPONS,INITIAL_PEOPLE,INITIAL_SCRAP);
@@ -30,7 +31,15 @@ Colony::Colony(int r, int m, int u, int w, int p, int sc, int c, int t, int d, i
 //	projects=new std::vector<Project*>(10);
 //}
 void Colony::build(int type){
-
+	if(type == TUR_TYPE){
+		projects->push_back(new Project(TURRET));
+	}
+	if(type == HOB_TYPE){
+		projects->push_back(new Project(AUTO_HOB));
+	}
+}
+int Colony::getNoPr(){
+	return projects->size();
 }
 
 void Colony::operator+=(Colony *c){

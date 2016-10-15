@@ -56,6 +56,13 @@ void Day::printStatus_init(){
 
 	cout << "\n";
 
+	cout << "Current projects:\n";
+	for(int i=0 ; i<c->getNoPr() ; i++){
+
+	}
+
+	cout << "\n";
+
 	grammar = (healthy == 1) ? " is" : "s are";
 	cout << "The " << healthy << " healthy member" << grammar << " ready to work.\n";
 }

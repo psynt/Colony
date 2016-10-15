@@ -48,22 +48,27 @@ const int COOK_SPEED = 2;		// maximum uncooked food cooked by each cook
 
 //Projects
 	//Type
+	const int RAD_TYPE = 0;
 	const int TUR_TYPE = 1;
 	const int HOB_TYPE = 2;
 	//Names
+	const std::string RADIO_N = "Radio";
 	const std::string TURRET_N = "Turret";
 	const std::string HOB_N = "Cooking Robot";
 	//Costs
-	const int TUR_C_SCRAP = 8;
+	const int TUR_C_SCRAP = 50;
 	const int TUR_C_WEAPONS = 2;
-	const int HOB_C = 4;
-//	const int COST_RADIO = 25;
+	const int HOB_C = 10;
+//	const int RADIO_C = 25;
 	//Time
 	const int TUR_TIME = 20;
 	const int HOB_TIME = 5;
+	const int RAD_MAX_T = 800;
+	const int RAD_MIN_T = 200;
 	//QuickConstructor
 #define TURRET TURRET_N,TUR_TIME,TUR_TYPE
 #define AUTO_HOB HOB_N,HOB_TIME,HOB_TYPE
+#define RADIO RADIO_N,RAD_MIN_T+rand()%RAD_MAX_T,RAD_TYPE
 
 
 
