@@ -191,7 +191,7 @@ void Day::printStatus_find(){
 
 	if (c->getSick() < c->getPeople()) {
 		string grammar;
-		int *inp = new int[ACTIVITIES];
+		int* inp = new int[ACTIVITIES];
 		inp[0] = 0;
 		inp[1] = 0;
 		inp[2] = 0;
@@ -199,7 +199,7 @@ void Day::printStatus_find(){
 		getInput(inp);
 
 		if (inp[0] > 0) {
-			int* k =new int[SEARCHABLES];
+			int* k = new int[SEARCHABLES];
 			search(inp[0], k);
 
 //									r	  m		u	  w		p	  sc   c  t  d  si b
@@ -248,11 +248,23 @@ void Day::printStatus_find(){
 
 void Day::zombieBreakIn(int zombies)
 {
-	int p = c->getPeople();
-	p -= zombies;
-	if (p < 0) p = 0;
-	cout << c->getPeople() - p << " members of the colony perish.\n";
-	c->setPeople(p);
+	int people = c->getPeople();
+	string grammar1, grammar2;
+
+	people -= zombies;
+	if (people < 0) people = 0;
+
+	if (people == 1) {
+		grammar1 = "";
+		grammar2 = "es";
+	}
+	else {
+		grammar1 = "s";
+		grammar2 = "";
+	}
+
+	cout << c->getPeople() - people << " member" << grammar1 << " of the colony perish" << grammar2 << ".\n";
+	c->setPeople(people);
 }
 
 int Day::cookFood(int workers, int speed)
