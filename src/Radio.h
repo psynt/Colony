@@ -12,14 +12,14 @@
 
 class Radio: public Project { //gonna try a singleton pattern
 	using Project::Project;
-	static Radio* r;
+	static Radio r;
 	static void reset();
 	Radio();
-	virtual ~Radio();
 public:
+	virtual ~Radio();
 	typedef Project super;
 	static std::string toString();
-	static Radio* giveRadio();
+	static Radio giveRadio();
 };
 
 #endif /* SRC_RADIO_H_ */
