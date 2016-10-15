@@ -221,13 +221,18 @@ void Day::printStatus_find(){
 			cout << "Your building party constructs " << inp[1] << " new barricades.\n";
 		}
 
-		if (inp[2] > 0) {
-			int u = c->getUnc();
-			int i = cookFood(inp[2], u);
-			c->setRat(c->getRat() + i);
-			c->setUnc(u);
+		if (c->getCookB() > 0) {
+			int autoFood = cookFood(c->getCookB(), HOB_COOK_SPEED);
+			c->setRat(c->getRat() + autoFood);
 
-			cout << "Your cooking party produces " << i << " rations of food, using " << i / UNC_FOOD_CONV << " uncooked food.\n";
+			cout << "Your cooking robots automatically cook " << autoFood << " rations of food, using " << autoFood / UNC_FOOD_CONV << " uncooked food.\n";
+		}
+
+		if (inp[2] > 0) {
+			int manualFood = cookFood(inp[2], COOK_SPEED);
+			c->setRat(c->getRat() + manualFood);
+
+			cout << "Your cooking party produces " << manualFood << " rations of food, using " << manualFood / UNC_FOOD_CONV << " uncooked food.\n";
 		}
 
 		cout << "\n";
@@ -243,20 +248,22 @@ void Day::zombieBreakIn(int zombies)
 	c->setPeople( p );
 }
 
-int Day::cookFood(int people, int &uncooked)
+int Day::cookFood(int workers, int speed)
 {
+	int uncooked = c->getUnc();
+
 	if (DEBUG)
-		cout << "cookFood() called with " << people << " people and " << uncooked << " uncooked.\n";
+		cout << "cookFood() called with " << workers << " workers, " << speed << " speed and " << uncooked << " uncooked food.\n";
 
 	int cooked = 0;
 
-	cooked = min(COOK_SPEED * people, uncooked);
+	cooked = min(speed * workers, uncooked);
 	uncooked -= cooked;
+	c->setUnc(uncooked);
 	cooked *= UNC_FOOD_CONV;
 
-	if(DEBUG){
-		cout << people << " people cooked " << cooked << " food using " << cooked / UNC_FOOD_CONV << " uncooked food.\n";
-	}
+	if(DEBUG)
+		cout << workers << " workers cooked " << cooked << " food using " << cooked / UNC_FOOD_CONV << " uncooked food.\n";
 
 	return cooked;
 }
@@ -271,13 +278,12 @@ void Day::printStatus_result(){
 	int zombies = 0;
 	int i = zmult(c->getDay());
 
-	while(i--){
+	while (i--) {
 		zombies += (rand() % c->getDay());
 	}
 
 
 	cout << "Night falls.\n";
-	if(1>rand()%100) cout<<"Joey catches it.\n";
 	cout << "You have " << healthy << " healthy members, ";
 	cout << weapon << " weapon(s), ";
 	cout << barricade << " barricade(s) and ";
