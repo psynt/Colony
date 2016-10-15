@@ -241,11 +241,11 @@ void Day::printStatus_find(){
 
 void Day::zombieBreakIn(int zombies)
 {
-	int p=c->getPeople();
-	p-=zombies;
-	if(p<0) p=0;
-	cout << c->getPeople()-p << " members of the colony perish.\n";
-	c->setPeople( p );
+	int p = c->getPeople();
+	p -= zombies;
+	if (p < 0) p = 0;
+	cout << c->getPeople() - p << " members of the colony perish.\n";
+	c->setPeople(p);
 }
 
 int Day::cookFood(int workers, int speed)
