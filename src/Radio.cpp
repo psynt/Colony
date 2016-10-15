@@ -1,10 +1,3 @@
-/*
- * Radio.cpp
- *
- *  Created on: Oct 15, 2016
- *      Author: nichita
- */
-
 #include "Radio.h"
 #include "Constants.h"
 #include <sstream>

@@ -1,9 +1,3 @@
-/*
- * Project.h
- *
- *  Created on: Oct 15, 2016
- *      Author: nichita
- */
 #include <string>
 using namespace std;
 #ifndef SRC_PROJECT_H_

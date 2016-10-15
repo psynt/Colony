@@ -1,10 +1,3 @@
-/*
- * Radio.h
- *
- *  Created on: Oct 15, 2016
- *      Author: nichita
- */
-
 #ifndef SRC_RADIO_H_
 #define SRC_RADIO_H_
 

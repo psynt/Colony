@@ -1,10 +1,3 @@
-/*
- * Project.cpp
- *
- *  Created on: Oct 15, 2016
- *      Author: nichita
- */
-
 #include "Project.h"
 #include <sstream>
 #include "Radio.h"
@@ -20,7 +13,7 @@ Project::Project(string t, int dur,int ty) {
 //Project::Project(){}
 
 Project::~Project() {
-	// TODO Auto-generated destructor stub
+	// important destructor
 }
 
 void Project::advance(int a){
