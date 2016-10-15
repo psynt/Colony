@@ -34,14 +34,13 @@ bool Project::isFinished(){
 }
 
 string Project::toString(){
+	if(type == 0) return Radio::toString();
 	ostringstream os;
-	if(type != 0){
-		os << name;
-		if(isFinished()){
-			os << " has been completed.";
-		}else{
-			os << " should take " << timeLeft() << "longer.";
-		}
+	os << name;
+	if(isFinished()){
+		os << " has been completed.";
+	}else{
+		os << " should take " << timeLeft() << " work units longer.";
 	}
 	return os.str();
 

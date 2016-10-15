@@ -57,12 +57,9 @@ void Day::printStatus_init(){
 
 	cout << "\n";
 
-	cout << "Current projects: \n";
-	for(int i = 0 ; i < c->getNoPr(); i++) {
-		// TODO: output current projects
-	}
-
-	if (c->getNoPr() == 0) cout << "None\n";
+	cout << "Current projects:\n";
+	string s=c->printProjects();
+	cout << s;
 
 	cout << "\n";
 
