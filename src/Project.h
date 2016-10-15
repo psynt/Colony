@@ -5,17 +5,20 @@
  *      Author: nichita
  */
 #include <string>
+using namespace std;
 #ifndef SRC_PROJECT_H_
 #define SRC_PROJECT_H_
 
 
 class Project {
+protected:
 	int type;
-	std::string* name;
+	string name;
 	int time;
 	int duration;
 public:
-	Project(std::string*,int,int);
+//	Project();
+	Project(string,int,int);
 	virtual ~Project();
 	void advance(int);
 	int timeLeft();

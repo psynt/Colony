@@ -1,7 +1,9 @@
 #include <string>
+#include <cstdlib>
+using namespace std;
 
-#ifndef CONSTANTS_H_
-#define CONSTANTS_H_
+#ifndef CONSTANTS_H_INCLUDED
+#define CONSTANTS_H_INCLUDED
 
 #define DEBUG 0
 
@@ -52,9 +54,9 @@ const int COOK_SPEED = 2;		// maximum uncooked food cooked by each cook
 	const int TUR_TYPE = 1;
 	const int HOB_TYPE = 2;
 	//Names
-	const std::string RADIO_N = "Radio";
-	const std::string TURRET_N = "Turret";
-	const std::string HOB_N = "Cooking Robot";
+#define RADIO_N "Radio"
+#define TURRET_N "Turret"
+#define HOB_N "Cooking Robot"
 	//Costs
 	const int TUR_C_SCRAP = 50;
 	const int TUR_C_WEAPONS = 2;

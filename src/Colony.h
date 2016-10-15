@@ -1,6 +1,6 @@
 #include <vector>
-#include "Constants.h"
 #include "Project.h"
+#include "Constants.h"
 
 #ifndef COLONY_H_INCLUDED
 #define COLONY_H_INCLUDED
@@ -15,7 +15,6 @@ class Colony {
 	std::vector<Project*> *projects;
 
 public:
-//	Colony();
 	Colony(int r=INITIAL_FOOD, int m=INITIAL_MEDICINE, int u=INITIAL_UNCOOKED, int w=INITIAL_WEAPONS, int p=INITIAL_PEOPLE, int sc=INITIAL_SCRAP, int c=0, int t=0, int d=1, int si=INITIAL_SICK, int b=INITIAL_BARRICADES);
 	virtual ~Colony();
 	int getPeople();

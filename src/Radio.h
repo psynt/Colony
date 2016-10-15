@@ -11,13 +11,14 @@
 #include "Project.h"
 
 class Radio: public Project { //gonna try a singleton pattern
-	Radio* r;
-	void reset();
+	using Project::Project;
+	static Radio* r;
+	static void reset();
 	Radio();
-	virtual ~Radio();
 public:
+	virtual ~Radio();
 	typedef Project super;
-	std::string toString();
+	static std::string toString();
 	static Radio* giveRadio();
 };
 

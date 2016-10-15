@@ -1,5 +1,4 @@
 #include "Constants.h"
-#include "Colony.h"
 #include "Day.h"
 
 #ifndef SRC_GAME_H_

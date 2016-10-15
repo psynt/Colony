@@ -9,13 +9,14 @@
 #include<sstream>
 using namespace std;
 
-Project::Project(string* t, int dur,int ty) {
+Project::Project(string t, int dur,int ty) {
 	name = t;
 	duration = dur;
 	time = 0;
 	type=ty;
 
 }
+//Project::Project(){}
 
 Project::~Project() {
 	// TODO Auto-generated destructor stub
@@ -35,8 +36,8 @@ bool Project::isFinished(){
 string Project::toString(){
 	ostringstream os;
 	if(type != 0){
-		os << *name;
-		if(isFinished){
+		os << name;
+		if(isFinished()){
 			os << " is finished.";
 		}else{
 			os << " should take " << timeLeft() << "longer.";

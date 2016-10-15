@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Game.h"
+#include "Day.h"
 using namespace std;
 
 Game::Game(Colony* c, Day* d) {

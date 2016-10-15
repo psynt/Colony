@@ -1,4 +1,7 @@
 #include "Colony.h"
+#include "Radio.h"
+#include "Project.h"
+#include "Constants.h"
 
 Colony::Colony(int r, int m, int u, int w, int p, int sc, int c, int t, int d, int si, int b){
 	medicine=m;
@@ -13,7 +16,7 @@ Colony::Colony(int r, int m, int u, int w, int p, int sc, int c, int t, int d, i
 	cookBots = c;
 	turrets = t;
 	projects=new std::vector<Project*>(10);
-	projects->push_back(new Project(RADIO));
+	projects->push_back(Radio::giveRadio());
 }
 //Colony::Colony() {
 //	this(INITIAL_FOOD,INITIAL_MEDICINE,INITIAL_UNCOOKED,INITIAL_WEAPONS,INITIAL_PEOPLE,INITIAL_SCRAP);
