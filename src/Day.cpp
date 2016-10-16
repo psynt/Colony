@@ -33,7 +33,6 @@ void Day::printStatus_init(){
 	int cookBot = c->getCookB();
 	int turret = c->getTur();
 	int healthy = member - sick;
-	int scrap=c->getScr();
 
 	string grammar;
 
@@ -49,7 +48,6 @@ void Day::printStatus_init(){
 	cout << "You have " << medicine << " medicine.\n";
 	cout << "You have " << scrap << " scrap.\n";
 	grammar = (barricade == 1) ? "" : "s";
-	cout << "You have " << scrap << " scrap.\n";
 	cout << "You have " << barricade << " barricade" << grammar << ".\n";
 	grammar = (cookBot == 1) ? "" : "s";
 	cout << "You have " << cookBot << " cooking robot" << grammar << ".\n";
@@ -381,51 +379,51 @@ void Day::search(int people,int* search_arr){
 }
 
 void Day::getInput(int* a){
-	int cook, prepare, search;
-	int total;
-	int healthy = c->getPeople() - c->getSick();
-	char t;
+    int cook, prepare, search;
+    int total;
+    int healthy = c->getPeople() - c->getSick();
+    char t;
 
-	do {
-		cout << "Search: ";
-		cin >> search;
-		cout << "Prepare defences: ";
-		cin >> prepare;
-		cout << "Cook: ";
-		cin >> cook;
+    do {
+        cout << "Search: ";
+        cin >> search;
+        cout << "Prepare defences: ";
+        cin >> prepare;
+        cout << "Cook: ";
+        cin >> cook;
 
-		cout << "\n";
+        cout << "\n";
 
-		total = search + prepare + cook;
+        total = search + prepare + cook;
 
-		if (search < 0 || prepare < 0 || cook < 0) {
-			cout << "Bad input. Reconsider.\n";
-			continue;
-		}
-		if (total > healthy){
-			cout << "Not enough people. Reconsider.\n";
-			continue;
-		}
+        if (search < 0 || prepare < 0 || cook < 0) {
+            cout << "Bad input. Reconsider.\n";
+            continue;
+        }
+        if (total > healthy){
+            cout << "Not enough people. Reconsider.\n";
+            continue;
+        }
 
-		cout << search << " searching, "<< prepare << " defending, " << cook << " cooking food.\n";
-		if (total < healthy)
-			cout << healthy - total << " member(s) not assigned to a task.\n";
+        cout << search << " searching, "<< prepare << " defending, " << cook << " cooking food.\n";
+        if (total < healthy)
+            cout << healthy - total << " member(s) not assigned to a task.\n";
 
-		cout << "Are you sure? (y/n)\n";
-		cin >> t;
-		cout << "\n\n";
+        cout << "Are you sure? (y/n)\n";
+        cin >> t;
 
-	} while (t != 'y' && t != 'Y');
+    } while (t != 'y' && t != 'Y');
+    cout << "\n\n";
 
-	a[0] = search;
-	a[1] = prepare;
-	a[2] = cook;
+    a[0] = search;
+    a[1] = prepare;
+    a[2] = cook;
 }
 
 Day::Day(Colony *c) {
-	this->c=c;
+    this->c=c;
 }
 
 Day::~Day() {
-	delete c;
+    delete c;
 }
