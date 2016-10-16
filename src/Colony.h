@@ -12,7 +12,7 @@ class Colony {
 	int rations, medicine, uncooked, weapons, barricade, scrap;
 	int people, sick;
 	int cookBots, turrets;
-	std::vector<Project> *projects;
+	std::vector<Project> **projects;
 	string finishedProjects();
 public:
 	Colony(int r=INITIAL_FOOD, int m=INITIAL_MEDICINE, int u=INITIAL_UNCOOKED, int w=INITIAL_WEAPONS, int p=INITIAL_PEOPLE, int sc=INITIAL_SCRAP,
@@ -30,7 +30,7 @@ public:
 	int getCookB();
 	int getTur();
 	int getNoPr();
-	void build(int type);
+	void build(int type,int number);
 	void incDay();
 	void setPeople(int);
 	void setSick(int);

@@ -176,11 +176,12 @@ void Day::projInp(int* a,int p){
 	string t;
 	do{
 
-		cout<<"Start new projects and/or assign" << p << "people to active ones.\n";
+		cout<<"Start new projects and/or assign " << p << " people to active ones.\n";
 		cout<<"On a single line, input your command in the form (n) for new projects, (w) for assign workers to projects, (t) for turret, (b) for cookbot, (r) for radio.\n";
 		cout<<"e.g. nt2b3wt10b5r20 adds 2 new turret projects, 3 new cookbot projects and assigns 10 workers to turrets, 5 workers to bots and 20 workers on the radio.\n";
 		cout<<"Note that you may not start a new radio project, and also, you may only use as many people as you assigned to projects.\n";
 
+		cin>>ws;
 		getline(cin,t);
 		good=false;
 		int state=0;//0 default 1 new 2 work
@@ -191,12 +192,15 @@ void Day::projInp(int* a,int p){
 		for(size_t i=0 ; i<t.length() ; i++){
 			if(strchr("0123456789",t[i])){
 				nr=nr*10+(t[i]-'0');
+
 			} else
 			if(strchr("nN",t[i])){
 				newstate=1;
+				if (DEBUG) cout<<"NewState = "<<newstate<<"\n";
 			} else
 			if(strchr("Tt",t[i])){
 				newstate=state*10+1;
+				if (DEBUG) cout<<"NewState = "<<newstate<<"\n";
 			} else
 			if(strchr("Ww",t[i])){
 				newstate=2;
@@ -210,13 +214,14 @@ void Day::projInp(int* a,int p){
 				cout<<"Did i not make myself clear?\n";
 				break;
 			}
-			if(state!=newstate && nr!=0){
+			if(i == t.length()-1 || (state!=newstate && nr!=0)){
+				if (DEBUG) cout<<"NewState = "<<newstate<<"\n";
 				int s1=state/10;
 				state%=10;
-				if(s1==1 && state==0){
-					cout<<"Nonononono! No building new radios! You must try to repair the one you have.\n";
-					break;
-				}
+//				if(s1==1 && state==0){
+//					cout<<"Nonononono! No building new radios! You must try to repair the one you have.\n";
+//					break;
+//				}
 				if(s1==2){
 					a[state]=nr;
 					up+=nr;
@@ -231,18 +236,22 @@ void Day::projInp(int* a,int p){
 						uw+=TUR_C_WEAPONS*nr;
 					}
 					build[state-1]+=nr;
-
+					if(DEBUG) cout<<"Nr = "<<nr<<"\n";
 				}
 				nr=0;
 			}
+			state=newstate;
 		}
 		if(up<=p && uw<=c->getWep() && us<=c->getScr()){
+			if(DEBUG){
+				cout<<"\nInput accepted.\n";
+				cout<<"Build "<<build[0]<<" tur, "<<build[1]<<" hob.\n";
+				cout<<"Assign "<<a[0]<<" , "<<a[1] << " , " <<a[2]<<"\n";
+			}
 			c->setWep(c->getWep()-uw);
 			c->setScr(c->getScr()-us);
 			for(int i=0 ; i<POSSIBLE_PROJECTS-1 ; i++){
-				while(build[i]--){
-					c->build(i+1);
-				}
+				c->build(i+1,build[i]);
 			}
 			good=true;
 		}else{
