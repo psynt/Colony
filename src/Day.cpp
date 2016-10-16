@@ -234,6 +234,8 @@ void Day::projInp(int* a,int p){
 			}
 		}
 		if(up<=p && uw<=c->getWep() && us<=c->getScr()){
+			c->setWep(c->getWep()-uw);
+			c->setScr(c->getScr()-us);
 			good=true;
 		}else{
 			cout<<"I don't like what you told me. I won't mention your insubordination to anybody, but please try to give me better input next time.\n";
@@ -330,9 +332,15 @@ void Day::printStatus_find(){
 	if (c->getSick() < c->getPeople()) {
 		string grammar;
 		int* inp = new int[ACTIVITIES];
+		int* proj= new int[POSSIBLE_PROJECTS];
 		for(int i=0 ; i<ACTIVITIES ; i++) inp[i]=0;
+		for(int i=0 ; i<POSSIBLE_PROJECTS ; i++) proj[i]=0;
 
 		getInput(inp);
+
+		if(inp[3]>0){
+			projInp(proj,inp[3]);
+		}
 
 		if (inp[0] > 0) {
 			int* k = new int[SEARCHABLES];
@@ -355,6 +363,7 @@ void Day::printStatus_find(){
 			cout << "\t" << k[5] << " survivor" << grammar << "\n";
 
 			delete f;
+			delete k;
 		}
 
 		if (inp[1] > 0) {
@@ -379,6 +388,8 @@ void Day::printStatus_find(){
 		}
 
 		cout << "\n";
+		delete inp;
+		delete proj;
 	}
 }
 
@@ -561,13 +572,13 @@ void Day::getInput(int* a){
 		cin >> prepare;
 		cout << "Cook: ";
 		cin >> cook;
-		cout << "Work on projects: ";
+		cout << "Work on projects: ";cin>>proj;
 
 		cout << "\n";
 
-		total = search + prepare + cook;
+		total = search + prepare + cook + proj;
 
-		if (search < 0 || prepare < 0 || cook < 0) {
+		if (search < 0 || prepare < 0 || cook < 0 || proj < 0) {
 			cout << "Bad input. Reconsider.\n";
 			continue;
 		}
@@ -576,7 +587,7 @@ void Day::getInput(int* a){
 			continue;
 		}
 
-		cout << search << " searching, "<< prepare << " defending, " << cook << " cooking food.\n";
+		cout << search << " searching, "<< prepare << " defending, " << cook << " cooking food and "<< proj <<" working on projects. \n";
 		if (total < healthy)
 			cout << healthy - total << " member(s) not assigned to a task.\n";
 
@@ -589,6 +600,7 @@ void Day::getInput(int* a){
 	a[0] = search;
 	a[1] = prepare;
 	a[2] = cook;
+	a[3] = proj;
 }
 
 Day::Day(Colony *c) {

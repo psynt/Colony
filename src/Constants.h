@@ -49,6 +49,7 @@ const int HOB_COOK_SPEED = 1;	// AutoHob cooked food per day
 const int COOK_SPEED = 2;		// maximum uncooked food cooked by each cook
 
 //Projects
+	const int POSSIBLE_PROJECTS = 3;
 	//Type
 	const int RAD_TYPE = 0;
 	const int TUR_TYPE = 1;
