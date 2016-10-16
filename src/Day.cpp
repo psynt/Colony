@@ -186,7 +186,8 @@ void Day::projInp(int* a,int p){
 		int state=0;//0 default 1 new 2 work
 					//11 new turrets 12 new bots
 					//21 work turrets 22 work bots 20 work radio
-		int nr=0,newstate=0,up=0,us=0,uw=0;
+		int nr=0,newstate=0,up=0,us=0,uw=0,build[POSSIBLE_PROJECTS-1];
+		for(int i=0 ; i<POSSIBLE_PROJECTS-1 ; i++) build[i]=0;
 		for(size_t i=0 ; i<t.length() ; i++){
 			if(strchr("0123456789",t[i])){
 				nr=nr*10+(t[i]-'0');
@@ -224,18 +225,25 @@ void Day::projInp(int* a,int p){
 					}
 				} else
 				if(s1==1){
+
 					us+=Project::getSCost(state)*nr;
 					if(state==1){
 						uw+=TUR_C_WEAPONS*nr;
 					}
+					build[state-1]+=nr;
 
 				}
-
+				nr=0;
 			}
 		}
 		if(up<=p && uw<=c->getWep() && us<=c->getScr()){
 			c->setWep(c->getWep()-uw);
 			c->setScr(c->getScr()-us);
+			for(int i=0 ; i<POSSIBLE_PROJECTS-1 ; i++){
+				while(build[i]--){
+					c->build(i+1);
+				}
+			}
 			good=true;
 		}else{
 			cout<<"I don't like what you told me. I won't mention your insubordination to anybody, but please try to give me better input next time.\n";
