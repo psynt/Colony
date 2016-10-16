@@ -9,6 +9,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <string>
+#include <limits>
 
 #include "Constants.h"
 
@@ -386,11 +387,23 @@ void Day::getInput(int* a){
 
     do {
         cout << "Search: ";
-        cin >> search;
+        while(!(cin >> search)){
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid input.  Try again: ";
+        }
         cout << "Prepare defences: ";
-        cin >> prepare;
+        while(!(cin >> prepare)){
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid input.  Try again: ";
+        }
         cout << "Cook: ";
-        cin >> cook;
+        while(!(cin >> cook)){
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid input.  Try again: ";
+        }
 
         cout << "\n";
 
@@ -411,7 +424,6 @@ void Day::getInput(int* a){
 
         cout << "Are you sure? (y/n)\n";
         cin >> t;
-
     } while (t != 'y' && t != 'Y');
     cout << "\n\n";
 
