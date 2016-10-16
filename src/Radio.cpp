@@ -21,9 +21,6 @@ void Radio::reset(){
 }
 
 Radio Radio::giveRadio(){
-//	if(r==0){
-//		r=Radio();
-//	}
 	return r;
 }
 

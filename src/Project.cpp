@@ -8,9 +8,7 @@ Project::Project(string t, int dur,int ty) {
 	duration = dur;
 	time = 0;
 	type=ty;
-
 }
-//Project::Project(){}
 
 Project::~Project() {
 	// important destructor
