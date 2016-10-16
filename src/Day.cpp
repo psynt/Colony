@@ -103,70 +103,143 @@ void Day::eveningEvent() {
 	// e.g. morale boost gets members to do something productive before bed
 }
 
-void Day::projInp(int* a){
-	char t;
+void Day::projInp(int* a,int p){
+//	char t;
+//	do{
+//		cout<<"Do you want to want to change project status? (y/n)\n";
+//
+//		do{
+//			cin >> t;
+//			if(t=='N' || t=='n') return;
+//		}while(t!='y' && t!='Y');
+//
+//		do{
+//			cout<<"New project(n), assign workers to current projects(a), or cancel(c)?\n";
+//			cin>>t;
+//
+//			//NEW PROJECT
+//			if(strchr("nN",t)){
+//				cout<<"Costs:\n";
+//				cout<<"Turret: "<< TUR_C_SCRAP<<" scrap and "<<TUR_C_WEAPONS<<" weapons.\n";
+//				cout<<"Cookbot: "<<HOB_C_SCRAP << " scrap.\n";
+//				cout<<"Choose new project: Turret (t), cookbot(b), or cancel(c).\n";
+//				do{
+//					cin>>t;
+//
+//					//TURRET
+//					if(strchr("tT",t)){
+//						cout<<"Confirm new Turret project (y/n).\n";
+//						do{
+//							cin>>t;
+//						}while(!strchr("ynYN",t));
+//						if(strchr("Yy",t)){
+//							if(c->getScr()<TUR_C_SCRAP || c->getWep()<TUR_C_WEAPONS){
+//								cout<<"Not enough resources.\n";
+//							}else{
+//								c->setScr(c->getScr()-TUR_C_SCRAP);
+//								c->setWep(c->getWep()-TUR_C_WEAPONS);
+//								c->build(TUR_TYPE);
+//							}
+//						}
+//					}
+//
+//					//AUTO_HOB
+//					if(strchr("bB",t)){
+//						cout<<"Confirm new CookBot project (y/n).\n";
+//						do{
+//							cin>>t;
+//						}while(!strchr("ynYN",t));
+//						if(strchr("Yy",t)){
+//							if(c->getScr()<HOB_C_SCRAP){
+//								cout<<"Not enough resources.\n";
+//							}else{
+//								c->setScr(c->getScr()-HOB_C_SCRAP);
+//								c->build(HOB_TYPE);
+//							}
+//						}
+//					}
+//
+//				}while(!strchr("tbcTBC",t));
+//			}
+//
+//			// TODO: ASSIGN
+//
+//		}while(!strchr("nacNAC",t));
+//
+//	}while(true);
+
+	//gonna try this again...
+
+
+	bool good;
+
+	string t;
 	do{
-		cout<<"Do you want to want to change project status? (y/n)\n";
 
-		do{
-			cin >> t;
-			if(t=='N' || t=='n') return;
-		}while(t!='y' && t!='Y');
+		cout<<"Start new projects and/or assign" << p << "people to active ones.\n";
+		cout<<"On a single line, input your command in the form (n) for new projects, (w) for assign workers to projects, (t) for turret, (b) for cookbot, (r) for radio.\n";
+		cout<<"e.g. nt2b3wt10b5r20 adds 2 new turret projects, 3 new cookbot projects and assigns 10 workers to turrets, 5 workers to bots and 20 workers on the radio.\n";
+		cout<<"Note that you may not start a new radio project, and also, you may only use as many people as you assigned to projects.\n";
 
-		do{
-			cout<<"New project(n), assign workers to current projects(a), or cancel(c)?\n";
-			cin>>t;
-
-			//NEW PROJECT
-			if(strchr("nN",t)){
-				cout<<"Costs:\n";
-				cout<<"Turret: "<< TUR_C_SCRAP<<" scrap and "<<TUR_C_WEAPONS<<" weapons.\n";
-				cout<<"Cookbot: "<<HOB_C_SCRAP << " scrap.\n";
-				cout<<"Choose new project: Turret (t), cookbot(b), or cancel(c).\n";
-				do{
-					cin>>t;
-
-					//TURRET
-					if(strchr("tT",t)){
-						cout<<"Confirm new Turret project (y/n).\n";
-						do{
-							cin>>t;
-						}while(!strchr("ynYN",t));
-						if(strchr("Yy",t)){
-							if(c->getScr()<TUR_C_SCRAP || c->getWep()<TUR_C_WEAPONS){
-								cout<<"Not enough resources.\n";
-							}else{
-								c->setScr(c->getScr()-TUR_C_SCRAP);
-								c->setWep(c->getWep()-TUR_C_WEAPONS);
-								c->build(TUR_TYPE);
-							}
-						}
-					}
-
-					//AUTO_HOB
-					if(strchr("bB",t)){
-						cout<<"Confirm new CookBot project (y/n).\n";
-						do{
-							cin>>t;
-						}while(!strchr("ynYN",t));
-						if(strchr("Yy",t)){
-							if(c->getScr()<HOB_C_SCRAP){
-								cout<<"Not enough resources.\n";
-							}else{
-								c->setScr(c->getScr()-HOB_C_SCRAP);
-								c->build(HOB_TYPE);
-							}
-						}
-					}
-
-				}while(!strchr("tbcTBC",t));
+		getline(cin,t);
+		good=false;
+		int state=0;//0 default 1 new 2 work
+					//11 new turrets 12 new bots
+					//21 work turrets 22 work bots 20 work radio
+		int nr=0,newstate=0,up=0,us=0,uw=0;
+		for(size_t i=0 ; i<t.length() ; i++){
+			if(strchr("0123456789",t[i])){
+				nr=nr*10+(t[i]-'0');
+			} else
+			if(strchr("nN",t[i])){
+				newstate=1;
+			} else
+			if(strchr("Tt",t[i])){
+				newstate=state*10+1;
+			} else
+			if(strchr("Ww",t[i])){
+				newstate=2;
+			} else
+			if(strchr("Bb",t[i])){
+				newstate=state*10+2;
+			} else
+			if(strchr("Rr",t[i])){
+				newstate=20;
+			} else{
+				cout<<"Did i not make myself clear?\n";
+				break;
 			}
+			if(state!=newstate && nr!=0){
+				int s1=state/10;
+				state%=10;
+				if(s1==1 && state==0){
+					cout<<"Nonononono! No building new radios! You must try to repair the one you have.\n";
+					break;
+				}
+				if(s1==2){
+					a[state]=nr;
+					up+=nr;
+					if(state == 0){
+						us+=Project::getSCost(state)*nr;
+					}
+				} else
+				if(s1==1){
+					us+=Project::getSCost(state)*nr;
+					if(state==1){
+						uw+=TUR_C_WEAPONS*nr;
+					}
 
-			// TODO: ASSIGN
+				}
 
-		}while(!strchr("nacNAC",t));
+			}
+		}
+		if(up<=p && uw<=c->getWep() && us<=c->getScr()){
+			good=true;
+		}else{
+			cout<<"I don't like what you told me. I won't mention your insubordination to anybody, but please try to give me better input next time.\n";
+		}
+	}while(!good);
 
-	}while(true);
 
 }
 
@@ -257,9 +330,7 @@ void Day::printStatus_find(){
 	if (c->getSick() < c->getPeople()) {
 		string grammar;
 		int* inp = new int[ACTIVITIES];
-		inp[0] = 0;
-		inp[1] = 0;
-		inp[2] = 0;
+		for(int i=0 ; i<ACTIVITIES ; i++) inp[i]=0;
 
 		getInput(inp);
 
@@ -478,7 +549,7 @@ void Day::getInput(int* a){
 
 
 
-	int cook, prepare, search;
+	int cook, prepare, search,proj;
 	int total;
 	int healthy = c->getPeople() - c->getSick();
 	char t;
@@ -490,6 +561,7 @@ void Day::getInput(int* a){
 		cin >> prepare;
 		cout << "Cook: ";
 		cin >> cook;
+		cout << "Work on projects: ";
 
 		cout << "\n";
 

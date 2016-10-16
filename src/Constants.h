@@ -21,7 +21,7 @@ const int INITIAL_TURRETS = 0;
 
 
 //number of activities able to be done in a day
-const int ACTIVITIES = 3;
+const int ACTIVITIES = 4;
 
 //chances to find stuff in %
 const int SEARCHABLES = 6;		// # of different resources able to be found when searching
@@ -61,7 +61,7 @@ const int COOK_SPEED = 2;		// maximum uncooked food cooked by each cook
 	const int TUR_C_SCRAP = 50;
 	const int TUR_C_WEAPONS = 2;
 	const int HOB_C_SCRAP = 10;
-//	const int RADIO_C = 25;
+	const int RADIO_C_SCRAP = 25;
 	//Time
 	const int TUR_TIME = 20;
 	const int HOB_TIME = 5;

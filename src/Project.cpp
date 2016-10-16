@@ -14,6 +14,14 @@ Project::~Project() {
 	// important destructor
 }
 
+int Project::getSCost(int type){
+	int c;
+	if(type == RAD_TYPE) c=RADIO_C_SCRAP;
+	if(type == TUR_TYPE) c=TUR_C_SCRAP;
+	if(type == HOB_TYPE) c=HOB_C_SCRAP;
+	return c;
+}
+
 void Project::advance(int a){
 	if(a>0)
 		time+=a;

@@ -22,7 +22,7 @@ public:
 	void zombieBreakIn(int);
 	void search(int, int*);
 	int cookFood(int, int);
-	void projInp(int*);
+	void projInp(int*,int);
 };
 
 #endif /* DAY_H_ */

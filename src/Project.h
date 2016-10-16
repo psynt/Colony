@@ -11,6 +11,7 @@ protected:
 	int time;
 	int duration;
 public:
+	static int getSCost(int);
 	Project(string,int,int);
 	virtual ~Project();
 	void advance(int);
