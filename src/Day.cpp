@@ -171,7 +171,7 @@ void Day::projInp(int* a,int p){
 	//gonna try this again...
 
 
-	bool good;
+	bool good,cancel;
 
 	string t;
 	do{
@@ -180,16 +180,21 @@ void Day::projInp(int* a,int p){
 		cout<<"On a single line, input your command in the form (n) for new projects, (w) for assign workers to projects, (t) for turret, (b) for cookbot, (r) for radio.\n";
 		cout<<"e.g. nt2b3wt10b5r20 adds 2 new turret projects, 3 new cookbot projects and assigns 10 workers to turrets, 5 workers to bots and 20 workers on the radio.\n";
 		cout<<"Note that you may not start a new radio project, and also, you may only use as many people as you assigned to projects.\n";
-
+		cout<<"Type a (c) to cancel"<<endl;
 		cin>>ws;
 		getline(cin,t);
 		good=false;
+		cancel=true;
 		int state=0;//0 default 1 new 2 work
 					//11 new turrets 12 new bots
 					//21 work turrets 22 work bots 20 work radio
 		int nr=0,newstate=0,up=0,us=0,uw=0,build[POSSIBLE_PROJECTS-1];
 		for(int i=0 ; i<POSSIBLE_PROJECTS-1 ; i++) build[i]=0;
 		for(size_t i=0 ; i<t.length() ; i++){
+			if(strchr("cC",t[i])){
+				build[0]=build[1]=a[0]=a[1]=a[2]=0;
+				return;
+			}
 			if(strchr("0123456789",t[i])){
 				nr=nr*10+(t[i]-'0');
 
@@ -199,6 +204,11 @@ void Day::projInp(int* a,int p){
 //				if (DEBUG) cout<<"NewState = "<<newstate<<"\n";
 			} else
 			if(strchr("Tt",t[i])){
+				if(state==0){
+					cout<<"Illegal input\n";
+					cancel=true;
+					break;
+				}
 				if(state>9) newstate=state/10%10*10+1;
 				else newstate=state*10+1;
 //				if (DEBUG) cout<<"NewState = "<<newstate<<"\n";
@@ -207,6 +217,11 @@ void Day::projInp(int* a,int p){
 				newstate=2;
 			} else
 			if(strchr("Bb",t[i])){
+				if(state==0){
+					cout<<"Illegal input\n";
+					cancel=true;
+					break;
+				}
 				if(state>9) newstate=state/10%10*10+2;
 				else newstate=state*10+2;
 			} else
@@ -265,7 +280,7 @@ void Day::projInp(int* a,int p){
 		}else{
 			cout<<"I don't like what you told me. I won't mention your insubordination to anybody, but please try to give me better input next time.\n";
 		}
-	}while(!good);
+	}while(!(good && !cancel));
 
 
 }
@@ -361,12 +376,18 @@ void Day::printStatus_find(){
 		for(int i=0 ; i<ACTIVITIES ; i++) inp[i]=0;
 		for(int i=0 ; i<POSSIBLE_PROJECTS ; i++) proj[i]=0;
 
-		getInput(inp);
+		do{
+			getInput(inp);
 
-		if(inp[3]>0){
-			projInp(proj,inp[3]);
-			cout<<c->progressProjects(proj);
-		}
+			if(inp[3]>0){
+				projInp(proj,inp[3]);
+				if(proj[0]==proj[1]==proj[2]==0){
+					cout<<"Cancelled\n";
+				}else{
+					cout<<c->progressProjects(proj);
+				}
+			}
+		}while(inp[3]>0 && (proj[0]==proj[1]==proj[2]==0));
 
 		if (inp[0] > 0) {
 			int* k = new int[SEARCHABLES];
