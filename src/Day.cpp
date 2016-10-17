@@ -176,7 +176,7 @@ void Day::projInp(int* a,int p){
 	string t;
 	do{
 
-		cout<<"Start new projects and/or assign " << p << " people to active ones.\n";
+		cout<<"\r\nStart new projects and/or assign " << p << " people to active ones.\n";
 		cout<<"On a single line, input your command in the form (n) for new projects, (w) for assign workers to projects, (t) for turret, (b) for cookbot, (r) for radio.\n";
 		cout<<"e.g. nt2b3wt10b5r20 adds 2 new turret projects, 3 new cookbot projects and assigns 10 workers to turrets, 5 workers to bots and 20 workers on the radio.\n";
 		cout<<"Note that you may not start a new radio project, and also, you may only use as many people as you assigned to projects.\n";
