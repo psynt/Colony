@@ -12,8 +12,7 @@ class Colony {
 	int rations, medicine, uncooked, weapons, barricade, scrap;
 	int people, sick;
 	int cookBots, turrets;
-	std::vector<Project> **projects;
-	string finishedProjects();
+	ProjectManager pm;
 public:
 	Colony(int r=INITIAL_FOOD, int m=INITIAL_MEDICINE, int u=INITIAL_UNCOOKED, int w=INITIAL_WEAPONS, int p=INITIAL_PEOPLE, int sc=INITIAL_SCRAP,
 			int c=INITIAL_COOKBOTS, int t=INITIAL_TURRETS, int d=1, int si=INITIAL_SICK, int b=INITIAL_BARRICADES);

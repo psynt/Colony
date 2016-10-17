@@ -19,86 +19,23 @@ Colony::Colony(int r, int m, int u, int w, int p, int sc, int c, int t, int d, i
 	scrap = sc;
 	cookBots = c;
 	turrets = t;
-	projects=new vector<Project>[POSSIBLE_PROJECTS];
-	for(int i=0 ; i<POSSIBLE_PROJECTS ; i++){
-		projects[i]=new vector<Project>();
-	}
-
-	if(DEBUG){
-		cout<<"made vector, pushing Radio"<<endl;
-	}
-
-	projects[RAD_TYPE]->push_back(Radio::giveRadio());
-	if(DEBUG){
-		//cout<<(new Project(RADIO))->toString()<<endl;
-		cout<<"pushed Radio"<<endl;
-	}
+	pm=ProjectManager();
 }
 
 string Colony::printProjects(){
-	ostringstream os;
-
-	for(size_t i=0 ; i<POSSIBLE_PROJECTS ; i++){
-			for(size_t j=0 ; j<projects[i]->size() ; j++){
-//			if(DEBUG){
-//				cout<<"Project "<<i<<" of "<<projects->size() << endl;
-//			}
-			os << i+1 << ": " << projects[i]->at(j).toString() << "\n";
-		}
-
-	}
-	if(DEBUG){
-		cout<<"Got here"<<endl;
-	}
-
-	string s=os.str();
-
-	return s;
+	return pm.printProjects();
 }
 
 string Colony::progressProjects(int *a, int n){
-	for(size_t i=0 ; i<POSSIBLE_PROJECTS ; i++){
-			for(size_t j=0 ; j<projects[i]->size() ; j++){
-					projects[i]->at(j).advance(a[i]);
-			}
-	}
-	return finishedProjects();
+	return pm.progressProjects(a,n);
 }
 
-string Colony::finishedProjects(){
-	ostringstream os;
-	vector<Project>** np=new vector<Project>[POSSIBLE_PROJECTS];
-	for(size_t i=0 ; i<POSSIBLE_PROJECTS ; i++){
-		np[i]=new vector<Project>();
-			for(size_t j=0 ; j<projects[i]->size() ; j++){
-				if(projects[i]->at(j).isFinished()){
-					os<<"Project " << i+1 << ", working on " << projects[i]->at(j).toString() <<" \n";
-				}else{
-					np[i]->push_back(projects[i]->at(j));
-				}
-			}
-	}
-	delete projects;
-	projects=np;
-	return os.str();
-}
 
 void Colony::build(int type,int number){
-	while (number--){
-		if(type == TUR_TYPE){
-			projects[type]->push_back(Project(TURRET));
-		}
-		if(type == HOB_TYPE){
-			projects[type]->push_back(Project(AUTO_HOB));
-		}
-	}
+	pm.build(type,number);
 }
 int Colony::getNoPr(){
-	int nr=0;
-	for(int i=0 ; i<POSSIBLE_PROJECTS ; i++){
-		nr+=projects[i]->size();
-	}
-	return nr;
+	return pm.getNoPr();
 }
 
 void Colony::operator+=(Colony *c){
