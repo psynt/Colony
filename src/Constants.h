@@ -19,6 +19,18 @@ const int INITIAL_SCRAP = 0;
 const int INITIAL_COOKBOTS = 0;
 const int INITIAL_TURRETS = 0;
 
+//debug resources
+//const int INITIAL_PEOPLE = 100;
+//const int INITIAL_FOOD = 2 * INITIAL_PEOPLE;
+//const int INITIAL_WEAPONS = 100;
+//const int INITIAL_SICK = 0;
+//const int INITIAL_MEDICINE = 100;
+//const int INITIAL_BARRICADES = 0;
+//const int INITIAL_UNCOOKED = 0;
+//const int INITIAL_SCRAP = 1000;
+//const int INITIAL_COOKBOTS = 0;
+//const int INITIAL_TURRETS = 0;
+
 
 //number of activities able to be done in a day
 const int ACTIVITIES = 4;

@@ -5,22 +5,23 @@
  *      Author: nichita
  */
 
+
+#ifndef SRC_PROJECTMANAGER_H_
+#define SRC_PROJECTMANAGER_H_
+
 #include <vector>
 #include <string>
 #include "Project.h"
 using namespace std;
 
-#ifndef SRC_PROJECTMANAGER_H_
-#define SRC_PROJECTMANAGER_H_
-
 class ProjectManager {
 	std::vector<Project> **projects;
-	string finishedProjects();
+	void finishedProjects(int* a);
 public:
 	ProjectManager();
 	virtual ~ProjectManager();
 	string printProjects();
-	string progressProjects(int *a, int n);
+	void progressProjects(int *a);
 	void build(int type,int number);
 	int getNoPr();
 };

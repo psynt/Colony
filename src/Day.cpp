@@ -196,17 +196,19 @@ void Day::projInp(int* a,int p){
 			} else
 			if(strchr("nN",t[i])){
 				newstate=1;
-				if (DEBUG) cout<<"NewState = "<<newstate<<"\n";
+//				if (DEBUG) cout<<"NewState = "<<newstate<<"\n";
 			} else
 			if(strchr("Tt",t[i])){
-				newstate=state*10+1;
-				if (DEBUG) cout<<"NewState = "<<newstate<<"\n";
+				if(state>9) newstate=state/10%10*10+1;
+				else newstate=state*10+1;
+//				if (DEBUG) cout<<"NewState = "<<newstate<<"\n";
 			} else
 			if(strchr("Ww",t[i])){
 				newstate=2;
 			} else
 			if(strchr("Bb",t[i])){
-				newstate=state*10+2;
+				if(state>9) newstate=state/10%10*10+2;
+				else newstate=state*10+2;
 			} else
 			if(strchr("Rr",t[i])){
 				newstate=20;
@@ -215,7 +217,11 @@ void Day::projInp(int* a,int p){
 				break;
 			}
 			if(i == t.length()-1 || (state!=newstate && nr!=0)){
-				if (DEBUG) cout<<"NewState = "<<newstate<<"\n";
+//				if(i == t.length()-1){
+//					if(DEBUG)cout<<"Called at the end.\n";
+//				}
+//				if (DEBUG) cout<<"State = "<<state<<"\n";
+//				if (DEBUG) cout<<"NewState = "<<newstate<<"\n";
 				int s1=state/10;
 				state%=10;
 //				if(s1==1 && state==0){
@@ -223,6 +229,7 @@ void Day::projInp(int* a,int p){
 //					break;
 //				}
 				if(s1==2){
+					if(DEBUG) cout<<"a["<<state<<"]="<<nr<<"\n";
 					a[state]=nr;
 					up+=nr;
 					if(state == 0){
@@ -240,6 +247,7 @@ void Day::projInp(int* a,int p){
 				}
 				nr=0;
 			}
+			if (DEBUG) cout<<"NewState = "<<newstate<<"\n";
 			state=newstate;
 		}
 		if(up<=p && uw<=c->getWep() && us<=c->getScr()){
@@ -357,6 +365,7 @@ void Day::printStatus_find(){
 
 		if(inp[3]>0){
 			projInp(proj,inp[3]);
+			cout<<c->progressProjects(proj);
 		}
 
 		if (inp[0] > 0) {

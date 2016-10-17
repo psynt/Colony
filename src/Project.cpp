@@ -41,7 +41,7 @@ string Project::toString(){
 	if(isFinished()){
 		os << " has been completed.";
 	}else{
-		os << " should take " << timeLeft() << " work units longer.";
+		os << " should take " << timeLeft() << " more work units.";
 	}
 	return os.str();
 

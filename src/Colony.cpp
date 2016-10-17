@@ -26,10 +26,26 @@ string Colony::printProjects(){
 	return pm.printProjects();
 }
 
-string Colony::progressProjects(int *a, int n){
-	return pm.progressProjects(a,n);
+string Colony::progressProjects(int *a){
+	pm.progressProjects(a);
+	ostringstream os;
+	os<<"Projects finished: "<<a[1]<<" Turrets and "<<a[2]<<" cookbots.\n";
+	addBot(a[2]);
+	addTur(a[1]);
+	if(DEBUG) cout<<"Projects finished: "<<a[1]<<" Turrets and "<<a[2]<<" cookbots.\n";
+	if(a[0]){
+		Radio::giveRadio().isCompleted();
+		os<<"Also, the Radio should be working now.\n";
+	}
+	return os.str();
+}
+void Colony::addBot(int b){
+	cookBots+=b;
 }
 
+void Colony::addTur(int t){
+	turrets+=t;
+}
 
 void Colony::build(int type,int number){
 	pm.build(type,number);

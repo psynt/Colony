@@ -1,8 +1,11 @@
-#include "Constants.h"
-#include "Day.h"
+
 
 #ifndef SRC_GAME_H_
 #define SRC_GAME_H_
+
+#include "Constants.h"
+#include "Day.h"
+
 
 class Game {
 	Colony* colony;

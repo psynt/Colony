@@ -6,6 +6,7 @@ using namespace std;
 
 Radio::Radio() : Project(RADIO){
 	//important constructor
+	completed=false;
 }
 
 Radio Radio::r;
@@ -13,7 +14,12 @@ Radio Radio::r;
 Radio::~Radio() {
 	//important destructor
 }
-
+bool Radio::isCompleted(){
+	if(!completed){
+		completed=this->isFinished();
+	}
+	return completed;
+}
 
 void Radio::reset(){
 	r=Radio();

@@ -1,7 +1,9 @@
-#include "Colony.h"
+
 
 #ifndef DAY_H_INCLUDED
 #define DAY_H_INCLUDED
+
+#include "Colony.h"
 
 class Day {
 	Colony* c;

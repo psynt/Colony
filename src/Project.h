@@ -1,9 +1,7 @@
-#include <string>
-using namespace std;
 #ifndef SRC_PROJECT_H_
 #define SRC_PROJECT_H_
-
-
+#include <string>
+using namespace std;
 class Project {
 protected:
 	int type;

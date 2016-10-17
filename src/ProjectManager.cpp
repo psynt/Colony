@@ -6,7 +6,13 @@
  */
 
 #include "ProjectManager.h"
+#include "Project.h"
 #include "Constants.h"
+#include "Radio.h"
+#include <sstream>
+#include <iostream>
+using namespace std;
+
 
 ProjectManager::ProjectManager() {
 	// TODO Auto-generated constructor stub
@@ -22,6 +28,7 @@ ProjectManager::ProjectManager() {
 	if(DEBUG){
 		//cout<<(new Project(RADIO))->toString()<<endl;
 		cout<<"pushed Radio"<<endl;
+		cout<<projects[RAD_TYPE]->at(0).toString()<<endl;
 	}
 }
 
@@ -37,7 +44,7 @@ string ProjectManager::printProjects(){
 //			if(DEBUG){
 //				cout<<"Project "<<i<<" of "<<projects->size() << endl;
 //			}
-			os << i+1 << ": " << projects[i]->at(j).toString() << "\n";
+			os<< projects[i]->at(j).toString() << "\n";
 		}
 
 	}
@@ -50,23 +57,25 @@ string ProjectManager::printProjects(){
 	return s;
 }
 
-string ProjectManager::progressProjects(int *a, int n){
+void ProjectManager::progressProjects(int *a){
 	for(size_t i=0 ; i<POSSIBLE_PROJECTS ; i++){
-			for(size_t j=0 ; j<projects[i]->size() ; j++){
-					projects[i]->at(j).advance(a[i]);
+			for(size_t j=0 ; j<projects[i]->size() && a[i]>0 ; j++){
+				int adv=min(projects[i]->at(j).timeLeft(),a[i]);
+				projects[i]->at(j).advance(adv);
+				a[i]-=adv;
 			}
 	}
-	return finishedProjects();
+	finishedProjects(a);
 }
 
-string ProjectManager::finishedProjects(){
-	ostringstream os;
+void ProjectManager::finishedProjects(int *a){
 	vector<Project>** np=new vector<Project>*[POSSIBLE_PROJECTS];
 	for(size_t i=0 ; i<POSSIBLE_PROJECTS ; i++){
+		a[i]=0;
 		np[i]=new vector<Project>();
 			for(size_t j=0 ; j<projects[i]->size() ; j++){
 				if(projects[i]->at(j).isFinished()){
-					os<<"Project " << i+1 << ", working on " << projects[i]->at(j).toString() <<" \n";
+					a[i]++;
 				}else{
 					np[i]->push_back(projects[i]->at(j));
 				}
@@ -74,7 +83,6 @@ string ProjectManager::finishedProjects(){
 	}
 	delete projects;
 	projects=np;
-	return os.str();
 }
 
 void ProjectManager::build(int type,int number){

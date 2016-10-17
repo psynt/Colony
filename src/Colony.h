@@ -1,11 +1,11 @@
+#ifndef COLONY_H_
+#define COLONY_H_
+
 #include <vector>
-#include "Project.h"
+#include "ProjectManager.h"
 #include "Constants.h"
 #include <string>
 using namespace std;
-
-#ifndef COLONY_H_INCLUDED
-#define COLONY_H_INCLUDED
 
 class Colony {
 	int day;
@@ -31,6 +31,8 @@ public:
 	int getNoPr();
 	void build(int type,int number);
 	void incDay();
+	void addTur(int);
+	void addBot(int);
 	void setPeople(int);
 	void setSick(int);
 	void setRat(int);
@@ -43,7 +45,7 @@ public:
 	void setTur(int);
 	void operator+=(Colony*);
 	string printProjects();
-	string progressProjects(int *a, int n);
+	string progressProjects(int *a);
 };
 
 #endif /* COLONY_H_ */
