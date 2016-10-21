@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 #include <cstring>
+#include <limits>
+
 #include "Constants.h"
 
 using namespace std;
@@ -99,8 +101,8 @@ void Day::morningEvent() {
 }
 
 void Day::eveningEvent() {
-	// a random event may happen after the day's events
-	// e.g. morale boost gets members to do something productive before bed
+    // a random event may happen after the day's events
+    // e.g. morale boost gets members to do something productive before bed
 }
 
 void Day::projInp(int* a,int p){
@@ -184,7 +186,7 @@ void Day::projInp(int* a,int p){
 		cin>>ws;
 		getline(cin,t);
 		good=false;
-		cancel=true;
+		cancel=false;
 		int state=0;//0 default 1 new 2 work
 					//11 new turrets 12 new bots
 					//21 work turrets 22 work bots 20 work radio
@@ -286,12 +288,12 @@ void Day::projInp(int* a,int p){
 }
 
 void Day::EndDay(){
-	int member = c->getPeople();
-	int sick = c->getSick();
-	int ration = c->getRat();
-	int sickcount = 0;
+    int member = c->getPeople();
+    int sick = c->getSick();
+    int ration = c->getRat();
+    int sickcount = 0;
 
-	c->setRat(ration - member); // reduce ration count
+    c->setRat(ration - member); // reduce ration count
 
 	if (member > ration) {
 		int death = member - ration;
@@ -302,69 +304,69 @@ void Day::EndDay(){
 		c->setRat(0);
 	}
 
-	member = c->getPeople();
-	sick = c->getSick();
-	int healthy = member - sick;
+    member = c->getPeople();
+    sick = c->getSick();
+    int healthy = member - sick;
 
-	for( int i = 0; i < healthy; i++) {
-		int sick_chance = CHANCE_SICK + (CHANCE_INCREASE * sick);
-		int roll_sick = rand() % 100;
+    for( int i = 0; i < healthy; i++) {
+        int sick_chance = CHANCE_SICK + (CHANCE_INCREASE * sick);
+        int roll_sick = rand() % 100;
 
-		if(roll_sick < sick_chance)
-			sickcount++;
-	}
+        if(roll_sick < sick_chance)
+            sickcount++;
+    }
 
-	c->setSick(sick + sickcount);
+    c->setSick(sick + sickcount);
 
-	if (sickcount > 0)
-		cout << sickcount << " members fall ill.\n";
+    if (sickcount > 0)
+        cout << sickcount << " members fall ill.\n";
 
-	eveningEvent();
+    eveningEvent();
 
-	c->incDay();
+    c->incDay();
 }
 
 void Day::deathRoll(){
-	int med = c->getMed();
-	int sick = c->getSick();
-	int healed = min(sick, med);
+    int med = c->getMed();
+    int sick = c->getSick();
+    int healed = min(sick, med);
 
-	if (healed > 0){
-		c->setMed(med - healed);
-		c->setSick(c->getSick() - healed);
-		cout << healed << " sick members use medicine and recover.\n";
-	}
+    if (healed > 0){
+        c->setMed(med - healed);
+        c->setSick(c->getSick() - healed);
+        cout << healed << " sick members use medicine and recover.\n";
+    }
 
-	int dead = 0;
-	healed = 0;
+    int dead = 0;
+    healed = 0;
 
-	for(int i = 0; i < c->getSick(); i++){
-		int roll = rand() % 7 + 1;
-		if (roll == 1){
-			dead++;
-		}else if (roll == 7){
-			healed++;
-		}
-	}
-
-
-	if (healed > 0) {
-		c->setSick(c->getSick() - healed);
-		cout << healed << " sick members have recovered naturally.\n";
-	}
+    for(int i = 0; i < c->getSick(); i++){
+        int roll = rand() % 7 + 1;
+        if (roll == 1){
+            dead++;
+        }else if (roll == 7){
+            healed++;
+        }
+    }
 
 
-	if (dead > 0) {
-		c->setPeople(c->getPeople() - dead);
-		cout << dead << " sick members have died from illness.\n";
-	}
+    if (healed > 0) {
+        c->setSick(c->getSick() - healed);
+        cout << healed << " sick members have recovered naturally.\n";
+    }
+
+
+    if (dead > 0) {
+        c->setPeople(c->getPeople() - dead);
+        cout << dead << " sick members have died from illness.\n";
+    }
 }
 
 int Day::zmult(int day){
-	if(day<30) return 2;
-	if(day<70) return 3;
-	if(day<150) return 4;
-	return 5;
+    if(day<30) return 2;
+    if(day<70) return 3;
+    if(day<150) return 4;
+    return 5;
 }
 
 void Day::printStatus_find(){
@@ -468,7 +470,7 @@ int Day::cookFood(int workers, int speed)
 	if (DEBUG)
 		cout << "cookFood() called with " << workers << " workers, " << speed << " speed and " << uncooked << " uncooked food.\n";
 
-	int cooked = 0;
+    int cooked = 0;
 
 	cooked = min(speed * workers, uncooked);
 	uncooked -= cooked;
@@ -478,7 +480,7 @@ int Day::cookFood(int workers, int speed)
 	if(DEBUG)
 		cout << workers << " workers cooked " << cooked << " food using " << cooked / UNC_FOOD_CONV << " uncooked food.\n";
 
-	return cooked;
+    return cooked;
 }
 
 void Day::printStatus_result(){
@@ -559,101 +561,180 @@ void Day::printStatus_result(){
 	c->setBar(barricade - bL);
 
 	cout << "\n";
+
 }
 
 void Day::search(int people,int* search_arr){
-	int ration = 0;
-	int uncooked = 0;
-	int weapon = 0;
-	int medicine = 0;
-	int scrap = 0;
-	int survivor = 0;
+    int ration = 0;
+    int uncooked = 0;
+    int weapon = 0;
+    int medicine = 0;
+    int scrap = 0;
+    int survivor = 0;
 
-	for(int i = 0; i < people; i++){
-		int roll_rat = rand() % 100;
-		if (roll_rat < FIND_RAT ){
-			ration++;
-		}
-		int roll_unc = rand() % 100;
-		if (roll_unc < FIND_UNC){
-			uncooked++;
-		}
-		int roll_weap = rand() % 100;
-		if (roll_weap < FIND_WEAP){
-			weapon++;
-		}
-		int roll_med = rand() % 100;
-		if (roll_med < FIND_MED){
-			medicine++;
-		}
-		int roll_scr = rand() % 100;
-		if (roll_scr < FIND_SCR){
-			scrap++;
-		}
-		int roll_surv = rand() % 100;
-		if(roll_surv < FIND_SURV){
-			survivor++;
-		}
-	}
-	search_arr[0]=ration;
-	search_arr[1]=uncooked;
-	search_arr[2]=weapon;
-	search_arr[3]=medicine;
-	search_arr[4]=scrap;
-	search_arr[5]=survivor;
+    for(int i = 0; i < people; i++){
+        int roll_rat = rand() % 100;
+        if (roll_rat < FIND_RAT ){
+            ration++;
+        }
+        int roll_unc = rand() % 100;
+        if (roll_unc < FIND_UNC){
+            uncooked++;
+        }
+        int roll_weap = rand() % 100;
+        if (roll_weap < FIND_WEAP){
+            weapon++;
+        }
+        int roll_med = rand() % 100;
+        if (roll_med < FIND_MED){
+            medicine++;
+        }
+        int roll_scr = rand() % 100;
+        if (roll_scr < FIND_SCR){
+            scrap++;
+        }
+        int roll_surv = rand() % 100;
+        if(roll_surv < FIND_SURV){
+            survivor++;
+        }
+    }
+    search_arr[0]=ration;
+    search_arr[1]=uncooked;
+    search_arr[2]=weapon;
+    search_arr[3]=medicine;
+    search_arr[4]=scrap;
+    search_arr[5]=survivor;
 }
 
 void Day::getInput(int* a){
+    int total;
+    int healthy = c->getPeople() - c->getSick();
+	bool good,cancel;
 
+	string t;
+	do{
+		do{
+			a[0]=a[1]=a[2]=a[3];
+			cout<<"\nOn a single line, input your command in the form Search (s), Cook food (f), Barricades(b), Projects (p).\n";
+			cout<<"e.g. s3f3b3p1 assigns 3 members to search, e members to cook, 3 to barricades and 1 to other projects.\n";
+			cout<<"Type a (c) to cancel"<<endl;
+			cin>>ws;
+			getline(cin,t);
+			good=true;
+			cancel=false;
+			int state=0;//0 default 1 search 3 cook 2 bar 4 proj
+			int nr=0,newstate=0,up=0,us=0,uw=0;
+			for(size_t i=0 ; i<t.length() ; i++){
+				if(strchr("cC",t[i])){
+					cancel=true;
+					break;
+				} else
+				if(strchr("0123456789",t[i])){
+					nr=nr*10+(t[i]-'0');
+					if(DEBUG) cout<<"Nr= "<<nr<<"\n";
 
+				} else
+				if(strchr("sS",t[i])){
+					newstate=1;
+	//				if (DEBUG) cout<<"NewState = "<<newstate<<"\n";
+				} else
+				if(strchr("fF",t[i])){
+					newstate=3;
+	//				if (DEBUG) cout<<"NewState = "<<newstate<<"\n";
+				} else
+				if(strchr("bB",t[i])){
+					newstate=2;
+	//				if (DEBUG) cout<<"NewState = "<<newstate<<"\n";
+				} else
+				if(strchr("pP",t[i])){
+					newstate=4;
+	//				if (DEBUG) cout<<"NewState = "<<newstate<<"\n";
+				}
+				if(i == t.length()-1 || (state!=newstate && nr!=0)){
+	//				if(i == t.length()-1){
+	//					if(DEBUG)cout<<"Called at the end.\n";
+	//				}
+	//				if (DEBUG) cout<<"State = "<<state<<"\n";
+	//				if (DEBUG) cout<<"NewState = "<<newstate<<"\n";
+	//				if(s1==1 && state==0){
+	//					cout<<"Nonononono! No building new radios! You must try to repair the one you have.\n";
+	//					break;
+	//				}
+					if(DEBUG) cout<<"a["<<state-1<<"]="<<nr<<"\n";
+					a[state-1]=nr;
+					nr=0;
+				}
+				//if (DEBUG) cout<<"NewState = "<<newstate<<"\n";
+				state=newstate;
+			}
+			total = a[0] + a[1] + a[2] + a[3] ;
 
-	int cook, prepare, search,proj;
-	int total;
-	int healthy = c->getPeople() - c->getSick();
-	char t;
+			if (a[0] < 0 || a[1] < 0 || a[2] < 0 || a[3] < 0) {
+				cout << "Bad input. Reconsider.\n";
+				good=false;
+			}
+			if (total > healthy){
+				cout << "Not enough people. Reconsider.\n";
+				good=false;
+			}
+		}while(!(good && !cancel));
 
-	do {
-		cout << "Search: ";
-		cin >> search;
-		cout << "Prepare defences: ";
-		cin >> prepare;
-		cout << "Cook: ";
-		cin >> cook;
-		cout << "Work on projects: ";cin>>proj;
+//    do {
+//        cout << "Search: ";
+//        while(!(cin >> search)){
+//            cin.clear();
+//            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+//            cout << "Invalid input.  Try again: ";
+//        }
+//        cout << "Prepare defences: ";
+//        while(!(cin >> prepare)){
+//            cin.clear();
+//            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+//            cout << "Invalid input.  Try again: ";
+//        }
+//        cout << "Cook: ";
+//        while(!(cin >> cook)){
+//            cin.clear();
+//            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+//            cout << "Invalid input.  Try again: ";
+//        }
+//        cout << "Work on projects: ";
+//        while(!(cin >> proj)){
+//            cin.clear();
+//            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+//            cout << "Invalid input.  Try again: ";
+//        }
+//
+//        cout << "\n";
+//
+//        total = search + prepare + cook + proj ;
+//
+//        if (search < 0 || prepare < 0 || cook < 0 || proj < 0) {
+//            cout << "Bad input. Reconsider.\n";
+//            continue;
+//        }
+//        if (total > healthy){
+//            cout << "Not enough people. Reconsider.\n";
+//            continue;
+//        }
 
-		cout << "\n";
+        cout << a[0] << " searching, "<< a[1] << " defending, " << a[2] << " cooking food and "<< a[3] <<" working on projects. \n";
+        if (total < healthy)
+            cout << healthy - total << " member(s) not assigned to a task.\n";
 
-		total = search + prepare + cook + proj;
+        cout << "Are you sure? (y/n)\n";
+        cin >> ws;
+		getline(cin,t);
 
-		if (search < 0 || prepare < 0 || cook < 0 || proj < 0) {
-			cout << "Bad input. Reconsider.\n";
-			continue;
-		}
-		if (total > healthy){
-			cout << "Not enough people. Reconsider.\n";
-			continue;
-		}
+    } while (t[0] != 'y' && t[0] != 'Y');
+    cout << "\n\n";
 
-		cout << search << " searching, "<< prepare << " defending, " << cook << " cooking food and "<< proj <<" working on projects. \n";
-		if (total < healthy)
-			cout << healthy - total << " member(s) not assigned to a task.\n";
-
-		cout << "Are you sure? (y/n)\n";
-		cin >> t;
-		cout << "\n\n";
-
-	} while (t != 'y' && t != 'Y');
-
-	a[0] = search;
-	a[1] = prepare;
-	a[2] = cook;
-	a[3] = proj;
 }
 
 Day::Day(Colony *c) {
-	this->c=c;
+    this->c=c;
 }
 
 Day::~Day() {
-	delete c;
+    delete c;
 }
