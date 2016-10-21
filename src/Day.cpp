@@ -614,7 +614,7 @@ void Day::getInput(int* a){
 	string t;
 	do{
 		do{
-			a[0]=a[1]=a[2]=a[3];
+			a[0]=a[1]=a[2]=a[3]=0;
 			cout<<"\nOn a single line, input your command in the form Search (s), Cook food (f), Barricades(b), Projects (p).\n";
 			cout<<"e.g. s3f3b3p1 assigns 3 members to search, e members to cook, 3 to barricades and 1 to other projects.\n";
 			cout<<"Type a (c) to cancel"<<endl;
@@ -623,7 +623,7 @@ void Day::getInput(int* a){
 			good=true;
 			cancel=false;
 			int state=0;//0 default 1 search 3 cook 2 bar 4 proj
-			int nr=0,newstate=0,up=0,us=0,uw=0;
+			int nr=0,newstate=0;
 			for(size_t i=0 ; i<t.length() ; i++){
 				if(strchr("cC",t[i])){
 					cancel=true;
