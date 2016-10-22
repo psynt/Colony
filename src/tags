@@ -1,0 +1,110 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ACTIVITIES	Constants.h	/^const int ACTIVITIES = 3;$/;"	v
+CHANCE_INCREASE	Constants.h	/^const int CHANCE_INCREASE = 5;	\/\/ % increase chance to get sick for each member already sick$/;"	v
+CHANCE_SICK	Constants.h	/^const int CHANCE_SICK = 5;		\/\/ % static chance for each member to get sick each night$/;"	v
+COLONY_H_INCLUDED	Colony.h	9;"	d
+CONSTANTS_H_	Constants.h	9;"	d
+COOK_SPEED	Constants.h	/^const int COOK_SPEED = 2;		\/\/ maximum uncooked food cooked by each cook$/;"	v
+Colony	Colony.cpp	/^Colony::Colony() {$/;"	f	class:Colony
+Colony	Colony.cpp	/^Colony::Colony(int r, int m, int u, int w, int p, int sc, int c, int t, int d, int si, int b){$/;"	f	class:Colony
+Colony	Colony.h	/^class Colony {$/;"	c
+DEBUG	Constants.h	11;"	d
+Day	Day.cpp	/^Day::Day(Colony *c) {$/;"	f	class:Day
+Day	Day.h	/^class Day {$/;"	c
+EVENT_PARTY_JOIN	Constants.h	/^const int EVENT_PARTY_JOIN = 5;$/;"	v
+EndDay	Day.cpp	/^void Day::EndDay(){$/;"	f	class:Day
+FIND_MED	Constants.h	/^const int FIND_MED = 15;$/;"	v
+FIND_RAT	Constants.h	/^const int FIND_RAT = 40;$/;"	v
+FIND_SCR	Constants.h	/^const int FIND_SCR = 30;$/;"	v
+FIND_SURV	Constants.h	/^const int FIND_SURV = 5;$/;"	v
+FIND_UNC	Constants.h	/^const int FIND_UNC = 50;$/;"	v
+FIND_WEAP	Constants.h	/^const int FIND_WEAP = 10;$/;"	v
+INITIAL_BARRICADES	Constants.h	/^const int INITIAL_BARRICADES = 0;$/;"	v
+INITIAL_COOKBOTS	Constants.h	/^const int INITIAL_COOKBOTS = 0;$/;"	v
+INITIAL_FOOD	Constants.h	/^const int INITIAL_FOOD = 2 * INITIAL_PEOPLE;$/;"	v
+INITIAL_MEDICINE	Constants.h	/^const int INITIAL_MEDICINE = 0;$/;"	v
+INITIAL_PEOPLE	Constants.h	/^const int INITIAL_PEOPLE = 10;$/;"	v
+INITIAL_SCRAP	Constants.h	/^const int INITIAL_SCRAP = 0;$/;"	v
+INITIAL_SICK	Constants.h	/^const int INITIAL_SICK = 0;$/;"	v
+INITIAL_TURRETS	Constants.h	/^const int INITIAL_TURRETS = 0;$/;"	v
+INITIAL_UNCOOKED	Constants.h	/^const int INITIAL_UNCOOKED = 0;$/;"	v
+INITIAL_WEAPONS	Constants.h	/^const int INITIAL_WEAPONS = 0;$/;"	v
+MEMBER_H_	Member.h	10;"	d
+Member	Member.cpp	/^Member::Member(string n) {$/;"	f	class:Member
+Member	Member.h	/^class Member {$/;"	c
+PEOPLE_H_	People.h	9;"	d
+People	People.cpp	/^People::People() {$/;"	f	class:People
+People	People.h	/^class People {$/;"	c
+SEARCHABLES	Constants.h	/^const int SEARCHABLES = 6;		\/\/ # of different resources able to be found when searching$/;"	v
+SKILLSET_H_	Skillset.h	9;"	d
+Skillset	Skillset.cpp	/^Skillset::Skillset(int g,int c, int f) {$/;"	f	class:Skillset
+Skillset	Skillset.h	/^class Skillset {$/;"	c
+TURRET_BASE	Constants.h	/^const int TURRET_BASE = 3;		\/\/ minimum zombies killed by each turret$/;"	v
+TURRET_SHOOT	Constants.h	/^const int TURRET_SHOOT = 60;	\/\/ % chance for turret to shoot again recursively$/;"	v
+UNC_FOOD_CONV	Constants.h	/^const int UNC_FOOD_CONV = 3;	\/\/ rations made from 1 uncooked food$/;"	v
+barricade	Colony.h	/^	int rations, medicine, uncooked, weapons, barricade, scrap;$/;"	m	class:Colony
+c	Day.h	/^	Colony* c;$/;"	m	class:Day
+cookBots	Colony.h	/^	int cookBots, turrets;$/;"	m	class:Colony
+cookFood	Day.cpp	/^int Day::cookFood(int people, int &uncooked)$/;"	f	class:Day
+cooking	Skillset.h	/^	int gathering,cooking,fighting;$/;"	m	class:Skillset
+day	Colony.h	/^	int day;$/;"	m	class:Colony
+deathRoll	Day.cpp	/^void Day::deathRoll(){$/;"	f	class:Day
+eveningEvent	Day.cpp	/^void Day::eveningEvent() {$/;"	f	class:Day
+fighting	Skillset.h	/^	int gathering,cooking,fighting;$/;"	m	class:Skillset
+gathering	Skillset.h	/^	int gathering,cooking,fighting;$/;"	m	class:Skillset
+getBar	Colony.cpp	/^int Colony::getBar(){$/;"	f	class:Colony
+getCookB	Colony.cpp	/^int Colony::getCookB() {$/;"	f	class:Colony
+getDay	Colony.cpp	/^int Colony::getDay(){$/;"	f	class:Colony
+getInput	Day.cpp	/^void Day::getInput(int* a){$/;"	f	class:Day
+getMed	Colony.cpp	/^int Colony::getMed(){$/;"	f	class:Colony
+getName	Member.cpp	/^string* Member::getName(){$/;"	f	class:Member
+getPeople	Colony.cpp	/^int Colony::getPeople(){$/;"	f	class:Colony
+getPeople	People.cpp	/^int People::getPeople(){$/;"	f	class:People
+getRat	Colony.cpp	/^int Colony::getRat(){$/;"	f	class:Colony
+getScr	Colony.cpp	/^int Colony::getScr() {$/;"	f	class:Colony
+getSick	Colony.cpp	/^int Colony::getSick(){$/;"	f	class:Colony
+getSick	People.cpp	/^int People::getSick(){$/;"	f	class:People
+getTur	Colony.cpp	/^int Colony::getTur() {$/;"	f	class:Colony
+getUnc	Colony.cpp	/^int Colony::getUnc(){$/;"	f	class:Colony
+getWep	Colony.cpp	/^int Colony::getWep(){$/;"	f	class:Colony
+incDay	Colony.cpp	/^void Colony::incDay(){$/;"	f	class:Colony
+main	Main.cpp	/^int main()$/;"	f
+medicine	Colony.h	/^	int rations, medicine, uncooked, weapons, barricade, scrap;$/;"	m	class:Colony
+morningEvent	Day.cpp	/^void Day::morningEvent() {$/;"	f	class:Day
+name	Member.h	/^	string name;$/;"	m	class:Member
+operator +=	Colony.cpp	/^void Colony::operator+=(Colony *c){$/;"	f	class:Colony
+people	Colony.h	/^	int people, sick;$/;"	m	class:Colony
+people	People.h	/^	int people,sick;$/;"	m	class:People
+printStatus_find	Day.cpp	/^void Day::printStatus_find(){$/;"	f	class:Day
+printStatus_init	Day.cpp	/^void Day::printStatus_init(){$/;"	f	class:Day
+printStatus_result	Day.cpp	/^void Day::printStatus_result(){$/;"	f	class:Day
+rations	Colony.h	/^	int rations, medicine, uncooked, weapons, barricade, scrap;$/;"	m	class:Colony
+scrap	Colony.h	/^	int rations, medicine, uncooked, weapons, barricade, scrap;$/;"	m	class:Colony
+search	Day.cpp	/^void Day::search(int people,int* search_arr){$/;"	f	class:Day
+setBar	Colony.cpp	/^void Colony::setBar(int b){$/;"	f	class:Colony
+setCookB	Colony.cpp	/^void Colony::setCookB(int c) {$/;"	f	class:Colony
+setMed	Colony.cpp	/^void Colony::setMed(int medicine){$/;"	f	class:Colony
+setPeople	Colony.cpp	/^void Colony::setPeople(int people){$/;"	f	class:Colony
+setRat	Colony.cpp	/^void Colony::setRat(int rations){$/;"	f	class:Colony
+setScr	Colony.cpp	/^void Colony::setScr(int s) {$/;"	f	class:Colony
+setSick	Colony.cpp	/^void Colony::setSick(int sick){$/;"	f	class:Colony
+setTur	Colony.cpp	/^void Colony::setTur(int t) {$/;"	f	class:Colony
+setUnc	Colony.cpp	/^void Colony::setUnc(int uncooked){$/;"	f	class:Colony
+setWep	Colony.cpp	/^void Colony::setWep(int weapons){$/;"	f	class:Colony
+sick	Colony.h	/^	int people, sick;$/;"	m	class:Colony
+sick	People.h	/^	int people,sick;$/;"	m	class:People
+turrets	Colony.h	/^	int cookBots, turrets;$/;"	m	class:Colony
+uncooked	Colony.h	/^	int rations, medicine, uncooked, weapons, barricade, scrap;$/;"	m	class:Colony
+weapons	Colony.h	/^	int rations, medicine, uncooked, weapons, barricade, scrap;$/;"	m	class:Colony
+zmult	Day.cpp	/^int Day::zmult(int day){$/;"	f	class:Day
+zombieBreakIn	Day.cpp	/^void Day::zombieBreakIn(int zombies)$/;"	f	class:Day
+~Colony	Colony.cpp	/^Colony::~Colony() {$/;"	f	class:Colony
+~Day	Day.cpp	/^Day::~Day() {$/;"	f	class:Day
+~Member	Member.cpp	/^Member::~Member() {$/;"	f	class:Member
+~People	People.cpp	/^People::~People() {$/;"	f	class:People
+~Skillset	Skillset.cpp	/^Skillset::~Skillset() {$/;"	f	class:Skillset
