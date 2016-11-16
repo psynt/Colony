@@ -1,26 +1,11 @@
-/*
- * Colony.cpp
- *
- *  Created on: 8 Oct 2016
- *      Author: zaxa1
- */
-
 #include "Colony.h"
+#include "Radio.h"
+#include "Project.h"
 #include "Constants.h"
-
-Colony::Colony() {
-	medicine = INITIAL_MEDICINE;
-	rations = INITIAL_FOOD;
-	weapons = INITIAL_WEAPONS;
-	day = 1;
-	uncooked = INITIAL_UNCOOKED;
-	sick = INITIAL_SICK;
-	people = INITIAL_PEOPLE;
-	barricade = INITIAL_BARRICADES;
-	scrap = INITIAL_SCRAP;
-	cookBots = INITIAL_COOKBOTS;
-	turrets = INITIAL_TURRETS;
-}
+#include <sstream>
+#include <string>
+#include <iostream>
+using namespace std;
 
 Colony::Colony(int r, int m, int u, int w, int p, int sc, int c, int t, int d, int si, int b){
 	medicine=m;
@@ -34,6 +19,39 @@ Colony::Colony(int r, int m, int u, int w, int p, int sc, int c, int t, int d, i
 	scrap = sc;
 	cookBots = c;
 	turrets = t;
+	pm=ProjectManager();
+}
+
+string Colony::printProjects(){
+	return pm.printProjects();
+}
+
+string Colony::progressProjects(int *a){
+	pm.progressProjects(a);
+	ostringstream os;
+	os<<"Projects finished: "<<a[1]<<" Turrets and "<<a[2]<<" cookbots.\n";
+	addBot(a[2]);
+	addTur(a[1]);
+	if(DEBUG) cout<<"Projects finished: "<<a[1]<<" Turrets and "<<a[2]<<" cookbots.\n";
+	if(a[0]){
+		Radio::giveRadio().isCompleted();
+		os<<"Also, the Radio should be working now.\n";
+	}
+	return os.str();
+}
+void Colony::addBot(int b){
+	cookBots+=b;
+}
+
+void Colony::addTur(int t){
+	turrets+=t;
+}
+
+void Colony::build(int type,int number){
+	pm.build(type,number);
+}
+int Colony::getNoPr(){
+	return pm.getNoPr();
 }
 
 void Colony::operator+=(Colony *c){

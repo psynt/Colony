@@ -1,13 +1,9 @@
-/*
- * Day.h
- *
- *  Created on: Oct 8, 2016
- *      Author: nichita
- */
 
-#include "Colony.h"
 
 #ifndef DAY_H_INCLUDED
+#define DAY_H_INCLUDED
+
+#include "Colony.h"
 
 class Day {
 	Colony* c;
@@ -24,10 +20,11 @@ public:
 	void printStatus_result();
 	void morningEvent();
 	void eveningEvent();
-	void getInput(int* i);
-	void zombieBreakIn(int zombie);
-	void search(int people,int *k);
-	int cookFood(int people, int &uncooked);
+	void getInput(int*);
+	void zombieBreakIn(int);
+	void search(int, int*);
+	int cookFood(int, int);
+	void projInp(int*,int);
 };
 
 #endif /* DAY_H_ */

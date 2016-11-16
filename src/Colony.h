@@ -1,21 +1,21 @@
-/*
- * Colony.h
- *
- *  Created on: 8 Oct 2016
- *      Author: zaxa1
- */
+#ifndef COLONY_H_
+#define COLONY_H_
 
-#ifndef COLONY_H_INCLUDED
-#define COLONY_H_INCLUDED
+#include <vector>
+#include "ProjectManager.h"
+#include "Constants.h"
+#include <string>
+using namespace std;
 
 class Colony {
 	int day;
 	int rations, medicine, uncooked, weapons, barricade, scrap;
 	int people, sick;
 	int cookBots, turrets;
+	ProjectManager pm;
 public:
-	Colony();
-	Colony(int r, int m, int u, int w, int p, int sc, int c, int t, int d=1, int si=0, int b=0);
+	Colony(int r=INITIAL_FOOD, int m=INITIAL_MEDICINE, int u=INITIAL_UNCOOKED, int w=INITIAL_WEAPONS, int p=INITIAL_PEOPLE, int sc=INITIAL_SCRAP,
+			int c=INITIAL_COOKBOTS, int t=INITIAL_TURRETS, int d=1, int si=INITIAL_SICK, int b=INITIAL_BARRICADES);
 	virtual ~Colony();
 	int getPeople();
 	int getSick();
@@ -28,7 +28,11 @@ public:
 	int getScr();
 	int getCookB();
 	int getTur();
+	int getNoPr();
+	void build(int type,int number);
 	void incDay();
+	void addTur(int);
+	void addBot(int);
 	void setPeople(int);
 	void setSick(int);
 	void setRat(int);
@@ -40,6 +44,8 @@ public:
 	void setCookB(int);
 	void setTur(int);
 	void operator+=(Colony*);
+	string printProjects();
+	string progressProjects(int *a);
 };
 
 #endif /* COLONY_H_ */

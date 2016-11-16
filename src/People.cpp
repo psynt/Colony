@@ -1,10 +1,3 @@
-/*
- * People.cpp
- *
- *  Created on: Oct 8, 2016
- *      Author: nichita
- */
-
 #include "People.h"
 
 People::People() {

@@ -1,14 +1,8 @@
-/*
- * Day.cpp
- *
- *  Created on: Oct 8, 20 *      Author: nichita
- */
-
 #include "Day.h"
-
 #include <cstdlib>
 #include <iostream>
 #include <string>
+#include <cstring>
 #include <limits>
 
 #include "Constants.h"
@@ -16,85 +10,282 @@
 using namespace std;
 
 void Day::printStatus_init(){
-    int dayNum=c->getDay();
+	int dayNum=c->getDay();
 
-    cout << "\n\n\n\tDAY " << dayNum << '\n';
-    cout << "--------------------------------------------------\n";
+	cout << "\n\n\n\tDAY " << dayNum << '\n';
+	cout << "--------------------------------------------------\n";
 
-    morningEvent();
+	morningEvent();
 
-    int member=c->getPeople();
-    int ration=c->getRat();
-    int uncooked=c->getUnc();
-    int weapon=c->getWep();
-    int sick=c->getSick();
-    int medicine=c->getMed();
-    int scrap=c->getScr();
-    int barricade = c->getBar();
-    int cookBot = c->getCookB();
-    int turret = c->getTur();
-    int healthy = member - sick;
+	int member=c->getPeople();
+	int ration=c->getRat();
+	int uncooked=c->getUnc();
+	int weapon=c->getWep();
+	int sick=c->getSick();
+	int medicine=c->getMed();
+	int scrap=c->getScr();
+	int barricade = c->getBar();
+	int cookBot = c->getCookB();
+	int turret = c->getTur();
+	int healthy = member - sick;
 
-    string grammar;
+	string grammar;
 
-    grammar = (member == 1) ? "" : "s";
-    cout << "The colony has " << member << " member" << grammar << ", ";
-    grammar = (sick == 1) ? " is" : " are";
-    cout << "of which " << sick << grammar << " sick.\n";
-    grammar = (ration == 1) ? "" : "s";
-    cout << "You have " << ration << " ration" << grammar << " of food.\n";
-    cout << "You have " << uncooked << " uncooked food.\n";
-    grammar = (weapon == 1) ? "" : "s";
-    cout << "You have " << weapon << " weapon" << grammar << ".\n";
-    cout << "You have " << medicine << " medicine.\n";
-    cout << "You have " << scrap << " scrap.\n";
-    grammar = (barricade == 1) ? "" : "s";
-    cout << "You have " << barricade << " barricade" << grammar << ".\n";
-    grammar = (cookBot == 1) ? "" : "s";
-    cout << "You have " << cookBot << " cooking robot" << grammar << ".\n";
-    grammar = (turret == 1) ? "" : "s";
-    cout << "You have " << turret << " turret" << grammar << ".\n";
-    cout << "\n";
-    grammar = (healthy == 1) ? " is" : "s are";
-    cout << "The " << healthy << " healthy member" << grammar << " ready to work.\n";
+	grammar = (member == 1) ? "" : "s";
+	cout << "The colony has " << member << " member" << grammar << ", ";
+
+	grammar = (sick == 1) ? " is" : " are";
+	cout << "of which " << sick << grammar << " sick.\n";
+
+	grammar = (ration == 1) ? "" : "s";
+	cout << "You have " << ration << " ration" << grammar << " of food.\n";
+
+	cout << "You have " << uncooked << " uncooked food.\n";
+
+	grammar = (weapon == 1) ? "" : "s";
+	cout << "You have " << weapon << " weapon" << grammar << ".\n";
+
+	cout << "You have " << medicine << " medicine.\n";
+
+	cout << "You have " << scrap << " scrap.\n";
+
+	grammar = (barricade == 1) ? "" : "s";
+	cout << "You have " << barricade << " barricade" << grammar << ".\n";
+
+	grammar = (cookBot == 1) ? "" : "s";
+	cout << "You have " << cookBot << " cooking robot" << grammar << ".\n";
+
+	grammar = (turret == 1) ? "" : "s";
+	cout << "You have " << turret << " turret" << grammar << ".\n";
+
+	if(c->getNoPr()>0){
+		cout << "\nCurrent projects:\n";
+		cout << c->printProjects();
+	}
+
+	cout << "\n";
+
+	grammar = (healthy == 1) ? " is" : "s are";
+	cout << "The " << healthy << " healthy member" << grammar << " ready to work.\n";
 }
 
 void Day::morningEvent() {
-    // a random event may happen before the day's events
-    // e.g. theft, new survivors, attack etc.
+	// a random event may happen before the day's events
+	// e.g. theft, new survivors, attack etc.
 
-    if (EVENT_PARTY_JOIN > rand() % 100) {
-        cout << "A member of the colony spots a small search party as they happen upon your base.\n";
-        cout << "They are running low on supplies and struggling to survive. You offer for them to join your cause.\n";
+	if (EVENT_PARTY_JOIN > rand() % 100) {
+		cout << "A member of the colony spots a small search party as they happen upon your base.\n";
+		cout << "They are running low on supplies and struggling to survive. You offer for them to join your cause.\n";
 
-        int surv = 2 + rand() % 5;
-        int rat = surv + rand() % surv;
-        int unc = rand() % surv;
-        int wep = rand() % (surv + 1);
-        int med = rand() % 3;
+		int surv = 2 + rand() % 5;
+		int rat = surv + rand() % surv;
+		int unc = rand() % surv;
+		int wep = rand() % (surv + 1);
+		int med = rand() % 3;
+		int scr = rand() % 5;
 
-        //					 r 	 m	  u  w 	 p 	  sc 	c t d si b
-        Colony *f=new Colony(rat,med,unc,wep,surv,0, 	0,0,1,0, 0);
+//								r	 m	  u	   w	p	 sc	  c  t  d  si b
+		Colony* f = new Colony(rat, med, unc, wep, surv, scr, 0, 0, 0, 0, 0);
 
-        //		c->setPeople(c->getPeople()+surv);
-        //		c->setRat(c->getRat()+rat);
-        //		c->setUnc(c->getUnc()+unc);
-        //		c->setWep(c->getWep()+wep);
-        //		c->setMed(c->getMed()+med);
-        *c+=f;
+		*c += f;
 
-        cout << "+" << surv << " survivors, +" << rat << " rations";
-        if (unc > 0) cout << ", +" << unc << " uncooked food";
-        if (wep > 0) cout << ", +" << wep << " weapons";
-        if (med > 0) cout << ", +" << med << " medicine";
-        cout << ".\n\n";
-        delete f;
-    }
+		cout << "+" << surv << " survivors, +" << rat << " rations";
+		if (unc > 0) cout << ", +" << unc << " uncooked food";
+		if (wep > 0) cout << ", +" << wep << " weapons";
+		if (med > 0) cout << ", +" << med << " medicine";
+		if (scr > 0) cout << ", +" << scr << " scrap";
+		cout << ".\n\n";
+
+		delete f;
+	}
 }
 
 void Day::eveningEvent() {
     // a random event may happen after the day's events
     // e.g. morale boost gets members to do something productive before bed
+}
+
+void Day::projInp(int* a,int p){
+//	char t;
+//	do{
+//		cout<<"Do you want to want to change project status? (y/n)\n";
+//
+//		do{
+//			cin >> t;
+//			if(t=='N' || t=='n') return;
+//		}while(t!='y' && t!='Y');
+//
+//		do{
+//			cout<<"New project(n), assign workers to current projects(a), or cancel(c)?\n";
+//			cin>>t;
+//
+//			//NEW PROJECT
+//			if(strchr("nN",t)){
+//				cout<<"Costs:\n";
+//				cout<<"Turret: "<< TUR_C_SCRAP<<" scrap and "<<TUR_C_WEAPONS<<" weapons.\n";
+//				cout<<"Cookbot: "<<HOB_C_SCRAP << " scrap.\n";
+//				cout<<"Choose new project: Turret (t), cookbot(b), or cancel(c).\n";
+//				do{
+//					cin>>t;
+//
+//					//TURRET
+//					if(strchr("tT",t)){
+//						cout<<"Confirm new Turret project (y/n).\n";
+//						do{
+//							cin>>t;
+//						}while(!strchr("ynYN",t));
+//						if(strchr("Yy",t)){
+//							if(c->getScr()<TUR_C_SCRAP || c->getWep()<TUR_C_WEAPONS){
+//								cout<<"Not enough resources.\n";
+//							}else{
+//								c->setScr(c->getScr()-TUR_C_SCRAP);
+//								c->setWep(c->getWep()-TUR_C_WEAPONS);
+//								c->build(TUR_TYPE);
+//							}
+//						}
+//					}
+//
+//					//AUTO_HOB
+//					if(strchr("bB",t)){
+//						cout<<"Confirm new CookBot project (y/n).\n";
+//						do{
+//							cin>>t;
+//						}while(!strchr("ynYN",t));
+//						if(strchr("Yy",t)){
+//							if(c->getScr()<HOB_C_SCRAP){
+//								cout<<"Not enough resources.\n";
+//							}else{
+//								c->setScr(c->getScr()-HOB_C_SCRAP);
+//								c->build(HOB_TYPE);
+//							}
+//						}
+//					}
+//
+//				}while(!strchr("tbcTBC",t));
+//			}
+//
+//			// TODO: ASSIGN
+//
+//		}while(!strchr("nacNAC",t));
+//
+//	}while(true);
+
+	//gonna try this again...
+
+
+	bool good,cancel;
+
+	string t;
+	do{
+
+		cout<<"Start new projects and/or assign " << p << " people to active ones.\n";
+		cout<<"On a single line, input your command in the form (n) for new projects, (w) for assign workers to projects, (t) for turret, (b) for cookbot, (r) for radio.\n";
+		cout<<"e.g. nt2b3wt10b5r20 adds 2 new turret projects, 3 new cookbot projects and assigns 10 workers to turrets, 5 workers to bots and 20 workers on the radio.\n";
+		cout<<"Note that you may not start a new radio project, and also, you may only use as many people as you assigned to projects.\n";
+		cout<<"Type a (c) to cancel"<<endl;
+
+		cin>>ws;
+		getline(cin,t);
+		good=false;
+		cancel=false;
+		int state=0;//0 default 1 new 2 work
+					//11 new turrets 12 new bots
+					//21 work turrets 22 work bots 20 work radio
+		int nr=0,newstate=0,up=0,us=0,uw=0,build[POSSIBLE_PROJECTS-1];
+		for(int i=0 ; i<POSSIBLE_PROJECTS-1 ; i++) build[i]=0;
+		for(size_t i=0 ; i<t.length() ; i++){
+			if(strchr("cC",t[i])){
+				build[0]=build[1]=a[0]=a[1]=a[2]=0;
+				return;
+			}
+			if(strchr("0123456789",t[i])){
+				nr=nr*10+(t[i]-'0');
+
+			} else
+			if(strchr("nN",t[i])){
+				newstate=1;
+//				if (DEBUG) cout<<"NewState = "<<newstate<<"\n";
+			} else
+			if(strchr("Tt",t[i])){
+				if(state==0){
+					cout<<"Illegal input\n";
+					cancel=true;
+					break;
+				}
+				if(state>9) newstate=state/10%10*10+1;
+				else newstate=state*10+1;
+//				if (DEBUG) cout<<"NewState = "<<newstate<<"\n";
+			} else
+			if(strchr("Ww",t[i])){
+				newstate=2;
+			} else
+			if(strchr("Bb",t[i])){
+				if(state==0){
+					cout<<"Illegal input\n";
+					cancel=true;
+					break;
+				}
+				if(state>9) newstate=state/10%10*10+2;
+				else newstate=state*10+2;
+			} else
+			if(strchr("Rr",t[i])){
+				newstate=20;
+			} else{
+				cout<<"Did i not make myself clear?\n";
+				break;
+			}
+			if(i == t.length()-1 || (state!=newstate && nr!=0)){
+//				if(i == t.length()-1){
+//					if(DEBUG)cout<<"Called at the end.\n";
+//				}
+//				if (DEBUG) cout<<"State = "<<state<<"\n";
+//				if (DEBUG) cout<<"NewState = "<<newstate<<"\n";
+				int s1=state/10;
+				state%=10;
+//				if(s1==1 && state==0){
+//					cout<<"Nonononono! No building new radios! You must try to repair the one you have.\n";
+//					break;
+//				}
+				if(s1==2){
+					if(DEBUG) cout<<"a["<<state<<"]="<<nr<<"\n";
+					a[state]=nr;
+					up+=nr;
+					if(state == 0){
+						us+=Project::getSCost(state)*nr;
+					}
+				} else
+				if(s1==1){
+
+					us+=Project::getSCost(state)*nr;
+					if(state==1){
+						uw+=TUR_C_WEAPONS*nr;
+					}
+					build[state-1]+=nr;
+					if(DEBUG) cout<<"Nr = "<<nr<<"\n";
+				}
+				nr=0;
+			}
+			if (DEBUG) cout<<"NewState = "<<newstate<<"\n";
+			state=newstate;
+		}
+		if(up<=p && uw<=c->getWep() && us<=c->getScr()){
+			if(DEBUG){
+				cout<<"\nInput accepted.\n";
+				cout<<"Build "<<build[0]<<" tur, "<<build[1]<<" hob.\n";
+				cout<<"Assign "<<a[0]<<" , "<<a[1] << " , " <<a[2]<<"\n";
+			}
+			c->setWep(c->getWep()-uw);
+			c->setScr(c->getScr()-us);
+			for(int i=0 ; i<POSSIBLE_PROJECTS-1 ; i++){
+				c->build(i+1,build[i]);
+			}
+			good=true;
+		}else{
+			cout<<"I don't like what you told me. I won't mention your insubordination to anybody, but please try to give me better input next time.\n";
+		}
+	}while(!(good && !cancel));
+
+
 }
 
 void Day::EndDay(){
@@ -105,13 +296,14 @@ void Day::EndDay(){
 
     c->setRat(ration - member); // reduce ration count
 
-    if (member > ration) {
-        int i = member - ration;
-        c->setPeople(c->getPeople() - i);
-        c->setSick(min(c->getSick(), i));
+	if (member > ration) {
+		int death = member - ration;
+		c->setPeople(c->getPeople() - death);
+		c->setSick(min(c->getSick(), death));
 
-        cout << i << " members die of starvation.\n";
-    }
+		cout << death << " members die of starvation.\n";
+		c->setRat(0);
+	}
 
     member = c->getPeople();
     sick = c->getSick();
@@ -180,161 +372,199 @@ int Day::zmult(int day){
 
 void Day::printStatus_find(){
 
-    if (c->getSick() < c->getPeople()) {
-        int *inp = new int[ACTIVITIES];
-        inp[0] = 0;
-        inp[1] = 0;
-        inp[2] = 0;
+	if (c->getSick() < c->getPeople()) {
+		string grammar;
+		int* inp = new int[ACTIVITIES];
+		int* proj= new int[POSSIBLE_PROJECTS];
+		for(int i=0 ; i<ACTIVITIES ; i++) inp[i]=0;
+		for(int i=0 ; i<POSSIBLE_PROJECTS ; i++) proj[i]=0;
 
-        getInput(inp);
+		do{
+			getInput(inp);
 
-        if (inp[0] > 0) {
-            int* k =new int[SEARCHABLES];
-            search(inp[0], k);
+			if(inp[3]>0){
+				projInp(proj,inp[3]);
+				if(proj[0]==proj[1]==proj[2]==0){
+					cout<<"Cancelled\n";
+				}else{
+					cout<<c->progressProjects(proj);
+				}
+			}
+		}while(inp[3]>0 && (proj[0]==proj[1]==proj[2]==0));
 
-            //			int f_ration = k[0];
-            //			int f_uncooked = k[1];
-            //			int f_weap = k[2];
-            //			int f_med = k[3];
-            //			int f_scr = k[4];
-            //			int f_surv = k[5];
-            //					 r 	  m	   u 	w 	 p 	  sc 	c t d si b
-            Colony *f=new Colony(k[0],k[3],k[1],k[2],k[5],k[4], 0,0,1,0, 0);
+		if (inp[0] > 0) {
+			int* k = new int[SEARCHABLES];
+			search(inp[0], k);
 
-            //			c->setMed(c->getMed()+f_med);
-            //			c->setWep(c->getWep()+f_weap);
-            //			c->setUnc(c->getUnc()+f_uncooked);
-            //			c->setRat(c->getRat()+f_ration);
-            //			c->setScr(c->getScr()+f_scr);
-            //			c->setPeople(c->getPeople()+f_surv);
-            *c+=f;
+//									r	  m		u	  w		p	  sc   c  t  d  si b
+			Colony* f = new Colony(k[0], k[3], k[1], k[2], k[5], k[4], 0, 0, 0, 0, 0);
 
-            cout << "Your search party finds: \n";
-            cout << "\t" << k[0] << " ration(s) of food\n";
-            cout << "\t" << k[1] << " uncooked food\n";
-            cout << "\t" << k[2] << " weapon(s)\n";
-            cout << "\t" << k[3] << " medicine\n";
-            cout << "\t" << k[4] << " scrap\n";
-            cout << "\t" << k[5] << " survivor(s)\n";
-            delete f;
-        }
+			*c += f;
 
-        if (inp[1] > 0) {
-            c->setBar(c->getBar() + inp[1]);
+			cout << "Your search party finds: \n";
+			grammar = (k[0] == 1) ? "" : "s";
+			cout << "\t" << k[0] << " ration" << grammar << " of food\n";
+			cout << "\t" << k[1] << " uncooked food\n";
+			grammar = (k[2] == 1) ? "" : "s";
+			cout << "\t" << k[2] << " weapon" << grammar << "\n";
+			cout << "\t" << k[3] << " medicine\n";
+			cout << "\t" << k[4] << " scrap\n";
+			grammar = (k[5] == 1) ? "" : "s";
+			cout << "\t" << k[5] << " survivor" << grammar << "\n";
 
-            cout << "Your building party constructs " << inp[1] << " new barricades.\n";
-        }
+			delete f;
+			delete k;
+		}
 
-        if (inp[2] > 0) {
-            int u = c->getUnc();
-            int i = cookFood(inp[2], u);
-            c->setRat(c->getRat() + i);
-            c->setUnc(u);
+		if (inp[1] > 0) {
+			c->setBar(c->getBar() + inp[1]);
 
-            cout << "Your cooking party produces " << i << " rations of food, using " << i / UNC_FOOD_CONV << " uncooked food.\n";
-        }
+			grammar = (inp[1] == 1) ? "" : "s";
+			cout << "Your building party constructs " << inp[1] << " new barricade" << grammar << ".\n";
+		}
 
-        cout << "\n";
-    }
+		if (c->getCookB() > 0) {
+			int autoFood = cookFood(c->getCookB(), HOB_COOK_SPEED);
+			c->setRat(c->getRat() + autoFood);
+
+			cout << "Your cooking robots automatically produce " << autoFood << " rations of food, using " << autoFood / UNC_FOOD_CONV << " uncooked food.\n";
+		}
+
+		if (inp[2] > 0) {
+			int manualFood = cookFood(inp[2], COOK_SPEED);
+			c->setRat(c->getRat() + manualFood);
+
+			cout << "Your cooking party produces " << manualFood << " rations of food, using " << manualFood / UNC_FOOD_CONV << " uncooked food.\n";
+		}
+
+		cout << "\n";
+		delete inp;
+		delete proj;
+	}
 }
 
 void Day::zombieBreakIn(int zombies)
 {
-    int p=c->getPeople();
-    p-=zombies;
-    if(p<0) p=0;
-    cout << c->getPeople()-p << " members of the colony perish.\n";
-    c->setPeople( p );
+	int people = c->getPeople();
+	string grammar1, grammar2;
+
+	people -= zombies;
+	if (people < 0) people = 0;
+
+	if (people == 1) {
+		grammar1 = "";
+		grammar2 = "es";
+	}
+	else {
+		grammar1 = "s";
+		grammar2 = "";
+	}
+
+	cout << c->getPeople() - people << " member" << grammar1 << " of the colony perish" << grammar2 << ".\n";
+	c->setPeople(people);
 }
 
-int Day::cookFood(int people, int &uncooked)
+int Day::cookFood(int workers, int speed)
 {
-    if (DEBUG)
-        cout << "cookFood() called with " << people << " people and " << uncooked << " uncooked.\n";
+	int uncooked = c->getUnc();
+
+	if (DEBUG)
+		cout << "cookFood() called with " << workers << " workers, " << speed << " speed and " << uncooked << " uncooked food.\n";
 
     int cooked = 0;
 
-    cooked = min(COOK_SPEED * people, uncooked);
-    uncooked -= cooked;
-    cooked *= UNC_FOOD_CONV;
+	cooked = min(speed * workers, uncooked);
+	uncooked -= cooked;
+	c->setUnc(uncooked);
+	cooked *= UNC_FOOD_CONV;
 
-    if(DEBUG){
-        cout << people << " people cooked " << cooked << " food using " << cooked / UNC_FOOD_CONV << " uncooked food.\n";
-    }
+	if(DEBUG)
+		cout << workers << " workers cooked " << cooked << " food using " << cooked / UNC_FOOD_CONV << " uncooked food.\n";
 
     return cooked;
 }
 
 void Day::printStatus_result(){
-    int weapon = c->getWep();
-    int member = c->getPeople();
-    int sick = c->getSick();
-    int healthy = member - sick;
-    int barricade = c->getBar();
-    int turret = c->getTur();
-    //int zombies = 1 + rand() % 3 + (1 + rand() % 3) * c->getDay();
-    int zombies = 0, n=zmult(c->getDay());
+	int weapon = c->getWep();
+	int member = c->getPeople();
+	int sick = c->getSick();
+	int healthy = member - sick;
+	int barricade = c->getBar();
+	int turret = c->getTur();
+	int zombies = 0;
+	int i = zmult(c->getDay());
+	int totalStrength;
 
-    while(n--){
-        zombies += (rand() % c->getDay());
-    }
+	while (i--) {
+		zombies += (rand() % c->getDay());
+	}
 
 
-    cout << "Night falls.\n";
-    cout << "You have " << healthy << " healthy members, ";
-    cout << weapon << " weapon(s), ";
-    cout << barricade << " barricade(s) and ";
-    cout << turret << " turret(s).";
+	cout << "Night falls.\n";
+	cout << "You have " << healthy << " healthy members, ";
+	cout << weapon << " weapon(s), ";
+	cout << barricade << " barricade(s) and ";
+	cout << turret << " turret(s).\n";
 
-    cout << "\n\n" << zombies << " zombies attack in the night.\n";
+	cout << "\n" << zombies << " zombies attack in the night.\n";
 
-    bool brokenIn=false;
-    int turretKills = 0;
+	bool brokenIn=false;
+	int turretKills = 0;
 
-    for (int i = 0; i < turret; i++) {
-        turretKills += TURRET_BASE;
+	for (i = 0; i < turret; i++) {
+		turretKills += TURRET_BASE;
 
-        while (TURRET_SHOOT > rand() % 100) {
-            turretKills++;
-        }
-    }
+		while (TURRET_SHOOT > rand() % 100) {
+			turretKills++;
+		}
+	}
 
-    if (turretKills > zombies) turretKills = zombies;
+	if (turretKills > zombies) turretKills = zombies;
 
-    if (turret > 0) cout << "Your turrets automatically gun down " << turretKills << " zombies.\n";
+	if (turretKills > 0) cout << "Your turrets automatically gun down " << turretKills << " zombies.\n";
 
-    int res = healthy + min(c->getWep(), healthy) + c->getBar() + turretKills - zombies;
-    if (res == 0 || res == 1){
-        cout << "You barely manage to hold them back.\n";
-    }
-    else if(res>0){
-        cout << "You successfully defend the colony.\n";
-    }
-    else {
-        res=-res;
-        cout << res << " zombies break through your defenses.\n";
-        brokenIn=true;
-        zombieBreakIn(res);
-        if(c->getPeople()<=0){ return; }
-    }
+	totalStrength = healthy + min(c->getWep(), healthy) + c->getBar() + turretKills;
 
-    int barLoss = 0;
-    int bL;
+	if (DEBUG)
+		cout << "[DEBUG] Total strength: " << totalStrength << "\n";
 
-    if (barricade > 0){
-        barLoss = rand() % barricade;
-    }
-    if (barLoss > zombies){
-        barLoss=zombies;
-    }
-    bL = (brokenIn) ? barricade : barLoss;
+	int res = totalStrength - zombies;
 
-    if (bL > 0)
-        cout << bL << " barricades are destroyed in the attack.\n";
+	if (DEBUG)
+		cout << "[DEBUG] Resolution: " << res << "\n";
 
-    c->setBar(barricade - bL);
+	if (res == 0 || res == 1){
+		cout << "You barely manage to hold them back.\n";
+	}
+	else if(res>0){
+		cout << "You successfully defend the colony.\n";
+	}
+	else {
+		res=-res;
+		cout << res << " zombies break through your defenses.\n";
+		brokenIn=true;
+		zombieBreakIn(res);
+		if(c->getPeople()<=0){ return; }
+	}
 
-    cout << "\n";
+	int barLoss = 0;
+	int bL;
+
+	if (barricade > 0){
+		barLoss = rand() % barricade;
+	}
+	if (barLoss > zombies){
+		barLoss=zombies;
+	}
+	bL = (brokenIn) ? barricade : barLoss;
+
+	if (bL > 0)
+		cout << bL << " barricades are destroyed in the attack.\n";
+
+	c->setBar(barricade - bL);
+
+	cout << "\n";
+
 }
 
 void Day::search(int people,int* search_arr){
@@ -380,56 +610,128 @@ void Day::search(int people,int* search_arr){
 }
 
 void Day::getInput(int* a){
-    int cook, prepare, search;
     int total;
     int healthy = c->getPeople() - c->getSick();
-    char t;
+	bool good,cancel;
 
-    do {
-        cout << "Search: ";
-        while(!(cin >> search)){
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Invalid input.  Try again: ";
-        }
-        cout << "Prepare defences: ";
-        while(!(cin >> prepare)){
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Invalid input.  Try again: ";
-        }
-        cout << "Cook: ";
-        while(!(cin >> cook)){
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Invalid input.  Try again: ";
-        }
+	string t;
+	do{
+		do{
+			a[0]=a[1]=a[2]=a[3]=0;
+			cout<<"\nOn a single line, input your command in the form Search (s), Cook food (f), Barricades(b), Projects (p).\n";
+			cout<<"e.g. s3f3b3p1 assigns 3 members to search, e members to cook, 3 to barricades and 1 to other projects.\n";
+			cout<<"Type a (c) to cancel"<<endl;
+			cin>>ws;
+			getline(cin,t);
+			good=true;
+			cancel=false;
+			int state=0;//0 default 1 search 3 cook 2 bar 4 proj
+			int nr=0,newstate=0;
+			for(size_t i=0 ; i<t.length() ; i++){
+				if(strchr("cC",t[i])){
+					cancel=true;
+					break;
+				} else
+				if(strchr("0123456789",t[i])){
+					nr=nr*10+(t[i]-'0');
+					if(DEBUG) cout<<"Nr= "<<nr<<"\n";
 
-        cout << "\n";
+				} else
+				if(strchr("sS",t[i])){
+					newstate=1;
+	//				if (DEBUG) cout<<"NewState = "<<newstate<<"\n";
+				} else
+				if(strchr("fF",t[i])){
+					newstate=3;
+	//				if (DEBUG) cout<<"NewState = "<<newstate<<"\n";
+				} else
+				if(strchr("bB",t[i])){
+					newstate=2;
+	//				if (DEBUG) cout<<"NewState = "<<newstate<<"\n";
+				} else
+				if(strchr("pP",t[i])){
+					newstate=4;
+	//				if (DEBUG) cout<<"NewState = "<<newstate<<"\n";
+				}
+				if(i == t.length()-1 || (state!=newstate && nr!=0)){
+	//				if(i == t.length()-1){
+	//					if(DEBUG)cout<<"Called at the end.\n";
+	//				}
+	//				if (DEBUG) cout<<"State = "<<state<<"\n";
+	//				if (DEBUG) cout<<"NewState = "<<newstate<<"\n";
+	//				if(s1==1 && state==0){
+	//					cout<<"Nonononono! No building new radios! You must try to repair the one you have.\n";
+	//					break;
+	//				}
+					if(DEBUG) cout<<"a["<<state-1<<"]="<<nr<<"\n";
+					a[state-1]=nr;
+					nr=0;
+				}
+				//if (DEBUG) cout<<"NewState = "<<newstate<<"\n";
+				state=newstate;
+			}
+			total = a[0] + a[1] + a[2] + a[3] ;
 
-        total = search + prepare + cook;
+			if (a[0] < 0 || a[1] < 0 || a[2] < 0 || a[3] < 0) {
+				cout << "Bad input. Reconsider.\n";
+				good=false;
+			}
+			if (total > healthy){
+				cout << "Not enough people. Reconsider.\n";
+				good=false;
+			}
+		}while(!(good && !cancel));
 
-        if (search < 0 || prepare < 0 || cook < 0) {
-            cout << "Bad input. Reconsider.\n";
-            continue;
-        }
-        if (total > healthy){
-            cout << "Not enough people. Reconsider.\n";
-            continue;
-        }
+//    do {
+//        cout << "Search: ";
+//        while(!(cin >> search)){
+//            cin.clear();
+//            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+//            cout << "Invalid input.  Try again: ";
+//        }
+//        cout << "Prepare defences: ";
+//        while(!(cin >> prepare)){
+//            cin.clear();
+//            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+//            cout << "Invalid input.  Try again: ";
+//        }
+//        cout << "Cook: ";
+//        while(!(cin >> cook)){
+//            cin.clear();
+//            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+//            cout << "Invalid input.  Try again: ";
+//        }
+//        cout << "Work on projects: ";
+//        while(!(cin >> proj)){
+//            cin.clear();
+//            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+//            cout << "Invalid input.  Try again: ";
+//        }
+//
+//        cout << "\n";
+//
+//        total = search + prepare + cook + proj ;
+//
+//        if (search < 0 || prepare < 0 || cook < 0 || proj < 0) {
+//            cout << "Bad input. Reconsider.\n";
+//            continue;
+//        }
+//        if (total > healthy){
+//            cout << "Not enough people. Reconsider.\n";
+//            continue;
+//        }
 
-        cout << search << " searching, "<< prepare << " defending, " << cook << " cooking food.\n";
+        cout << a[0] << " searching, "<< a[1] << " defending, " << a[2] << " cooking food and "<< a[3] <<" working on projects. \n";
         if (total < healthy)
             cout << healthy - total << " member(s) not assigned to a task.\n";
 
         cout << "Are you sure? (y/n)\n";
-        cin >> t;
-    } while (t != 'y' && t != 'Y');
+        cin >> ws;
+		getline(cin,t);
+
+    } while (t[0] != 'y' && t[0] != 'Y');
     cout << "\n\n";
 
-    a[0] = search;
-    a[1] = prepare;
-    a[2] = cook;
 }
 
 Day::Day(Colony *c) {
